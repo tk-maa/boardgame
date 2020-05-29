@@ -39,11 +39,11 @@
 <link href="css/style.css" type="text/css" rel="stylesheet">
 <link href="css/responsive.css" type="text/css" rel="stylesheet">
 <link href="css/custom/CSS-product-detail.css" type="text/css" rel="stylesheet">
-<title>X-Smart Computer</title>
+<title>Boardgame.vn</title>
 </head>
 
 <body>
-<!-- LOADER 
+<!-- LOADER -->
 <div id="preloader">
     <div class="loading_wrap">
         <img src="img/logo.png" alt="logo">

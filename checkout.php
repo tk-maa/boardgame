@@ -40,7 +40,7 @@
 <link href="css/responsive.css" type="text/css" rel="stylesheet">
 
 <link href="css/custom/CSS-cart.css" type="text/css" rel="stylesheet">
-<title>X-Smart Computer</title>
+<title>Boardgame.vn</title>
 </head>
 <body>
 <!-- LOADER -->
