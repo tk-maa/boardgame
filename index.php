@@ -103,7 +103,7 @@ require_once './php/DataProvider.php';
             <div class="row">
                 <div class="col-md-4 facility-box">
                     <div class="facility-inner ">
-                        <div class="fb-icon w-25">
+                        <div class="fb-icon text-center w-25">
                             <img src="img/i_giaohang.png" width="75px"></img>
                         </div>
                         <div class="fb-text w-75">
@@ -114,7 +114,7 @@ require_once './php/DataProvider.php';
                 </div>
                 <div class="col-md-4 facility-box">
                     <div class="facility-inner">
-                        <div class="fb-icon w-25">
+                        <div class="fb-icon text-center w-25">
                             <img src="img/i_thanhtoan.png" width="75px"></img>
                         </div>
                         <div class="fb-text w-75">
@@ -125,7 +125,7 @@ require_once './php/DataProvider.php';
                 </div>
                 <div class="col-md-4 facility-box">
                     <div class="facility-inner">
-                        <div class="fb-icon w-25">
+                        <div class="fb-icon text-center w-25">
                             <img src="img/i_uudai.png" width="75px"></img>
                         </div>
                         <div class="fb-text w-75">
@@ -356,97 +356,6 @@ require_once './php/DataProvider.php';
     </section>
     <!-- End Products Section -->
 
-    <!-- Start Testimonial Section -->
-    <section class="testimonial-section section-shadow bg-white">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="testimonial_slider nav-style-2 owl-carousel owl-theme" data-margin="30" data-dots="true" data-autoplay="false" data-nav="false" data-loop="true">
-                        <div class="item">
-                            <div class="fancy-box">
-                                <div class="fancy-img">
-                                    <img src="image/testimonial-img-1.jpg" alt="testimonial-img">
-                                </div>
-                                <div class="fancy-wrap">
-                                    <h5 class="testimonial-title"><a href="#">Williamson</a>
-                                        <small class="post">Web Developer</small>
-                                    </h5>
-                                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="fancy-box">
-                                <div class="fancy-img">
-                                    <img src="image/testimonial-img-2.jpg" alt="testimonial-img">
-                                </div>
-                                <div class="fancy-wrap">
-                                    <h5 class="testimonial-title"><a href="#">Williamson</a>
-                                        <small class="post">Web Developer</small>
-                                    </h5>
-                                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="fancy-box">
-                                <div class="fancy-img">
-                                    <img src="image/testimonial-img-3.jpg" alt="testimonial-img">
-                                </div>
-                                <div class="fancy-wrap">
-                                    <h5 class="testimonial-title"><a href="#">Williamson</a>
-                                        <small class="post">Web Developer</small>
-                                    </h5>
-                                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="fancy-box">
-                                <div class="fancy-img">
-                                    <img src="image/testimonial-img-1.jpg" alt="testimonial-img">
-                                </div>
-                                <div class="fancy-wrap">
-                                    <h5 class="testimonial-title"><a href="#">Williamson</a>
-                                        <small class="post">Web Developer</small>
-                                    </h5>
-                                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="fancy-box">
-                                <div class="fancy-img">
-                                    <img src="image/testimonial-img-2.jpg" alt="testimonial-img">
-                                </div>
-                                <div class="fancy-wrap">
-                                    <h5 class="testimonial-title"><a href="#">Williamson</a>
-                                        <small class="post">Web Developer</small>
-                                    </h5>
-                                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="fancy-box">
-                                <div class="fancy-img">
-                                    <img src="image/testimonial-img-3.jpg" alt="testimonial-img">
-                                </div>
-                                <div class="fancy-wrap">
-                                    <h5 class="testimonial-title"><a href="#">Williamson</a>
-                                        <small class="post">Web Developer</small>
-                                    </h5>
-                                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam amet animi blanditiis consequatur debitis dicta distinctio.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Testimonial Section -->
-
     <!-- Start Instagram Section -->
     <section class="instagram-section p-0 mx-0 mb-0">
         <div class="container-fluid">
@@ -511,7 +420,7 @@ require_once './php/DataProvider.php';
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="text-white mb-3 mb-md-0">
-                        <h5 class="mb-2">Cập Nhật Tin Tức Cùng X-Smart</h5>
+                        <h5 class="mb-2">Cập Nhật Tin Tức Cùng Board Game VN</h5>
                         <p>Bạn hãy đăng ký email để cập nhật tin tức khuyến mãi từ chúng tôi</p>
                     </div>
                 </div>
