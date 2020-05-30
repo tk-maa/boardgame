@@ -1,9 +1,14 @@
 <?php
-if (isset($_REQUEST['id']) && $_REQUEST['id'] == "") {
-  header("Location: product.php");
-  exit;
-}
-require_once '../php/DataProvider.php';
+  session_start();
+  if(!isset($_SESSION['isLogin'])){
+    header("Location: login.php");
+    exit;
+  }
+  if (isset($_REQUEST['id']) && $_REQUEST['id'] == "") {
+    header("Location: product.php");
+    exit;
+  }
+  require_once '../php/DataProvider.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -227,7 +232,7 @@ require_once '../php/DataProvider.php';
   <script src="../js/demo/datatables-demo.js"></script>
 
   <script src="../js/custom/JS-admin-product-form.js"></script>
-
+  <script src="../js/custom/JS-admin-login.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['isLogin'])){
+      header("Location: login.php");
+		  exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,18 +68,18 @@
                   <tbody id="tbody-sanpham">
                     <?php
                     require_once '../php/DataProvider.php';
-                    $sql = "select * from loaisanpham";
+                    $sql = "SELECT * FROM type";
                     $result = DataProvider::executeQuery($sql);
                     while ($row = mysqli_fetch_array($result)) {
                       echo "<tr>" .
-                          "<td>" . $row['MaLSP'] . "</td>" .
-                          "<td>" . $row['TenLSP'] . "</td>" .
+                          "<td>" . $row['TypeID'] . "</td>" .
+                          "<td>" . $row['TypeName'] . "</td>" .
                           "<td>" .
                             "<div>" .
-                              "<a href=\"typeform.php?code=" . $row['MaLSP'] . "\">Sửa thông tin</a>" .
+                              "<a href=\"typeform.php?code=" . $row['TypeID'] . "\">Sửa thông tin</a>" .
                             "</div>" .
                             "<div>" .
-                              "<a href='#' onclick=\"deleteType('".$row['MaLSP']."')\">Xóa loại sản phẩm</a>" .
+                              "<a href='#' onclick=\"deleteType('".$row['TypeID']."')\">Xóa loại sản phẩm</a>" .
                             "</div>" .
                           "</td>" .
                       "</tr>";
@@ -142,6 +149,8 @@
   <script src="../js/demo/datatables-demo.js"></script>
   
   <script src="../js/custom/JS-admin-type-form.js"></script>
+  
+  <script src="../js/custom/JS-admin-login.js"></script>
 
 </body>
 

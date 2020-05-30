@@ -1,9 +1,14 @@
 <?php
-if (isset($_REQUEST['id']) && $_REQUEST['id'] == "") {
-  header("Location: banner.php");
-  exit;
-}
-require_once '../php/DataProvider.php';
+session_start();
+  if (isset($_REQUEST['id']) && $_REQUEST['id'] == "") {
+    header("Location: banner.php");
+    exit;
+  }
+  if(!isset($_SESSION['isLogin'])){
+    header("Location: login.php");
+    exit;
+  }
+  require_once '../php/DataProvider.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,12 +55,12 @@ require_once '../php/DataProvider.php';
           <?php 
           if (isset($_REQUEST['id'])) {
             $id = $_REQUEST['id'];
-            $sql = "select * from banner";
+            $sql = "SELECT * FROM banner";
             $result = DataProvider::executeQuery($sql);
             $row = mysqli_fetch_array($result);
-            $hinh = $row['Hinh'];
-            $lienket = $row['Link'];
-            $vitri = $row['Vitri'];
+            $image = $row['Image'];
+            $link = $row['Link'];
+            $position = $row['Position'];
           }
           function makePositionOptionSelected($vitri, $viTriCuaBanner)
           {
@@ -74,12 +79,12 @@ require_once '../php/DataProvider.php';
               <input type="hidden" id="id" value="<?php echo (isset($_REQUEST['id']) ? $id : "") ?>"></input>
               <div class="form-row">
                 <div class="form-group col-md-8">
-                  <label for="lienket">Liên kết:</label>
-                  <input type="text" id="lienket" class="form-control" placeholder="Liên kết" value="<?php echo (isset($_REQUEST['id']) ? $lienket : "") ?>"></input>
+                  <label for="link">Liên kết:</label>
+                  <input type="text" id="link" class="form-control" placeholder="Liên kết" value="<?php echo (isset($_REQUEST['id']) ? $link : "") ?>"></input>
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="vitri">Vị trí:</label>
-                  <select id="vitri" class="form-control">
+                  <label for="position">Vị trí:</label>
+                  <select id="position" class="form-control">
                     <?php
                       makePositionOptionSelected("Slider-Section",$vitri);
                       makePositionOptionSelected("Slider-Deals-Section",$vitri);
@@ -91,8 +96,8 @@ require_once '../php/DataProvider.php';
                   </select>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="hinh">Ảnh:</label>
-                  <input type="file" id="hinh" class="form-control"></input>
+                  <label for="image">Ảnh:</label>
+                  <input type="file" id="image" class="form-control"></input>
                 </div>
                 <div class="form-group col-md-12">
                   <input type="button" value="Xác nhận" style="float:right" class="btn bg-success text-white" onclick="<?php echo (isset($_REQUEST['id']) ? "editBanner()" : "addBanner()") ?>"></input>
@@ -164,7 +169,7 @@ require_once '../php/DataProvider.php';
   <script src="../js/demo/datatables-demo.js"></script>
 
   <script src="../js/custom/JS-admin-banner-form.js"></script>
-
+  <script src="../js/custom/JS-admin-login.js"></script>
 </body>
 
 </html>

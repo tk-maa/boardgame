@@ -1,24 +1,24 @@
 function addType(){
-	var tenlsp = document.getElementById("type-form").tenlsp;
-	var malsp = document.getElementById("type-form").malsp;
+	var typeName = document.getElementById("type-form").typeName;
+	var typeID = document.getElementById("type-form").typeID;
 	
 	var form_data = new FormData();
 	
-	if (malsp.value==""){
+	if (typeID.value==""){
 		alert("Mã loại sản phẩm không được để trống!");
-		malsp.focus();
+		typeID.focus();
 		return;
 	}
 
-	if (tenlsp.value==""){
+	if (typeName.value==""){
 		alert("Tên loại sản phẩm không được để trống!");
-		tenlsp.focus();
+		typeName.focus();
 		return;
 	}
 	
 	form_data.append('action','addType');
-	form_data.append('malsp',malsp.value);
-	form_data.append('tenlsp',tenlsp.value);
+	form_data.append('typeID',typeID.value);
+	form_data.append('typeName',typeName.value);
 	
 	jQuery.ajax({
 		type: "POST",
@@ -42,28 +42,28 @@ function addType(){
 }
 
 function editType(){
-	var tenlsp = document.getElementById("type-form").tenlsp;
-	var malsp = document.getElementById("type-form").malsp;
-	var malspCu = document.getElementById("type-form").code;
+	var typeName = document.getElementById("type-form").typeName;
+	var newTypeID = document.getElementById("type-form").typeID;
+	var oldTypeID = document.getElementById("type-form").code;
 	
 	var form_data = new FormData();
 	
-	if (malsp.value==""){
+	if (typeID.value==""){
 		alert("Mã loại sản phẩm không được để trống!");
-		malsp.focus();
+		typeID.focus();
 		return;
 	}
 
-	if (tenlsp.value==""){
+	if (typeName.value==""){
 		alert("Tên loại sản phẩm không được để trống!");
-		tenlsp.focus();
+		typeName.focus();
 		return;
 	}
 	
 	form_data.append('action','editType');
-	form_data.append('malsp',malsp.value);
-	form_data.append('tenlsp',tenlsp.value);
-	form_data.append('malspCu',malspCu.value);
+	form_data.append('newTypeID',newTypeID.value);
+	form_data.append('typeName',typeName.value);
+	form_data.append('oldTypeID',oldTypeID.value);
 	
 	jQuery.ajax({
 		type: "POST",
@@ -85,11 +85,11 @@ function editType(){
 	});
 	
 }
-function deleteType(malsp){
+function deleteType(typeID){
 	var r = confirm("Bạn có chắc chắn muốn xóa loại sản phẩm này không?");
 	if (r == true) {
 		var form_data = new FormData();
-		form_data.append('malsp',malsp);
+		form_data.append('typeID',typeID);
 		form_data.append('action','deleteType');
 		
 		jQuery.ajax({

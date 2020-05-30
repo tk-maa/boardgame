@@ -9,36 +9,36 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     }
 }
 function addType(){
-	$malsp = addslashes($_POST['malsp']);
-	$tenlsp = addslashes($_POST['tenlsp']);
+	$typeID = addslashes($_POST['typeID']);
+	$typeName = addslashes($_POST['typeName']);
 	
-	$sql = "INSERT INTO loaisanpham(MaLSP, TenLSP) VALUES(" .
-			"'" .$malsp. "'," . 
-			"'" .$tenlsp. "')"; 
+	$sql = "INSERT INTO type(TypeID, TypeName) VALUES(" .
+			"'" .$typeID. "'," . 
+			"'" .$typeName. "')"; 
 
 	DataProvider::executeQuery($sql);
 	die("0");
 }
 function editType(){
-	$malsp = addslashes($_POST['malsp']);
-	$tenlsp = addslashes($_POST['tenlsp']);
-	$malspCu = addslashes($_POST['malspCu']);
+	$newTypeID = addslashes($_POST['newTypeID']);
+	$typeName = addslashes($_POST['typeName']);
+	$oldTypeID = addslashes($_POST['oldTypeID']);
 	
-	$sql = "UPDATE loaisanpham SET" .
-		" TenLSP='". $tenlsp . "'";
+	$sql = "UPDATE type SET" .
+		" TypeName='". $typeName . "'";
 	
-	if( $malsp != $malspCu){
-		$sql .=", MaLSP='".$malsp."'";
+	if( $newTypeID != $oldTypeID){
+		$sql .=", TypeID='".$newTypeID."'";
 	}
 	
-	$sql .=" WHERE MaLSP='" . $malspCu . "';";
+	$sql .=" WHERE TypeID='" . $oldTypeID . "';";
 	DataProvider::executeQuery($sql);
 	die("0");
 }
 function deleteType(){
-	$malsp = addslashes($_POST['malsp']);
+	$typeID = addslashes($_POST['typeID']);
 
-	$sql =" DELETE FROM loaisanpham where MaLSP='" . $malsp . "';";
+	$sql =" DELETE FROM type where TypeID='" . $typeID . "';";
 	DataProvider::executeQuery($sql);
 	die("0");
 }

@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['isLogin'])){
+      header("Location: login.php");
+		  exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -167,7 +174,7 @@
   <script src="../js/demo/datatables-demo.js"></script>
   
   <script src="../js/custom/JS-admin-product-form.js"></script>
-
+  <script src="../js/custom/JS-admin-login.js"></script>
 </body>
 
 </html>

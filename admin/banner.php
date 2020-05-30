@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['isLogin'])){
+      header("Location: login.php");
+		  exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,9 +66,9 @@
                   $result = DataProvider::executeQuery($sql);
                   while ($row = mysqli_fetch_array($result)) {
                     echo "<tr>" .
-                      "<td> <img src='../img/banner/" . $row['Hinh'] . "' style=' width:80%; height: 200px;'></td>" .
+                      "<td> <img src='../img/banner/" . $row['Image'] . "' style=' width:80%; height: 200px;'></td>" .
                       "<td>" . $row['Link'] . "</td>" .
-                      "<td>" . $row['Vitri'] . "</td>" .
+                      "<td>" . $row['Position'] . "</td>" .
                       "<td>".
                         "<a href='bannerform.php?id=" . $row['ID'] . "'>Sửa thông tin</a>".
                       "</td>".
@@ -127,7 +134,7 @@
 
   <!-- Page level custom scripts -->
   <script src="../js/demo/datatables-demo.js"></script>
-
+  <script src="../js/custom/JS-admin-login.js"></script>
 </body>
 
 </html>

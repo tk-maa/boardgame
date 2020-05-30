@@ -1,9 +1,14 @@
 <?php
-if (isset($_REQUEST['code']) && $_REQUEST['code'] == "") {
-  header("Location: type.php");
-  exit;
-}
-require_once '../php/DataProvider.php';
+  session_start();
+  if(!isset($_SESSION['isLogin'])){
+    header("Location: login.php");
+    exit;
+  }
+  if (isset($_REQUEST['code']) && $_REQUEST['code'] == "") {
+    header("Location: type.php");
+    exit;
+  }
+  require_once '../php/DataProvider.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,10 +54,10 @@ require_once '../php/DataProvider.php';
           <?php 
           if (isset($_REQUEST['code'])) {
             $code = $_REQUEST['code'];
-            $sql = "select * from loaisanpham where MaLSP=\"" . $code . "\"";
+            $sql = "SELECT * FROM type WHERE TypeID=\"" . $code . "\"";
             $result = DataProvider::executeQuery($sql);
             $row = mysqli_fetch_array($result);
-            $tenlsp = $row['TenLSP'];
+            $typeName = $row['TypeName'];
           }
           ?>
           <div class="card shadow mb-4">
@@ -63,12 +68,12 @@ require_once '../php/DataProvider.php';
               <div class="form-row">
                 <input type="hidden" id="code"  value="<?php echo (isset($_REQUEST['code']) ? $code : "") ?>"></input>
                 <div class="form-group col-md-6">
-                  <label for="malsp">Mã loại sản phẩm:</label>
-                  <input type="text" id="malsp" class="form-control" placeholder="Mã loại sản phẩm" value="<?php echo (isset($_REQUEST['code']) ? $code : "") ?>"></input>
+                  <label for="typeID">Mã loại sản phẩm:</label>
+                  <input type="text" id="typeID" class="form-control" placeholder="Mã loại sản phẩm" value="<?php echo (isset($_REQUEST['code']) ? $code : "") ?>"></input>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="tenlsp">Tên loại sản phẩm:</label>
-                  <input type="text" id="tenlsp" class="form-control" placeholder="Tên loại sản phẩm" value="<?php echo (isset($_REQUEST['code']) ? $tenlsp : "") ?>"></input>
+                  <label for="typeName">Tên loại sản phẩm:</label>
+                  <input type="text" id="typeName" class="form-control" placeholder="Tên loại sản phẩm" value="<?php echo (isset($_REQUEST['code']) ? $typeName : "") ?>"></input>
                 </div>
                 <div class="form-group col-md-12">
                   <input type="button" value="Xác nhận" style="float:right" class="btn bg-success text-white" onclick="<?php echo (isset($_REQUEST['code']) ? "editType()" : "addType()") ?>"></input>
@@ -141,6 +146,9 @@ require_once '../php/DataProvider.php';
   <script src="../js/demo/datatables-demo.js"></script>
 
   <script src="../js/custom/JS-admin-type-form.js"></script>
+  
+  <script src="../js/custom/JS-admin-login.js"></script>
+  
 
 </body>
 

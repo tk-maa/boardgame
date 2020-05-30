@@ -35,9 +35,7 @@
   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Cài Đặt Banner</h6>
-      <a class="collapse-item" href="banner.php">Banner Trang Chủ</a>
-      <a class="collapse-item" href="banner.php">Banner Đối Tác</a>
-      <a class="collapse-item" href="banner.php">Banner Hãng</a>
+      <a class="collapse-item" href="banner.php">Banner</a>
     </div>
   </div>
 </li>
@@ -77,7 +75,6 @@
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Loại Sản Phẩm</h6>
       <a class="collapse-item" href="type.php">Loại</a>
-      <a class="collapse-item" href="brand.php">Hãng</a>
       <a class="collapse-item" href="product.php">Sản Phẩm</a>
       <div class="collapse-divider"></div>
       <h6 class="collapse-header">Ladding Page</h6>

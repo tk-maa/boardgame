@@ -1,4 +1,9 @@
 <?php
+  session_start();
+  if(!isset($_SESSION['isLogin'])){
+    header("Location: login.php");
+    exit;
+  }
 	if ( !isset($_REQUEST['id']) || $_REQUEST['id']==""){
 		header("Location: product.php");
 		exit;
@@ -151,6 +156,8 @@
   <script src="../js/demo/datatables-demo.js"></script>
   
   <script src="../js/custom/JS-admin-product-picture.js"></script>
+  
+  <script src="../js/custom/JS-admin-login.js"></script>
 
 </body>
 
