@@ -93,6 +93,7 @@ if(isset($_REQUEST['id'])){
     $type = $row['Type'];
     $image = $row['Pic'];
     $price = $row['Price'];
+    $quantity = $row['Quantity'];
     $status = $row['Status'];
 	//$soluong = $row['SoLuong'];
 	array_push($allPictures,$row['Pic']);
@@ -147,7 +148,7 @@ if(isset($_REQUEST['id'])){
                         </div>  
                     </div>
                     <hr>
-                    <p class="stock">Trạng thái: <span><?php echo ($status==0 ? "Còn hàng" : "Hết hàng")?></span></p>
+                    <p class="stock">Trạng thái: <span><?php echo ($quantity!=0 ? "Còn hàng" : "Hết hàng")?></span></p>
                     <div class="quantity-box">
                         <p>Số lượng:</p>
                         <div class="input-group">
@@ -156,7 +157,7 @@ if(isset($_REQUEST['id'])){
                             <input type="button" value="+" class="plus">
                         </div>
                         <div class="quickview-cart-btn">
-                            <a href="#" class="btn btn-primary" onclick="addToCart(<?php echo $id?>)"><img src="img/cart-icon-1.png" > Thêm vào giỏ hàng</a>
+                            <button class="btn btn-primary" onclick="addToCart(<?php echo $id?>)" <?php echo ($quantity!=0 ? "" : "disabled")?>><img src="img/cart-icon-1.png" > Thêm vào giỏ hàng</button>
                         </div>
                     </div>
                     <div class="box-social-like d-sm-flex justify-content-between">

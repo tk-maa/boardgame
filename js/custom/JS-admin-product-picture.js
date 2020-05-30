@@ -1,34 +1,34 @@
 function uploadImage(){
-	var hinh = document.getElementById("hinh");
-	var masp = document.getElementById("masp");
+	var images = document.getElementById("images");
+	var productID = document.getElementById("productID");
 	var form_data = new FormData();
 	
 	 // Read selected files
-	var totalfiles = hinh.files.length;
+	var totalfiles = images.files.length;
 	if(totalfiles == 0){
 		alert("Hãy chọn một ảnh!");
-		hinh.focus();
+		images.focus();
 		return;
 	} else {
 		for (var i = 0; i < totalfiles; i++) {
-			var fileName = hinh.files[i].name;
+			var fileName = images.files[i].name;
 			var extension = fileName.split('.').pop().toLowerCase();
 			if ($.inArray(extension, ['png','jpeg', 'jpg']) == -1) {
 			  alert("File ảnh không hợp lệ! Ảnh phải là file PNG, JPEG, JPG");
-			  hinh.focus();
+			  images.focus();
 			  return;
 			}
-			var fileSize = hinh.files[i].size / 1024 / 1024; // in MB
+			var fileSize = images.files[i].size / 1024 / 1024; // in MB
 			if (fileSize > 2) {
 				alert('Ảnh '+fileName+' vượt quá kích thước cho phép (2MB)');
-				hinh.focus();
+				images.focus();
 				return;
 			}
-			form_data.append("files[]", hinh.files[i]);
+			form_data.append("files[]", images.files[i]);
 		}
 	}
 	form_data.append('action','uploadImage');
-	form_data.append('masp',masp.value);
+	form_data.append('productID',productID.value);
 	
 	$.ajax({
 		url: '../php/PHP-admin-product.php', 
@@ -42,7 +42,7 @@ function uploadImage(){
 			var str ="";
 			for(var i = 0; i < data.length; i++) {
 				str +="<div class='picture-container'>"+
-					"<img src='../img/sanpham/"+data[i].Hinh+"' style='width:250px; border: 1px solid rgba(0, 0, 0, .1)'>"+
+					"<img src='../img/sanpham/"+data[i].Image+"' style='width:250px; border: 1px solid rgba(0, 0, 0, .1)'>"+
 					"<div class='bg-opacity'>"+
 						"<input type='button' value='Xóa ảnh' class='btn bg-danger text-white' onclick='deleteImage("+data[i].MaHinh+")'></input>"+
 					"</div>"+
@@ -54,13 +54,13 @@ function uploadImage(){
 		
 	});	
 }
-function deleteImage(maHinh){
+function deleteImage(id){
 	var r = confirm("Bạn có chắc muốn xóa hình ảnh này không?");
 	if( r == true) {
 		var form_data = new FormData();
-		var masp = document.getElementById("masp");
-		form_data.append('masp',masp.value);
-		form_data.append('maHinh',maHinh);
+		var productID = document.getElementById("productID");
+		form_data.append('productID',productID.value);
+		form_data.append('id',id);
 		form_data.append('action','deleteImage');
 		
 		jQuery.ajax({
@@ -76,7 +76,7 @@ function deleteImage(maHinh){
 				var str ="";
 				for(var i = 0; i < data.length; i++) {
 					str +="<div class='picture-container'>"+
-						"<img src='../img/sanpham/"+data[i].Hinh+"' style='width:250px; border: 1px solid rgba(0, 0, 0, .1)'>"+
+						"<img src='../img/sanpham/"+data[i].Image+"' style='width:250px; border: 1px solid rgba(0, 0, 0, .1)'>"+
 						"<div class='bg-opacity'>"+
 							"<input type='button' value='Xóa ảnh' class='btn bg-danger text-white' onclick='deleteImage("+data[i].MaHinh+")'></input>"+
 						"</div>"+

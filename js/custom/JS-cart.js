@@ -504,7 +504,6 @@ function quickView(ID){
 		contentType: false,
 		processData: false,
 		success: function (response) {
-			//alert(response);
 			var data = JSON.parse(response);
 			
 			var string ="<div class='row'>"+
@@ -546,14 +545,14 @@ function quickView(ID){
 							</div>  
 						</div>`+
 						"<hr>"+
-						`<p class="stock">Trạng thái: <span>${(data.Status!=1 ? 'Còn hàng' : 'Hết hàng')}</span></p>`+
+						`<p class="stock">Trạng thái: <span>${(data.Quantity!=0 ? 'Còn hàng' : 'Hết hàng')}</span></p>`+
 						`<div class="quantity-box">`+
 							"<p>Số lượng:</p>"+
 							"<div class='input-group'>"+
 								"<input id='quantity' class='quantity-number qty' type='text' value='1' min='1'>"+
 							"</div>"+
 							"<div class='quickview-cart-btn'>"+
-								`<a class='btn btn-primary text-white' onclick='addToCart(${data.ID})'><img src="img/cart-icon-1.png" alt="cart-icon-1"> Thêm vào giỏ hàng</a>`+
+								`<button class='btn btn-primary text-white' onclick='addToCart(${data.ID})' ${data.Quantity!=0 ? '' : 'disabled'}><img src="img/cart-icon-1.png" alt="cart-icon-1"> Thêm vào giỏ hàng</button>`+
 							"</div>"+
 						"</div>"+
 					"</div>"+

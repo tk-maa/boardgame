@@ -15,7 +15,7 @@ require_once '../php/DataProvider.php';
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Board Game VN-Dashboard</title>
+  <title>Boardgame.vn - Dashboard</title>
 
   <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png">
   <!-- Custom fonts for this template-->
@@ -59,7 +59,7 @@ require_once '../php/DataProvider.php';
             $numberOfPlayersSuggest = $row['NoPsg'];
             $time = $row['Time'];
             $price = $row['Price'];
-            //$soluong = $row['SoLuong'];
+            $quantity = $row['Quantity'];
             $pic = $row['Pic'];
             $status = $row['Status'];
             $age = $row['Age'];
@@ -88,11 +88,11 @@ require_once '../php/DataProvider.php';
             <form class="card-body" id="product-form">
               <input type="hidden" id="id" value="<?php echo (isset($_REQUEST['id']) ? $id : "") ?>"></input>
               <div class="form-row">
-                <div class="form-group col-md-8">
+                <div class="form-group col-md-6">
                   <label for="name">Tên sản phẩm:</label>
                   <input type="text" id="name" class="form-control" placeholder="Tên sản phẩm" value="<?php echo (isset($_REQUEST['id']) ? $name : "") ?>"></input>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                   <label for="type">Loại:</label>
                   <select id="type" class="form-control">
                     <?php
@@ -107,6 +107,10 @@ require_once '../php/DataProvider.php';
                     };
                     ?>
                   </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="quantity">Số lượng:</label>
+                  <input type="text" id="quantity" class="form-control" placeholder="Số lượng" value="<?php echo (isset($_REQUEST['id']) ? $quantity : "") ?>"></input>
                 </div>
                 <div class="form-group col-md-3">
                   <label for="NoP">Số người chơi:</label>
@@ -172,13 +176,7 @@ require_once '../php/DataProvider.php';
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020  </span>
-          </div>
-        </div>
-      </footer>
+      <?php include './interface/footer.php' ?>
       <!-- End of Footer -->
 
     </div>

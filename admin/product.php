@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>BoardGameVN-Dashboard</title>
+  <title>Boardgame.vn - Dashboard</title>
 
   <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png">
   <!-- Custom fonts for this template-->
@@ -58,6 +58,7 @@
                       <th>Hình</th>
                       <th>Tên</th>
                       <th>Giá Tiền</th>
+                      <th>Số lượng</th>
                       <th>Trạng thái</th>
                       <th style="width:150px">Thao Tác</th>
                     </tr>
@@ -72,11 +73,12 @@
                           "<td>" . $row['ID'] . "</td>" .
                           "<td> <img src=\"../img/sanpham/" . $row['Pic'] . "\" style=\" max-width:100px; max-height: 100px;\"></td>" .
                           "<td>" . $row['Name'] . "</td>" .
-                          "<td>" .  number_format($row['Price'],0,".",".") . "₫</td>";
+                          "<td>" .  number_format($row['Price'],0,".",".") . "₫</td>".
+                          "<td>" . $row['Quantity'] . "</td>";
                           if($row['Status'] == 0){
-                            echo "<td>Còn hàng</td>";
+                            echo "<td>Hoạt động</td>";
                           } else {
-                            echo "<td>Hết hàng</td>";
+                            echo "<td>Không hoạt động</td>";
                           }
                           echo"<td>" .
                             "<div>" .
@@ -114,13 +116,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
-          </div>
-        </div>
-      </footer>
+      <?php include './interface/footer.php' ?>
       <!-- End of Footer -->
 
     </div>

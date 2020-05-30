@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>X-Smart-Dashboard</title>
+  <title>Boardgame.vn - Dashboard</title>
 
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -53,52 +53,38 @@
 
           <!-- DataTales Example -->
 			<?php	
-				
 				$id = $_REQUEST['id'];
-				$sql = "select * from hinh where MaSP=\"" . $id."\"";
-				$result = DataProvider::executeQuery($sql);
-				class Picture { 
-					var $name; 
-					var $id;
-					
-					function __construct( $id, $name)
-					{ 
-						$this->id = $id; 
-						$this->name = $name;
-					} 
-				}
-				$pictures = array();
-				while ($row = mysqli_fetch_array($result))
-				{	
-					
-					$pictures[] = new Picture($row["MaHinh"],$row["Hinh"]);
-				}
 			?>
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
 				  <h4 class="m-0 font-weight-bold text-primary d-inline"><?php echo "Quản lý hình ảnh sản phẩm ".$id ?></h4>
 				</div>
 				<form class="card-body" id="product-form">
-					<input type="hidden" id="masp" value="<?php echo$_REQUEST['id']?>" ></input>
+					<input type="hidden" id="productID" value="<?php echo$_REQUEST['id']?>" ></input>
 					<div class="form-row">
 						<div class="form-group col-md-4">
 							<label for="hinh">Thêm hình ảnh mô tả:</label>
 							<div class="custom-file">	
-								<input type="file" id="hinh" name="files[]" class="form-control" multiple></input>
+								<input type="file" id="images" name="files[]" class="form-control" multiple></input>
 								<input type="button" value ="Tải lên" class="btn bg-success text-white mt-2" onclick="uploadImage()"></input>
 							</div>
 						</div>
 						<div class="form-group col-md-12 d-flex align-content-center flex-wrap" id="allPictures">
-							<?php
-								foreach($pictures as $value){
-									echo "<div class='picture-container'>".
-										"<img src='../img/sanpham/".$value->name."' >".
-										"<div class='bg-opacity'>".
-											"<input type='button' value='Xóa ảnh' class='btn bg-danger text-white' onclick='deleteImage(".$value->id.")'></input>".
-										"</div>".
-									"</div>";
-								}
-							?>
+            <?php
+              $sql = "SELECT * FROM images WHERE ProductID=\"" . $id."\"";
+              $result = DataProvider::executeQuery($sql);
+              while ($row = mysqli_fetch_array($result))
+              {
+            ?>
+              <div class='picture-container'></div>
+                <img src='../img/sanpham/<?php echo $row['Image'] ?>' >
+                <div class='bg-opacity'>
+                  <input type='button' value='Xóa ảnh' class='btn bg-danger text-white' onclick='deleteImage("<?php echo $row['ID'] ?>")'></input>
+                </div>
+              </div>
+            <?php  
+              }
+						?>
 						</div>
 						<div class="form-group col-md-12">
 							<a type="button" href="product.php" style="float:right" role="button" class="btn bg-primary text-white">Quay lại</a>
@@ -114,13 +100,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
+      <?php include './interface/footer.php' ?>
       <!-- End of Footer -->
 
     </div>

@@ -160,7 +160,8 @@ function quickView(){
             "NoP" => $row['NoP'],
             "NoPsg" => $row['NoPsg'],
             "Time" => $row['Time'],
-            "Age" => $row['Age']
+            "Age" => $row['Age'],
+            "Quantity" => $row['Quantity']
         );
         array_push($allPictures,$row['Pic']);
     }
