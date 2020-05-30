@@ -71,13 +71,13 @@
 						</div>
 						<div class="form-group col-md-12 d-flex align-content-center flex-wrap" id="allPictures">
             <?php
-              $sql = "SELECT * FROM images WHERE ProductID=\"" . $id."\"";
+              $sql = "SELECT * FROM images WHERE ProductID='" . $id."'";
               $result = DataProvider::executeQuery($sql);
               while ($row = mysqli_fetch_array($result))
               {
             ?>
-              <div class='picture-container'></div>
-                <img src='../img/sanpham/<?php echo $row['Image'] ?>' >
+              <div class='picture-container'>
+                <img src='../img/sanpham/<?php echo $row['Image'] ?>' />
                 <div class='bg-opacity'>
                   <input type='button' value='Xóa ảnh' class='btn bg-danger text-white' onclick='deleteImage("<?php echo $row['ID'] ?>")'></input>
                 </div>
