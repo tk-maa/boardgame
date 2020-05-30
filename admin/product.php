@@ -174,7 +174,7 @@
   <script src="../js/demo/datatables-demo.js"></script>
   
   <script src="../js/custom/JS-admin-product-form.js"></script>
-
+  <script src="../js/custom/JS-admin-login.js"></script>
 </body>
 
 </html>

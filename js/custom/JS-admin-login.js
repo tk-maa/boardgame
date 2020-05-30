@@ -30,13 +30,29 @@ function login() {
 		success:function(res){
 			switch(res){
 				case "0":{
-					alert("Đăng nhập thành công");
 					window.location.href = "index.php";
 				}break;
 				case "1":{
 					alert("Tên đăng nhập hoặc mật khẩu không chính xác");
 				}break;
 			}
+		}
+	});
+}
+function logout() {
+	var form_data = new FormData();
+	form_data.append('action','logout');
+
+	jQuery.ajax({
+		type: "POST",
+		url: '../php/PHP-admin-login.php',
+		dataType: 'text',
+		cache: false,
+		contentType: false,
+		processData: false,
+		data : form_data,
+		success:function(res){
+			
 		}
 	});
 }

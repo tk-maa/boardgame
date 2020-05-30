@@ -156,6 +156,8 @@
   <script src="../js/demo/datatables-demo.js"></script>
   
   <script src="../js/custom/JS-admin-product-picture.js"></script>
+  
+  <script src="../js/custom/JS-admin-login.js"></script>
 
 </body>
 

@@ -1,37 +1,37 @@
 function addBanner(){
-	var lienket = document.getElementById("banner-form").lienket;
-	var vitri = document.getElementById("banner-form").vitri;
-	var hinh = document.getElementById("banner-form").hinh;
+	var link = document.getElementById("banner-form").link;
+	var position = document.getElementById("banner-form").position;
+	var image = document.getElementById("banner-form").image;
 	
 	var form_data = new FormData();
 	
-	if (lienket.value==""){
+	if (link.value==""){
 		alert("Liên kết banner không được để trống!");
-		lienket.focus();
+		link.focus();
 		return;
 	}
 	
-	if ( hinh.files.length == 0 ||  hinh.files.length > 1){
+	if ( image.files.length == 0 ||  image.files.length > 1){
 		alert("Xin chọn 1 ảnh");
-		hinh.focus();
+		image.focus();
 		return;
 	} else {
-		var test_value = hinh.files[0].name;
+		var test_value = image.files[0].name;
 		var extension = test_value.split('.').pop().toLowerCase();
 
 		if ($.inArray(extension, ['png','jpeg', 'jpg']) == -1) {
 		  alert("File ảnh không hợp lệ! Ảnh phải là file PNG, JPEG, JPG");
-		  hinh.focus();
+		  image.focus();
 		  return;
 		}
 	}
 	
-	var file_data = document.getElementById("hinh").files[0];
+	var file_data = document.getElementById("image").files[0];
 	
 	form_data.append('action','addBanner');
 	form_data.append('file', file_data);
-	form_data.append('lienket',lienket.value);
-	form_data.append('vitri',vitri.value);
+	form_data.append('link',link.value);
+	form_data.append('position',position.value);
 	
 	jQuery.ajax({
 		type: "POST",
@@ -55,26 +55,25 @@ function addBanner(){
 }
 
 function editBanner(){
-	var lienket = document.getElementById("banner-form").lienket;
-	var vitri = document.getElementById("banner-form").vitri;
-	var hinh = document.getElementById("banner-form").hinh;
+	var link = document.getElementById("banner-form").link;
+	var position = document.getElementById("banner-form").position;
+	var image = document.getElementById("banner-form").image;
 	var id = document.getElementById("banner-form").id;
 	
 	var form_data = new FormData();
 	
-	if (lienket.value==""){
+	if (link.value==""){
 		alert("Liên kết banner không được để trống!");
-		lienket.focus();
+		link.focus();
 		return;
 	}
-
 	
-	if ( hinh.files.length == 1){
-		var test_value = hinh.files[0].name;
+	if ( image.files.length == 1){
+		var test_value = image.files[0].name;
 		var extension = test_value.split('.').pop().toLowerCase();
 		if ($.inArray(extension, ['png','jpeg', 'jpg']) == -1) {
 		  alert("File ảnh không hợp lệ! Ảnh phải là file PNG, JPEG, JPG");
-		  hinh.focus();
+		  image.focus();
 		  return;
 		}
 		var file_data = document.getElementById("hinh").files[0];
@@ -86,8 +85,8 @@ function editBanner(){
 	
 	form_data.append('action','editBanner');
 	form_data.append('file', file_data);
-	form_data.append('lienket',lienket.value);
-	form_data.append('vitri',vitri.value);
+	form_data.append('link',link.value);
+	form_data.append('position',position.value);
 	form_data.append('id',id.value);
 	
 	jQuery.ajax({

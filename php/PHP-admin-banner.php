@@ -9,30 +9,30 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     }
 }
 function addBanner(){
-	$lienket = addslashes($_POST['lienket']);
-	$vitri = addslashes($_POST['vitri']);
+	$link = addslashes($_POST['link']);
+	$position = addslashes($_POST['position']);
 	
 	$extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 	$filename = md5(time().$_FILES['file']['name']);
 	$filename = $filename .".". $extension;
 	
 	move_uploaded_file($_FILES['file']['tmp_name'], '../img/banner/'.$filename);
-	$sql = "INSERT INTO banner(Hinh, Link, Vitri) VALUES(" .
+	$sql = "INSERT INTO banner(Image, Link, Position) VALUES(" .
 			"'" .$filename. "'," . 
-			"'" .$lienket. "'," . 
-			"'" .$vitri. "')"; 
+			"'" .$link. "'," . 
+			"'" .$position. "')"; 
 	DataProvider::executeQuery($sql);
 	die("0");
 }
 function editBanner(){
-	$lienket = addslashes($_POST['lienket']);
-	$vitri = addslashes($_POST['vitri']);
+	$link = addslashes($_POST['link']);
+	$position = addslashes($_POST['position']);
 	$id = addslashes($_POST['id']);
 	$havePic = $_POST['havePic'];
 	
 	$sql = "UPDATE banner SET" .
-		" Link='". $lienket . "',".
-		" ViTri='" . $vitri . "'";
+		" Link='". $link . "',".
+		" POsition='" . $position . "'";
 	
 	if( $havePic == "true"){
 		$extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
@@ -40,7 +40,7 @@ function editBanner(){
 		$filename = $filename .".". $extension;
 		
 		move_uploaded_file($_FILES['file']['tmp_name'], '../img/banner/'.$filename);
-		$sql .=", Hinh='".$filename."'";
+		$sql .=", Image='".$filename."'";
 	}
 	
 	$sql .=" WHERE ID='" . $id . "';";

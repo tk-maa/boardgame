@@ -5,8 +5,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     $action = $_POST['action'];
     switch($action) {
 		case 'login': login();break;
-		case 'editBanner': editBanner();break;
-		case 'deleteBanner': deleteBanner();break;
+		case 'logout': logout();break;
     }
 }
 function login(){
@@ -26,6 +25,11 @@ function login(){
 		die("0");
 	}
 	
+}
+
+function logout(){
+	unset($_SESSION["isLogin"]);
+	die;
 }
 
 ?>
