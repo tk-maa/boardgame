@@ -1,9 +1,14 @@
 <?php
-if (isset($_REQUEST['id']) && $_REQUEST['id'] == "") {
-  header("Location: banner.php");
-  exit;
-}
-require_once '../php/DataProvider.php';
+session_start();
+  if (isset($_REQUEST['id']) && $_REQUEST['id'] == "") {
+    header("Location: banner.php");
+    exit;
+  }
+  if(!isset($_SESSION['isLogin'])){
+    header("Location: login.php");
+    exit;
+  }
+  require_once '../php/DataProvider.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
