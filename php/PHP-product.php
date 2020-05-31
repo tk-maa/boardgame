@@ -11,23 +11,18 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 }
 
 function paginationGetData(){
-    $sortBrand = addslashes($_POST['sortBrand']);
     $sortBasic = addslashes($_POST['sortBasic']);
     $sortType = addslashes($_POST['sortType']);
     $numOfItems = addslashes($_POST['numOfItems']);
     $currentPage = addslashes($_POST['currentPage']);
 
-    $sql = "SELECT * FROM sanpham WHERE active = 1 AND MALSP = '".$sortType."' ";
-
-    if($sortBrand != '0' ){
-        $sql.="AND Hang = '".$sortBrand."' ";
-    }
+    $sql = "SELECT * FROM product WHERE Status = 0 AND Type = '".$sortType."' ";
 
     switch($sortBasic){
-        case "1": $sql.="ORDER BY TenSP ASC ";break;
-        case "2": $sql.="ORDER BY TenSP DESC ";break;
-        case "3": $sql.="ORDER BY GiaTien ASC ";break;
-        case "4": $sql.="ORDER BY GiaTien DESC ";break;
+        case "1": $sql.="ORDER BY Name ASC ";break;
+        case "2": $sql.="ORDER BY Name DESC ";break;
+        case "3": $sql.="ORDER BY Price ASC ";break;
+        case "4": $sql.="ORDER BY Price DESC ";break;
     }
 
     $sql.= " LIMIT ". (($currentPage-1)*$numOfItems) .",".(($currentPage-1)*$numOfItems+$numOfItems);
@@ -38,24 +33,19 @@ function paginationGetData(){
     while ($row = mysqli_fetch_array($result))
 	{
 		$allProducts[] = array(
-			"MaSP" => $row['MaSP'], 
-			"TenSP" => $row['TenSP'],
-			"GiaTien" => $row['GiaTien'],
-			"Hinh" => $row['Hinh']
+			"ID" => $row['ID'], 
+			"Name" => $row['Name'],
+			"Price" => $row['Price'],
+			"Pic" => $row['Pic']
 		);
 	}
 	echo json_encode($allProducts);
     die;
 }
 function paginationGetPages(){
-    $sortBrand = addslashes($_POST['sortBrand']);
     $sortType = addslashes($_POST['sortType']);
 
-    $sql = "SELECT COUNT(*) FROM sanpham WHERE active = 1 AND MALSP = '".$sortType."' ";
-
-    if($sortBrand != '0' ){
-        $sql.="AND Hang = '".$sortBrand."' ";
-    }
+    $sql = "SELECT COUNT(*) FROM product WHERE Status = 0 AND Type ='".$sortType."'";
 
     $result = DataProvider::executeQuery($sql);
     $r_count = mysqli_fetch_row($result); //number of items

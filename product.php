@@ -1,7 +1,7 @@
 <?php
     session_start();
 	if ( !isset($_REQUEST['code']) || $_REQUEST['code']==""){
-		$_REQUEST['code'] = 'MH';
+		$_REQUEST['code'] = 'BG';
     }
     $numberOfItemsInOnePage = 20;
 ?>
@@ -56,16 +56,16 @@ include './interface/header.php'
 ?>
 <!-- End Header Section -->
 <?php
-    $sql = "SELECT * FROM loaisanpham where MaLSP='".$_REQUEST['code']."'";
+    $sql = "SELECT * FROM product where Type='".$_REQUEST['code']."'";
     $result = DataProvider::executeQuery($sql);
     $row = mysqli_fetch_array($result);
-    $tenLSP = $row['TenLSP'];
-    function makeBrandOptionSelected($hang, $hangCuaSP)
+    $typeName = $row['Type'];
+    function makeBrandOptionSelected($type, $typeOfProduct)
     {
-        if ($hang["MaHang"] == $hangCuaSP) {
-            echo "<option value='" . $hang["MaHang"] . "' selected>" . $hang["TenHang"] . "</option>";
+        if ($type["TypeID"] == $typeOfProduct) {
+            echo "<option value='" . $type["TypeID"] . "' selected>" . $type["TypeName"] . "</option>";
         } else {
-            echo "<option value='" . $hang["MaHang"] . "'>" . $hang["TenHang"] . "</option>";
+            echo "<option value='" . $type["TypeID"] . "'>" . $type["TypeName"] . "</option>";
         }
     }
 ?>
@@ -85,58 +85,41 @@ include './interface/header.php'
                             <option value='4'>Giá(Cao < Thấp)</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-12">
-                        <label for="sortBrand">Lọc theo hãng:</label>
-                        <select id="sortBrand" class="form-control" onchange="paginationGetData(<?php echo $numberOfItemsInOnePage?>,1)">
-                            <option value='0'>Tất cả</option>
-                        <?php
-                            $sql = "SELECT * FROM hang";
-                            $result = DataProvider::executeQuery($sql);
-                            while($row = mysqli_fetch_array($result)){
-                                makeBrandOptionSelected($row, (isset($_REQUEST['brand']) ? $_REQUEST['brand'] : ""));
-                            }
-                        ?>
-                        </select>
-                    </div>
                     <input type="hidden" id="sortType" value="<?php echo $_REQUEST['code']?>"></input>
                 </div>
             </div>
             <div class="col-sm-10">
                 <div class="title mb-4">
-                    <h2><?php echo $tenLSP ?></h2>
+                    <h2><?php 
+                        switch($typeName) {
+                            case "BG": echo "Board Game";break;
+                            case "CO": echo "Các loại cờ";break;
+                            case "RB": echo "Rubik";break;
+                        }
+                        ?>
+                    </h2>
                 </div>
                 <div class="row" id="product-container">
                     <?php
-                    $sql = "SELECT * FROM sanpham WHERE active = 1 AND MaLSP ='".$_REQUEST['code']."'"; 
-                    if(isset($_REQUEST['brand'])){
-                        $sql.=" AND Hang ='".$_REQUEST['brand']."'";
-                    }
-                    $sql.=" LIMIT 0,".$numberOfItemsInOnePage;
+                    $sql = "SELECT * FROM product WHERE Status = 0 AND Type ='".$_REQUEST['code']."' LIMIT 0,".$numberOfItemsInOnePage;
                     $result = DataProvider::executeQuery($sql);
-                    while ($r_sp = mysqli_fetch_assoc($result)) {
+                    while ($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <div class="col-md-3 mb-5">
                         <div class="item">
                             <div class="product-box common-cart-box">
                                 <div class="product-img common-cart-img">
-                                    <img src="./img/sanpham/<?= $r_sp['Hinh'] ?>" alt="product-img" class="img-product" >
+                                    <img src="./img/sanpham/<?= $row['Pic'] ?>" alt="product-img" class="img-product" >
                                     <div class="hover-option">
                                         <ul class="hover-icon">
-                                            <li><a href="#" onclick='addToCart(<?= $r_sp['MaSP'] ?>)' ><i class="fa fa-shopping-cart"></i></a></li>
-                                            <li><a href="#test-popup3" class="quickview-popup-link" onclick='quickView(<?= $r_sp['MaSP'] ?>)'><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="#" onclick='addToCart(<?= $row['ID'] ?>)' ><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href="#test-popup3" class="quickview-popup-link" onclick='quickView(<?= $row['ID'] ?>)'><i class="fa fa-eye"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="product-info common-cart-info" style="text-align: center;">
-                                    <a href="product-detail.php?id=<?= $r_sp['MaSP'] ?>" class="cart-name"><?= $r_sp['TenSP'] ?></a>
-                                    <div class="product-rate">
-                                        <i class="ion-android-star"></i>
-                                        <i class="ion-android-star"></i>
-                                        <i class="ion-android-star"></i>
-                                        <i class="ion-android-star"></i>
-                                        <i class="ion-android-star-half"></i>
-                                    </div>
-                                    <p class="cart-price"><?= number_format($r_sp['GiaTien'], 0, ".", ".") ?>₫</p>
+                                    <a href="product-detail.php?id=<?= $row['ID'] ?>" class="cart-name"><?= $row['Name'] ?></a>
+                                    <p class="cart-price"><?= number_format($row['Price'], 0, ".", ".") ?>₫</p>
                                 </div>
                             </div>
                         </div>
@@ -147,12 +130,9 @@ include './interface/header.php'
                 </div>
                 <div id="pagination-section">
                     <?php 
-                        $sql = "SELECT count(*) FROM sanpham WHERE active = 1 AND MaLSP ='".$_REQUEST['code']."'";
-                        if(isset($_REQUEST['brand'])){
-                            $sql.=" AND Hang ='".$_REQUEST['brand']."'";
-                        }
-                        $rs_item = DataProvider::executeQuery($sql);
-                        $r_count = mysqli_fetch_row($rs_item); //number of items
+                        $sql = "SELECT count(*) FROM product WHERE Status = 0 AND Type ='".$_REQUEST['code']."'";
+                        $result = DataProvider::executeQuery($sql);
+                        $r_count = mysqli_fetch_row($result); //number of items
                         $numberOfItems = $r_count[0];
                         $numberOfPages = ceil($numberOfItems / $numberOfItemsInOnePage); //Number of pages = lam tron len
                         if($numberOfPages > 1)
@@ -171,7 +151,7 @@ include './interface/header.php'
                             }
                             ?>
                             <a href="#" onclick='paginationGetData(<?php echo $numberOfItemsInOnePage?>,2)'title="Trang sau">&gt;</a>
-                            <a href="#" onclick='paginationGetData(<?php echo $numberOfItemsInOnePage?>,<?php echo $page ?>)' title="Trang cuối">&gt;&gt;</a>
+                            <a href="#" onclick='paginationGetData(<?php echo $numberOfItemsInOnePage?>,<?php echo $numberOfPages ?>)' title="Trang cuối">&gt;&gt;</a>
                         </li>
                     </ul>
                     <?php
