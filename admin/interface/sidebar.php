@@ -27,36 +27,25 @@
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
+<?php
+foreach($_SESSION["isLogin"] as $k => $v) {
+  if($_SESSION['isLogin'][$k]["Role"] == "Admin"){
+?>
 <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
     <i class="fas fa-fw fa-cog"></i>
-    <span>Hiển Thị</span>
+    <span>Banner</span>
   </a>
   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <h6 class="collapse-header">Cài Đặt Banner</h6>
-      <a class="collapse-item" href="banner.php">Banner</a>
+      <a class="collapse-item" href="banner.php">Banner Trang chủ</a>
     </div>
   </div>
 </li>
-
-<!-- Nav Item - Utilities Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-    <i class="fas fa-fw fa-wrench"></i>
-    <span>Tiện Ích</span>
-  </a>
-  <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-      <h6 class="collapse-header">Cài Đặt Tiện Ích:</h6>
-      <a class="collapse-item" href="utilities-border.html">Quản Lý Thông Tin</a>
-      <a class="collapse-item" href="utilities-animation.html">Quản Lý Các Chính Sách</a>
-      <a class="collapse-item" href="utilities-color.html">Quản Lý Các Liên Kết</a>
-      <a class="collapse-item" href="utilities-other.html">Hổ Trợ Trực Tuyến</a>
-    </div>
-  </div>
-</li>
-
+<?php 
+  }
+}
+?>
 <!-- Divider -->
 <hr class="sidebar-divider">
 
@@ -69,35 +58,44 @@
 <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
     <i class="fas fa-fw fa-folder"></i>
-    <span>Quản Lý Sản Phẩm</span>
+    <span>Sản phẩm</span>
   </a>
   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <h6 class="collapse-header">Loại Sản Phẩm</h6>
-      <a class="collapse-item" href="type.php">Loại</a>
-      <a class="collapse-item" href="product.php">Sản Phẩm</a>
-      <div class="collapse-divider"></div>
-      <h6 class="collapse-header">Ladding Page</h6>
-      <a class="collapse-item" href="404.html">Thêm Page</a>
-      <a class="collapse-item" href="blank.html">Xoá Page</a>
+      <a class="collapse-item" href="type.php">Loại sản phẩm</a>
+      <a class="collapse-item" href="product.php">Sản phẩm</a>
     </div>
   </div>
 </li>
-
+<?php
+foreach($_SESSION["isLogin"] as $k => $v) {
+  if($_SESSION['isLogin'][$k]["Role"] == "Admin"){
+?>
 <!-- Nav Item - Charts -->
 <li class="nav-item">
   <a class="nav-link" href="charts.html">
     <i class="fas fa-fw fa-chart-area"></i>
-    <span>Đơn Hàng</span></a>
+    <span>Đơn hàng</span>
+  </a>
 </li>
 
 <!-- Nav Item - Tables -->
 <li class="nav-item">
   <a class="nav-link" href="tables.html">
     <i class="fas fa-fw fa-table"></i>
-    <span>Thông Tin Khách Hàng</span></a>
+    <span>Tài khoản</span>
+  </a>
+  <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+      <a class="collapse-item" href="type.php">Ban quản trị</a>
+      <a class="collapse-item" href="product.php">Người dùng</a>
+    </div>
+  </div>
 </li>
-
+<?php
+  }
+}
+?>
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 

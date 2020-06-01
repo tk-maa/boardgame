@@ -5,13 +5,11 @@ function formatPricetoPrint(a){
 }
 
 function paginationGetData(numOfItems,currentPage){
-	var sortBrand = document.getElementById('sortBrand').value;
 	var sortBasic = document.getElementById('sortBasic').value;
 	var sortType = document.getElementById('sortType').value;
 
 	let form_data = new FormData();
 	form_data.append('action','paginationGetData');
-    form_data.append('sortBrand',sortBrand);
 	form_data.append('sortBasic',sortBasic);
 	form_data.append('sortType',sortType);
 	form_data.append('numOfItems',parseInt(numOfItems));
@@ -34,24 +32,17 @@ function paginationGetData(numOfItems,currentPage){
 					`<div class="item">`+
 						`<div class="product-box common-cart-box">`+
 							`<div class="product-img common-cart-img">`+
-								`<img src="./img/sanpham/${getData[i].Hinh}" alt="product-img" class="img-product" >`+
+								`<img src="./img/sanpham/${getData[i].Pic}" alt="product-img" class="img-product" >`+
 								`<div class="hover-option">`+
 									`<ul class="hover-icon">`+
-										`<li><a href="#" onclick='addToCart(${parseInt(getData[i].MaSP)})'><i class="fa fa-shopping-cart"></i></a></li>`+
-										`<li><a href="#test-popup3" class="quickview-popup-link" onclick='quickView(${parseInt(getData[i].MaSP)})'><i class="fa fa-eye"></i></a></li>`+
+										`<li><a href="#" onclick='addToCart(${parseInt(getData[i].ID)})'><i class="fa fa-shopping-cart"></i></a></li>`+
+										`<li><a href="#test-popup3" class="quickview-popup-link" onclick='quickView(${parseInt(getData[i].ID)})'><i class="fa fa-eye"></i></a></li>`+
 									`</ul>`+
 								`</div>`+
 							`</div>`+
 							`<div class="product-info common-cart-info" style="text-align: center;">`+
-								`<a href="product-detail.php?id=${parseInt(getData[i].MaSP)}" class="cart-name">${getData[i].TenSP}</a>`+
-								`<div class="product-rate">`+
-									`<i class="ion-android-star"></i>`+
-									`<i class="ion-android-star"></i>`+
-									`<i class="ion-android-star"></i>`+
-									`<i class="ion-android-star"></i>`+
-									`<i class="ion-android-star-half"></i>`+
-								`</div>`+
-								`<p class="cart-price">${formatPricetoPrint(parseInt(getData[i].GiaTien))}₫</p>`+
+								`<a href="product-detail.php?id=${parseInt(getData[i].ID)}" class="cart-name">${getData[i].Name}</a>`+
+								`<p class="cart-price">${formatPricetoPrint(parseInt(getData[i].Price))}₫</p>`+
 							`</div>`+
 						`</div>`+
 					`</div>`+
@@ -63,13 +54,11 @@ function paginationGetData(numOfItems,currentPage){
 }
 
 function paginationGetPages(numOfItems,currentPage){
-	var sortBrand = document.getElementById('sortBrand').value;
 	var sortBasic = document.getElementById('sortBasic').value;
 	var sortType = document.getElementById('sortType').value;
 
 	let form_data = new FormData();
 	form_data.append('action','paginationGetPages');
-    form_data.append('sortBrand',sortBrand);
 	form_data.append('sortBasic',sortBasic);
 	form_data.append('sortType',sortType);
 

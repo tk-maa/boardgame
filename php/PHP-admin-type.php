@@ -38,7 +38,7 @@ function editType(){
 function deleteType(){
 	$typeID = addslashes($_POST['typeID']);
 
-	$sql =" DELETE FROM type where TypeID='" . $typeID . "';";
+	$sql =" DELETE FROM type WHERE TypeID='" . $typeID . "';";
 	DataProvider::executeQuery($sql);
 	die("0");
 }

@@ -1,11 +1,15 @@
 <?php
 session_start();
-  if (isset($_REQUEST['id']) && $_REQUEST['id'] == "") {
-    header("Location: banner.php");
-    exit;
-  }
   if(!isset($_SESSION['isLogin'])){
     header("Location: login.php");
+    exit;
+  }
+  if($_SESSION['isLogin']['Role'] != "Admin"){
+      header("Location: index.php");
+    exit;
+  }
+  if (isset($_REQUEST['id']) && $_REQUEST['id'] == "") {
+    header("Location: banner.php");
     exit;
   }
   require_once '../php/DataProvider.php';
@@ -21,7 +25,8 @@ session_start();
   <meta name="author" content="">
 
   <title>Boardgame.vn - Dashboard</title>
-
+  <!-- Favicon Icon Css -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png">
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -62,12 +67,12 @@ session_start();
             $link = $row['Link'];
             $position = $row['Position'];
           }
-          function makePositionOptionSelected($vitri, $viTriCuaBanner)
+          function makePositionOptionSelected($position, $positionOfBanner)
           {
-            if ($vitri == $viTriCuaBanner) {
-              echo "<option value='" . $vitri . "' selected>" . $vitri . "</option>";
+            if ($position == $positionOfBanner) {
+              echo "<option value='" . $position . "' selected>" . $position . "</option>";
             } else {
-              echo "<option value='" . $vitri . "'>" . $vitri . "</option>";
+              echo "<option value='" . $position . "'>" . $position . "</option>";
             }
           }
           ?>
@@ -86,12 +91,9 @@ session_start();
                   <label for="position">Vị trí:</label>
                   <select id="position" class="form-control">
                     <?php
-                      makePositionOptionSelected("Slider-Section",$vitri);
-                      makePositionOptionSelected("Slider-Deals-Section",$vitri);
-                      makePositionOptionSelected("Offer-Section",$vitri);
-                      makePositionOptionSelected("Brand-Section-1",$vitri);
-                      makePositionOptionSelected("Brand-Section-2",$vitri);
-                      makePositionOptionSelected("Brand-Section-3",$vitri);
+                      makePositionOptionSelected("Slider-Section",$position);
+                      makePositionOptionSelected("Slider-Deals-Section",$position);
+                      makePositionOptionSelected("Offer-Section",$position);
                     ?>
                   </select>
                 </div>
