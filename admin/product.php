@@ -16,7 +16,7 @@
   <meta name="author" content="">
 
   <title>Boardgame.vn - Dashboard</title>
-
+  <!-- Favicon Icon Css -->
   <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png">
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

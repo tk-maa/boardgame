@@ -9,38 +9,38 @@
                 </div>
                 <div class="col-lg-5 col-sm-9 order-lg-last">
                     <ul class="header-options">
-                        <li><a href="#test-popup1" class="open-popup-link">Login & Signup</a>
+                        <li><a href="#test-popup1" class="open-popup-link">Đăng nhập</a>
                             <div id="test-popup1" class="white-popup lr-popup mfp-hide text-center">
-                                <h4>Login</h4>
+                                <h4>Đăng nhập</h4>
                                 <form class="subscribe-popup-form" method="post" action="#">
-                                    <input name="email" required type="email" placeholder="Enter Your Email">
-                                    <input name="password" required type="password" placeholder="Enter Your Password">
+                                    <input name="email" required type="email" placeholder="Email">
+                                    <input name="password" required type="password" placeholder="Mật khẩu">
                                     <div class="form-check text-left">
-                                        <label>Remember me
+                                        <label>Ghi nhớ tài khoản
                                             <input class="defult-check" type="checkbox" checked="checked">
                                             <span class="checkmark"></span>
                                         </label>
-                                        <a href="#" class="forgot-password float-right">Forgot Password ?</a>
+                                        <a href="#" class="forgot-password float-right">Quên mật khẩu?</a>
                                     </div>
-                                    <button class="btn btn-primary" title="Login" type="button">Login</button>
+                                    <button class="btn btn-primary" title="Login" type="button">Đăng nhập</button>
                                 </form>
-                                <h6>Don't have an account?</h6>
-                                <a href="#test-popup2" class="sign-up open-popup-link">Click here to Sign up</a>
+                                <h6>Bạn không có tài khoản?</h6>
+                                <a href="#test-popup2" class="sign-up open-popup-link">Đăng ký</a>
                             </div>
                             <div id="test-popup2" class="white-popup lr-popup mfp-hide">
-                                <h4>Registration</h4>
+                                <h4>Đăng ký</h4>
                                 <form class="subscribe-popup-form" method="post" action="#">
-                                    <input name="input" required type="input" placeholder="Enter Your name">
-                                    <input name="email" required type="email" placeholder="Enter Your Email">
-                                    <input name="password" required type="password" placeholder="Enter Your Password">
-                                    <input name="password" required type="password" placeholder="Confirmation Password">
+                                    <input name="input" required type="input" placeholder="Họ và tên">
+                                    <input name="email" required type="email" placeholder="Email">
+                                    <input name="password" required type="password" placeholder="Mật khẩu">
+                                    <input name="password" required type="password" placeholder="Xác nhận mật khẩu">
                                     <div class="form-check">
-                                        <label>I accept the terms and conditions
+                                        <label>Tôi chấp nhận điều khoản
                                             <input class="defult-check" type="checkbox" checked="checked">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
-                                    <button class="btn btn-primary" title="Subscribe" type="button">Register</button>
+                                    <button class="btn btn-primary" title="Subscribe" type="button">Đăng ký</button>
                                 </form>
                             </div>
                         </li>
