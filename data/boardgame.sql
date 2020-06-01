@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2020 at 10:00 AM
+-- Generation Time: Jun 01, 2020 at 04:56 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -24,6 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `ID` varchar(100) NOT NULL,
+  `Password` varchar(100) NOT NULL,
+  `Role` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`ID`, `Password`, `Role`) VALUES
+('admin', 'admin', 'Admin'),
+('manager', 'manager', 'Manager');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `banner`
 --
 
@@ -39,7 +59,7 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`ID`, `Image`, `Link`, `Position`) VALUES
-(1, 'offer-banner-7.jpg', '#', 'Offer-Section'),
+(1, 'offer-banner-7.jpg', '#1', 'Slider-Section'),
 (2, 'offer-banner-8.jpg', '#', 'Offer-Section'),
 (3, 'offer-banner-9.jpg', '#', 'Offer-Section'),
 (4, 'slider1.jpg', '#', 'Slider-Section'),
@@ -227,6 +247,12 @@ INSERT INTO `type` (`TypeID`, `TypeName`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `banner`
