@@ -4,9 +4,11 @@
     header("Location: login.php");
     exit;
   }
-  if($_SESSION['isLogin']['Role'] != "Admin"){
+  foreach($_SESSION["isLogin"] as $k => $v) {
+    if( $_SESSION['isLogin'][$k]["Role"] != "Admin" || $_SESSION['isLogin'][$k]["Role"] != "Manager"  ){
       header("Location: index.php");
-    exit;
+      exit;
+    }
   }
   if (isset($_REQUEST['code']) && $_REQUEST['code'] == "") {
     header("Location: type.php");

@@ -4,9 +4,11 @@ session_start();
     header("Location: login.php");
     exit;
   }
-  if($_SESSION['isLogin']['Role'] != "Admin"){
+  foreach($_SESSION["isLogin"] as $k => $v) {
+    if($_SESSION['isLogin'][$k]["Role"] != "Admin"){
       header("Location: index.php");
-    exit;
+      exit;
+    }
   }
   if (isset($_REQUEST['id']) && $_REQUEST['id'] == "") {
     header("Location: banner.php");

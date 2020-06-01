@@ -4,6 +4,12 @@
       header("Location: login.php");
 		  exit;
     }
+    foreach($_SESSION["isLogin"] as $k => $v) {
+      if( $_SESSION['isLogin'][$k]["Role"] != "Admin" || $_SESSION['isLogin'][$k]["Role"] != "Manager"  ){
+        header("Location: index.php");
+        exit;
+      }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
