@@ -12,9 +12,9 @@
                         <li><a href="#test-popup1" class="open-popup-link">Đăng nhập</a>
                             <div id="test-popup1" class="white-popup lr-popup mfp-hide text-center">
                                 <h4>Đăng nhập</h4>
-                                <form class="subscribe-popup-form" method="post" action="#">
-                                    <input name="email" required type="email" placeholder="Email">
-                                    <input name="password" required type="password" placeholder="Mật khẩu">
+                                <form class="subscribe-popup-form" id="login-form">
+                                    <input id="email" name="email" required type="email" placeholder="Địa chỉ Email">
+                                    <input id="password" name="password" required type="password" placeholder="Mật khẩu">
                                     <div class="form-check text-left">
                                         <label>Ghi nhớ tài khoản
                                             <input class="defult-check" type="checkbox" checked="checked">
@@ -40,7 +40,7 @@
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
-                                    <button class="btn btn-primary" title="Subscribe" type="button">Đăng ký</button>
+                                    <button class="btn btn-primary" type="button">Đăng ký</button>
                                 </form>
                             </div>
                         </li>

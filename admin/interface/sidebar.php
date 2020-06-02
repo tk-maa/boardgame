@@ -56,11 +56,11 @@ foreach($_SESSION["isLogin"] as $k => $v) {
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
     <i class="fas fa-fw fa-folder"></i>
     <span>Sản phẩm</span>
   </a>
-  <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+  <div id="collapseProduct" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <a class="collapse-item" href="type.php">Loại sản phẩm</a>
       <a class="collapse-item" href="product.php">Sản phẩm</a>
@@ -81,11 +81,11 @@ foreach($_SESSION["isLogin"] as $k => $v) {
 
 <!-- Nav Item - Tables -->
 <li class="nav-item">
-  <a class="nav-link" href="tables.html">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccount" aria-expanded="true" aria-controls="collapseAccount">
     <i class="fas fa-fw fa-table"></i>
     <span>Tài khoản</span>
   </a>
-  <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+  <div id="collapseAccount" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <a class="collapse-item" href="type.php">Ban quản trị</a>
       <a class="collapse-item" href="product.php">Người dùng</a>

@@ -46,7 +46,7 @@
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" id="password" placeholder="Mật khẩu">
                     </div>
-                    <button type="button" class="btn btn-primary btn-user btn-block" onclick="login()">Đăng nhập</button>
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="btnLogin" onclick="login()">Đăng nhập</button>
                   </form>
                 </div>
               </div>
@@ -59,7 +59,15 @@
     </div>
 
   </div>
-
+  <script>
+    var input = document.getElementById("login-form");
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("btnLogin").click();
+      }
+    });
+  </script>
   <!-- Bootstrap core JavaScript-->
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

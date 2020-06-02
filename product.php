@@ -113,7 +113,7 @@ include './interface/header.php'
                                     <div class="hover-option">
                                         <ul class="hover-icon">
                                             <li><a href="#" onclick='addToCart(<?= $row['ID'] ?>)' ><i class="fa fa-shopping-cart"></i></a></li>
-                                            <li><a href="#test-popup3" class="quickview-popup-link" onclick='quickView(<?= $row['ID'] ?>)'><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="#quickview-popup" class="quickview-popup-link" onclick='quickView(<?= $row['ID'] ?>)'><i class="fa fa-eye"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>

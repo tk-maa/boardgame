@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 01, 2020 at 04:56 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.4
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th6 02, 2020 lúc 12:52 PM
+-- Phiên bản máy phục vụ: 10.4.11-MariaDB
+-- Phiên bản PHP: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `boardgame`
+-- Cơ sở dữ liệu: `boardgame`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Cấu trúc bảng cho bảng `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,7 +34,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `admin`
+-- Đang đổ dữ liệu cho bảng `admin`
 --
 
 INSERT INTO `admin` (`ID`, `Password`, `Role`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `admin` (`ID`, `Password`, `Role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banner`
+-- Cấu trúc bảng cho bảng `banner`
 --
 
 CREATE TABLE `banner` (
@@ -55,7 +55,7 @@ CREATE TABLE `banner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `banner`
+-- Đang đổ dữ liệu cho bảng `banner`
 --
 
 INSERT INTO `banner` (`ID`, `Image`, `Link`, `Position`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `banner` (`ID`, `Image`, `Link`, `Position`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `images`
+-- Cấu trúc bảng cho bảng `images`
 --
 
 CREATE TABLE `images` (
@@ -84,7 +84,7 @@ CREATE TABLE `images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `images`
+-- Đang đổ dữ liệu cho bảng `images`
 --
 
 INSERT INTO `images` (`ID`, `ProductID`, `Image`) VALUES
@@ -100,7 +100,7 @@ INSERT INTO `images` (`ID`, `ProductID`, `Image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu_first`
+-- Cấu trúc bảng cho bảng `menu_first`
 --
 
 CREATE TABLE `menu_first` (
@@ -110,7 +110,7 @@ CREATE TABLE `menu_first` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `menu_first`
+-- Đang đổ dữ liệu cho bảng `menu_first`
 --
 
 INSERT INTO `menu_first` (`ID`, `Ten`, `Link`) VALUES
@@ -121,7 +121,7 @@ INSERT INTO `menu_first` (`ID`, `Ten`, `Link`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu_second`
+-- Cấu trúc bảng cho bảng `menu_second`
 --
 
 CREATE TABLE `menu_second` (
@@ -132,7 +132,7 @@ CREATE TABLE `menu_second` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `menu_second`
+-- Đang đổ dữ liệu cho bảng `menu_second`
 --
 
 INSERT INTO `menu_second` (`ID`, `MenuIDFirst`, `Ten`, `Link`) VALUES
@@ -147,7 +147,7 @@ INSERT INTO `menu_second` (`ID`, `MenuIDFirst`, `Ten`, `Link`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
@@ -166,7 +166,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `product`
+-- Đang đổ dữ liệu cho bảng `product`
 --
 
 INSERT INTO `product` (`ID`, `Name`, `Price`, `NoP`, `NoPsg`, `Time`, `Age`, `Description`, `Type`, `Quantity`, `Pic`, `Status`) VALUES
@@ -215,7 +215,7 @@ INSERT INTO `product` (`ID`, `Name`, `Price`, `NoP`, `NoPsg`, `Time`, `Age`, `De
 (43, 'Bài Tỷ Phú', 150000, '2-5', '3-5', '15', '8+', 'đây là mô tả', 'BG', 15, 'sp42.jpg', 0);
 
 --
--- Triggers `product`
+-- Bẫy `product`
 --
 DELIMITER $$
 CREATE TRIGGER `delete_all_image_before_delete_product` BEFORE DELETE ON `product` FOR EACH ROW BEGIN
@@ -227,7 +227,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `type`
+-- Cấu trúc bảng cho bảng `type`
 --
 
 CREATE TABLE `type` (
@@ -236,7 +236,7 @@ CREATE TABLE `type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `type`
+-- Đang đổ dữ liệu cho bảng `type`
 --
 
 INSERT INTO `type` (`TypeID`, `TypeName`) VALUES
@@ -244,85 +244,104 @@ INSERT INTO `type` (`TypeID`, `TypeName`) VALUES
 ('CO', 'Các loại cờ'),
 ('RB', 'Rubik');
 
+-- --------------------------------------------------------
+
 --
--- Indexes for dumped tables
+-- Cấu trúc bảng cho bảng `user`
+--
+
+CREATE TABLE `user` (
+  `Email` varchar(100) NOT NULL,
+  `Password` varchar(100) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Locked` int(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `admin`
+-- Chỉ mục cho bảng `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `banner`
+-- Chỉ mục cho bảng `banner`
 --
 ALTER TABLE `banner`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `images`
+-- Chỉ mục cho bảng `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`ID`,`ProductID`),
   ADD KEY `MaSP` (`ProductID`);
 
 --
--- Indexes for table `menu_first`
+-- Chỉ mục cho bảng `menu_first`
 --
 ALTER TABLE `menu_first`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `menu_second`
+-- Chỉ mục cho bảng `menu_second`
 --
 ALTER TABLE `menu_second`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `menuIDFirst` (`MenuIDFirst`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`ID`),
   ADD UNIQUE KEY `MaSP` (`ID`);
 
 --
--- Indexes for table `type`
+-- Chỉ mục cho bảng `type`
 --
 ALTER TABLE `type`
   ADD PRIMARY KEY (`TypeID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Chỉ mục cho bảng `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`Email`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `banner`
+-- AUTO_INCREMENT cho bảng `banner`
 --
 ALTER TABLE `banner`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `images`
+-- AUTO_INCREMENT cho bảng `images`
 --
 ALTER TABLE `images`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- AUTO_INCREMENT for table `menu_first`
+-- AUTO_INCREMENT cho bảng `menu_first`
 --
 ALTER TABLE `menu_first`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `menu_second`
+-- AUTO_INCREMENT cho bảng `menu_second`
 --
 ALTER TABLE `menu_second`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;

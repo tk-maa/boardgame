@@ -504,6 +504,8 @@ function quickView(ID){
 		contentType: false,
 		processData: false,
 		success: function (response) {
+			alert(response);
+			
 			var data = JSON.parse(response);
 			
 			var string ="<div class='row'>"+

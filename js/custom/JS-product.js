@@ -1,4 +1,6 @@
-function formatPricetoPrint(a){
+
+
+function formatPricetoPrint(a) {
 	a=a.toLocaleString();
 	a=a.split(',').join('.');
 	return a;
@@ -36,7 +38,7 @@ function paginationGetData(numOfItems,currentPage){
 								`<div class="hover-option">`+
 									`<ul class="hover-icon">`+
 										`<li><a href="#" onclick='addToCart(${parseInt(getData[i].ID)})'><i class="fa fa-shopping-cart"></i></a></li>`+
-										`<li><a href="#test-popup3" class="quickview-popup-link" onclick='quickView(${parseInt(getData[i].ID)})'><i class="fa fa-eye"></i></a></li>`+
+										`<li><a href="#quickview-popup" class="quickview-popup-link" onclick='quickView(${parseInt(getData[i].ID)})'><i class="fa fa-eye"></i></a></li>`+
 									`</ul>`+
 								`</div>`+
 							`</div>`+
@@ -48,7 +50,49 @@ function paginationGetData(numOfItems,currentPage){
 					`</div>`+
 				`</div>`;
 			}
-			document.getElementById("product-container").innerHTML=string;
+			document.getElementById("product-container").innerHTML = string;
+			$('.quickview-popup-link').magnificPopup({
+				type: 'inline',
+				alignTop: false,
+				overflowY: 'scroll',
+				midClick: true,
+				callbacks: {
+					open: function () {
+						$('body').addClass('zoom_image');
+						// Will fire when this exact popup is opened
+						if ($(window).width() >= 768) {
+							var firstImgHeight = $(".quickview-popup .product_img").height();
+							var divWidth = $(".quickview-product-detail").width();
+							$(".quickview-popup .product_img").elevateZoom({
+								cursor: "crosshair",
+								easing: true,
+								scrollZoom: true,
+								gallery: 'product_gallery',
+								zoomWindowOffetx: 30,
+								zoomWindowWidth: divWidth,
+								zoomWindowHeight: firstImgHeight,
+								borderSize: 0,
+								galleryActiveClass: "active"
+							});
+						}
+						else {
+							$(".quickview-popup .product_img").elevateZoom({
+								cursor: "crosshair",
+								zoomType: "inner",
+								gallery: 'product_gallery',
+								galleryActiveClass: "active"
+							});
+						}
+					},
+					close: function () {
+						// Wait until overflow:hidden has been removed from the html tag
+						setTimeout(function () {
+							$('body').removeClass('zoom_image');
+							$('.zoomContainer:nth-child(2)').remove();
+						}, 100)
+					}
+				}
+			});
 		}
 	});	
 }
