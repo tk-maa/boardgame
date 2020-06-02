@@ -924,7 +924,6 @@ header {
     box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
 	margin: 7px;
 	min-height: 350px;
-	
 }
 .common-cart-info .cart-name {
 	min-height: 60px;
@@ -1669,6 +1668,9 @@ header {
     width: 100%;
 	color: #666;
 	font-size: 24px;
+}
+.quickview-product-detail .box-price p{
+	font-size: 25px;
 }
 .quickview-product-detail .box-price del {
 	color: #7a7a7a;
@@ -4442,7 +4444,7 @@ body.theme-3 {
 .theme-3 p {
 	font-weight: normal;
 	line-height: 22px;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 /**************************************/

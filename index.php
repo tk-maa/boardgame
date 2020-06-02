@@ -362,9 +362,6 @@ require_once './php/DataProvider.php';
             <div class="row">
                 <div class="col-md-12 p-0">
                     <div class="insta-slider-2 owl-carousel owl-theme">
-                        <div>
-                            <img src="img/tiki.jpg" alt="insta-img">
-                        </div>
                         <div class="insta-img">
                             <img src="img/sendo.jpg" alt="insta-img">
                         </div>
@@ -413,7 +410,7 @@ require_once './php/DataProvider.php';
         </div>
     </section>
     <!-- End Instagram Section -->
-
+    <br>
     <!-- Start Newsletter Section -->
     <section class="pt_medium pb_medium navy-dark-bg m-0 px-0">
         <div class="container">
