@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2020 at 07:11 AM
+-- Generation Time: Jun 08, 2020 at 01:32 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- PHP Version: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -172,10 +172,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`ID`, `Name`, `Category`, `Price`, `NoP`, `NoPsg`, `Time`, `Age`, `Description`, `Type`, `Quantity`, `Pic`, `Status`) VALUES
-(1, 'Ma Sói Mini', 'Horror', 60000, '8-22', '11-15', '30', '10+', 'đây là mô tả', 'BG', 15, 'sp00.jpg', 0),
-(2, 'Dozen War - Tử Chiến Đế Đô', 'Stragery', 650000, '2', '2', '10-40', '3+', 'đây là mô tả', 'BG', 0, 'sp01.jpg', 0),
+(1, 'Ma Sói Mini', 'Horror', 60000, '8 - 22', '11 - 15', '30', '10+', 'đây là mô tả', 'BG', 15, 'sp00.jpg', 0),
+(2, 'Dozen War - Tử Chiến Đế Đô', 'Stragery', 650000, '2', '2', '10 - 40', '3+', 'đây là mô tả', 'BG', 0, 'sp01.jpg', 0),
 (3, 'Board game là gì?', NULL, 310000, '2-10', '2-10', '15-30', '6+', 'đây là mô tả', 'BG', 15, 'sp02.jpg', 0),
-(4, 'Lớp Học Mật Ngữ - Cuộc đua sao chổi', 'Roleplaying', 380000, '2-6', '4', '30', '10+', 'đây là mô tả', 'BG', 15, 'sp03.png', 0),
+(4, 'Lớp Học Mật Ngữ - Cuộc đua sao chổi', 'Roleplaying', 380000, '2 - 6', '4', '30', '10+', 'đây là mô tả', 'BG', 15, 'sp03.png', 0),
 (5, 'Blood Rage (US)', 'Stragery', 2000000, '2-4', '3-4', '60-90', '14+', 'đây là mô tả', 'BG', 15, 'sp04.jpg', 0),
 (6, 'Codenames Words (US)', 'Deduction', 590000, '2-8', '6', '15', '14+', 'đây là mô tả', 'BG', 15, 'sp05.jpg', 0),
 (7, 'Arcadia Quest (US)', 'Stragery', 2350000, '2-4', '2-4', '60', '13+', 'đây là mô tả', 'BG', 15, 'sp06.jpg', 0),
@@ -244,6 +244,28 @@ INSERT INTO `type` (`TypeID`, `TypeName`) VALUES
 ('CO', 'Các loại cờ'),
 ('RB', 'Rubik');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `Email` varchar(100) NOT NULL,
+  `Password` varchar(100) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Phone` varchar(20) DEFAULT NULL,
+  `Address` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`Email`, `Password`, `Name`, `Phone`, `Address`) VALUES
+('test123@gmail.com', '123123', 'test123', '0911111111', 'test địa chỉ'),
+('testUser@gmail.com', 'DayLaPassword123.', 'Test Name', NULL, NULL);
+
 --
 -- Indexes for dumped tables
 --
@@ -292,6 +314,12 @@ ALTER TABLE `product`
 --
 ALTER TABLE `type`
   ADD PRIMARY KEY (`TypeID`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`Email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
