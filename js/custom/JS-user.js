@@ -21,7 +21,7 @@ function login() {
 
 	jQuery.ajax({
 		type: "POST",
-		url: './php/PHP-login.php',
+		url: './php/PHP-user.php',
 		dataType: 'text',
 		cache: false,
 		contentType: false,
@@ -101,7 +101,7 @@ function signup() {
 
 	jQuery.ajax({
 		type: "POST",
-		url: './php/PHP-login.php',
+		url: './php/PHP-user.php',
 		dataType: 'text',
 		cache: false,
 		contentType: false,
@@ -126,7 +126,7 @@ function logout() {
 
 	jQuery.ajax({
 		type: "POST",
-		url: './php/PHP-login.php',
+		url: './php/PHP-user.php',
 		dataType: 'text',
 		cache: false,
 		contentType: false,
@@ -135,6 +135,65 @@ function logout() {
 		success:function(res){
 			switch(res){
 				case "0":{
+					window.location.href = "index.php";
+				}break;
+			}
+		}
+	});
+}
+function saveInfo() {
+	var name = document.getElementById("information-form").name;
+	var phone = document.getElementById("information-form").phone;
+	var address = document.getElementById("information-form").address;
+
+	if (name.value==""){
+		alert("Họ và tên không được để trống");
+		name.focus();
+		return;
+	}
+
+	if (phone.value==""){
+		alert("Số địa thoại không được để trống");
+		phone.focus();
+		return;
+	} else {
+		var pattern = /0[1-9]\d{8}$/;
+		if(pattern.test(phone.value)==false){
+			alert("Số điện thoại không hợp lệ");
+			phone.focus();
+			return;
+		}
+	}
+
+	if (address.value==""){
+		alert("Địa chỉ không được để trống");
+		address.focus();
+		return;
+	}
+
+
+	var form_data = new FormData();
+	form_data.append('action','saveInfo');
+	form_data.append('phone',phone.value);
+	form_data.append('name',name.value);
+	form_data.append('address',address.value);
+
+	jQuery.ajax({
+		type: "POST",
+		url: './php/PHP-user.php',
+		dataType: 'text',
+		cache: false,
+		contentType: false,
+		processData: false,
+		data : form_data,
+		success:function(res){
+			switch(res){
+				case "0":{
+					alert("Lưu thông tin thành công");
+					window.location.href = "user.php";
+				}break;
+				case "1":{
+					alert("Phiên đăng nhập đã hết hạn");
 					window.location.href = "index.php";
 				}break;
 			}

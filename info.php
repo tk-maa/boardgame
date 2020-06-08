@@ -75,7 +75,7 @@ require_once './php/DataProvider.php';
             <div class="row">
                 <div class="account-page col-sm-9">
                     <h1 class="title page-title mb-5">Thông tin của tôi</h1>
-                    <form class="information-form">
+                    <form id="information-form">
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                 <label for="name">Họ và tên:</label>
@@ -90,7 +90,7 @@ require_once './php/DataProvider.php';
                                 <input type="text" id="address" class="form-control" placeholder="Địa chỉ" value="<?php echo $address?>"></input>
                             </div>
                             <a href="user.php" class="form-group col-md-5 btn btn-primary rounded" role="button">Quay lại</a>
-                            <button onclick="saveInfo()" class="form-group col-md-5 btn btn-primary rounded">Xác nhận</button>
+                            <button onclick="saveInfo()" type="button" class="form-group col-md-5 btn btn-primary rounded">Xác nhận</button>
                         </div>
                     </form>
                 </div>

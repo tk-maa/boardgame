@@ -7,9 +7,11 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 		case 'login': login();break;
 		case 'logout': logout();break;
 		case 'signup': signup();break;
+		case 'saveInfo': saveInfo();break;
     }
 }
 function login(){
+
 	$email = addslashes($_POST['email']);
 	$password = addslashes($_POST['password']);
 	
@@ -54,4 +56,27 @@ function logout(){
 	die("0");
 }
 
+function saveInfo(){
+	if(!isset($_SESSION['isLoginUser'])){
+		die("1");
+	} 
+
+	$email = "";
+
+	foreach($_SESSION['isLoginUser'] as $k => $v){
+		$email =  $_SESSION['isLoginUser'][$k]['Email'];
+	}
+
+	$name = addslashes($_POST['name']);
+	$phone = addslashes($_POST['phone']);
+	$address = addslashes($_POST['address']);
+	
+	$sql = "UPDATE user SET" .
+		" Name='". $name . "',".
+		" Phone='". $phone . "',".
+		" Address='". $address . "'".
+		" WHERE	Email='" . $email . "';";
+	DataProvider::executeQuery($sql);
+	die("0");
+}
 ?>
