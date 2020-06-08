@@ -203,6 +203,8 @@
 
 <script src="js/custom/JS-cart.js" type="text/javascript"></script>
 
+<script src="./js/custom/JS-user.js"></script>
+
 </body>
 
 <!-- Mirrored from bestwebcreator.com/ATZShop/demo/product-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jan 2020 03:54:58 GMT -->

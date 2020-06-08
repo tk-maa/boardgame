@@ -424,7 +424,7 @@ require_once './php/DataProvider.php';
                 <div class="col-md-6">
                     <form class="newsletter-form">
                         <div class="outline-input">
-                            <input type="text" required="" placeholder="Enter Email Address">
+                            <input type="text" required="" placeholder="Nhập Email">
                         </div>
                         <button type="submit" title="Subscribe" class="btn btn-submit border-0 btn-primary" name="submit" value="Submit">Theo Dõi</button>
                     </form>
@@ -487,7 +487,7 @@ require_once './php/DataProvider.php';
     <script src="./js/custom/JS-index.js"></script>
 
     <script src="./js/custom/JS-cart.js"></script>
-
+    <script src="./js/custom/JS-user.js"></script>
     
 </body>
 

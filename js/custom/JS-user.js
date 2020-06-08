@@ -1,20 +1,3 @@
-$(window).ready(function() {
-	var login = document.getElementById("login-form");
-    login.addEventListener("keyup", function(event) {
-      if (event.keyCode === 13) {
-      event.preventDefault();
-      document.getElementById("login-form").btnLogin.click();
-      }
-	});
-	var signup = document.getElementById("signup-form");
-    signup.addEventListener("keyup", function(event) {
-      if (event.keyCode === 13) {
-      event.preventDefault();
-      document.getElementById("signup-form").btnSignup.click();
-      }
-	});
-});
-
 function login() {
 	var email = document.getElementById("login-form").email;
 	var password = document.getElementById("login-form").password;

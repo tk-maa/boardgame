@@ -95,9 +95,9 @@
           function makeCatogoryOptionSelected($category, $categoryOfThisProduct)
           {
             if ($category == $categoryOfThisProduct) {
-              echo "<option value='" . $status . "' selected>" . $category . "</option>";
+              echo "<option value='" . $category . "' selected>" . $category . "</option>";
             } else {
-              echo "<option value='" . $status . "'>" . $category . "</option>";
+              echo "<option value='" . $category . "'>" . $category . "</option>";
             }
           }
           ?>
@@ -149,8 +149,8 @@
                   </select>
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="type">Thể loại:</label>
-                  <select id="type" class="form-control">
+                  <label for="category">Thể loại:</label>
+                  <select id="category" class="form-control">
                     <?php
                       if(isset($_REQUEST['id'])) {
                         makeCatogoryOptionSelected("Cardgame", $category);
@@ -160,6 +160,9 @@
                         makeCatogoryOptionSelected("Roleplaying", $category);
                         makeCatogoryOptionSelected("Stragery", $category);
                         makeCatogoryOptionSelected("Wargame", $category);
+                        makeCatogoryOptionSelected("2x2", $category);
+                        makeCatogoryOptionSelected("3x3", $category);
+                        makeCatogoryOptionSelected("Other", $category);
                       } else {
                         makeCatogoryOptionSelected("Cardgame", "");
                         makeCatogoryOptionSelected("Deduction", "");
@@ -168,6 +171,9 @@
                         makeCatogoryOptionSelected("Roleplaying", "");
                         makeCatogoryOptionSelected("Stragery", "");
                         makeCatogoryOptionSelected("Wargame", "");
+                        makeCatogoryOptionSelected("2x2", "");
+                        makeCatogoryOptionSelected("3x3", "");
+                        makeCatogoryOptionSelected("Other", "");
                       }
                     ?>
                   </select>

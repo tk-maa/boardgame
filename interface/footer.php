@@ -1,4 +1,5 @@
 <footer class="m-0 p-0 footer-style-2">
+    <hr>
     <div class="footer-btm bg-white">
         <div class="container">
             <div class="row">

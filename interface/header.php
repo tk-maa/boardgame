@@ -47,10 +47,26 @@
                                         <button class="btn btn-primary" onclick="signup()" type="button" id="btnSignup">Đăng ký</button>
                                     </form>
                                 </div>
+                                <script>
+                                    var login = document.getElementById("login-form");
+                                    login.addEventListener("keyup", function(event) {
+                                        if (event.keyCode === 13) {
+                                            event.preventDefault();
+                                            document.getElementById("login-form").btnLogin.click();
+                                        }
+                                    });
+                                    var signup = document.getElementById("signup-form");
+                                    signup.addEventListener("keyup", function(event) {
+                                        if (event.keyCode === 13) {
+                                            event.preventDefault();
+                                            document.getElementById("signup-form").btnSignup.click();
+                                        }
+                                    });
+                                </script>
                             <?php
                             } else {
                             ?>
-                                <a>
+                                <a href="user.php">
                                     <div class="cart-icon">
                                         <i class="ion-ios-cart"></i>
                                     </div>Xin chào,
@@ -62,10 +78,10 @@
                                 <div class="account-box cart_box_left">
                                     <div class="account-info">
                                         <div>
-                                            <a href="bill.php">Đơn hàng</a>
+                                            <a href="user.php">Quản lý tài khoản</a>
                                         </div>
                                         <div>
-                                            <a href="password.php">Đổi mật khẩu</a>
+                                            <a href="bill.php">Đơn hàng</a>
                                         </div>
                                         <div>
                                             <a href="#" onclick="logout()">Đăng xuất</a>
@@ -178,12 +194,12 @@
                                     }
                                 }
 
-                                $sql = "select * from menu_first";
+                                $sql = "SELECT * FROM menu_first";
                                 $result = DataProvider::executeQuery($sql);
                                 while ($row = mysqli_fetch_array($result)) {
                                     $FirstMenuArray[] = new firstMenu($row['ID'], $row['Ten'], $row['Link']);
                                 }
-                                $sql = "select * from menu_second";
+                                $sql = "SELECT * FROM menu_second";
                                 $result = DataProvider::executeQuery($sql);
                                 while ($row = mysqli_fetch_array($result)) {
                                     $SecondMenuArray[] = new secondMenu($row['ID'], $row['MenuIDFirst'], $row['Ten'], $row['Link']);
@@ -231,17 +247,10 @@
                                     <a class="nav-link dropdown-toggler" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">TRANG CHỦ</a>
                                 </li>
                                 <li class="dropdown">
-                                    <a class="nav-link dropdown-toggler" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CHÍNH SÁCH<i class="fa fa-angle-down"></i><i class="fa fa-angle-right"></i></a>
-                                    <div class="sub-menu dropdown-menu">
-                                        <ul class="all-menu">
-                                            <li><a href="error-404.html">BẢO HÀNH</a></li>
-                                            <li><a href="faq.html">VẬN CHUYỂN</a></li>
-                                        </ul>
-                                    </div>
+                                    <a class="nav-link dropdown-toggler" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CHÍNH SÁCH</a>
                                 </li>
-
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">LIÊN HỆ</a>
+                                    <a class="nav-link" href="#">LIÊN HỆ</a>
                                 </li>
                             </ul>
                         </div>
@@ -251,4 +260,3 @@
         </div>
     </div>
 </header>
-<script src="./js/custom/JS-login.js"></script>

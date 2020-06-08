@@ -79,10 +79,10 @@ include './interface/header.php'
                         <label for="sortBasic">Sắp xếp theo:</label>
                         <select id="sortBasic" class="form-control" onchange="paginationGetData(<?php echo $numberOfItemsInOnePage?>,1)">
                             <option value='0'>Mặc định</option>
-                            <option value='1'>Tên(A-Z)</option>
-                            <option value='2'>Tên(Z-A)</option>
-                            <option value='3'>Giá(Thấp > Cao)</option>
-                            <option value='4'>Giá(Cao < Thấp)</option>
+                            <option value='1'>Tên (A - Z)</option>
+                            <option value='2'>Tên (Z - A)</option>
+                            <option value='3'>Giá (Thấp - Cao)</option>
+                            <option value='4'>Giá (Cao - Thấp)</option>
                         </select>
                     </div>
                     <input type="hidden" id="sortType" value="<?php echo $_REQUEST['code']?>"></input>
@@ -211,6 +211,7 @@ include './interface/header.php'
 <script src="js/custom/JS-cart.js" type="text/javascript"></script>
 
 <script src="./js/custom/JS-product.js"></script> 
+<script src="./js/custom/JS-user.js"></script>
 
 </body>
 

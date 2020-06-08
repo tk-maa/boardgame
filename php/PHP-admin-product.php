@@ -24,14 +24,16 @@ function addProduct(){
 	$description = addslashes($_POST['description']);
 	$price = addslashes($_POST['price']);
 	$status = addslashes($_POST['status']);
+	$category = addslashes($_POST['category']);
 	
 	$extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 	$filename = md5(time().$_FILES['file']['name']);
 	$filename = $filename .".". $extension;
 	
 	move_uploaded_file($_FILES['file']['tmp_name'], '../img/sanpham/'.$filename);
-	$sql = "INSERT INTO product(Name, Price, NoP, NoPsg, Time, Age, Description, Type, Quantity , Pic, Status) VALUES(" .
+	$sql = "INSERT INTO product(Name, Category, Price, NoP, NoPsg, Time, Age, Description, Type, Quantity , Pic, Status) VALUES(" .
 			"'" .$name. "'," . 
+			"'" .$category. "'," . 
 			"'" .$price. "'," . 
 			"'" .$NoP. "'," . 
 			"'" .$NoPsg. "'," . 
@@ -54,6 +56,7 @@ function editProduct(){
 	$NoPsg = addslashes($_POST['NoPsg']);
 	$time = addslashes($_POST['time']);
 	$age = addslashes($_POST['age']);
+	$category = addslashes($_POST['category']);
 	$description = addslashes($_POST['description']);
 	$price = addslashes($_POST['price']);
 	$status = addslashes($_POST['status']);
@@ -61,6 +64,7 @@ function editProduct(){
 	
 	$sql = "UPDATE product SET" .
 		" Name='". $name . "',".
+		" Category='". $category . "',".
 		" Price='" . $price . "'," . 
 		" NoP='" . $NoP . "'," . 
 		" NoPsg='" . $NoPsg . "'," . 

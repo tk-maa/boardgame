@@ -18,6 +18,7 @@ function addProduct(){
 	var price = document.getElementById("product-form").price;
 	var status = document.getElementById("product-form").status;
 	var image = document.getElementById("product-form").image;
+	var category = document.getElementById("product-form").category;
 	
 	var form_data = new FormData();
 	
@@ -139,6 +140,7 @@ function addProduct(){
 	form_data.append('age',age.value);
 	form_data.append('price',price.value);
 	form_data.append('status',status.value);
+	form_data.append('category',category.value);
 	form_data.append('description',description.value);
 	
 	jQuery.ajax({
@@ -175,6 +177,7 @@ function editProduct(){
 	var price = document.getElementById("product-form").price;
 	var status = document.getElementById("product-form").status;
 	var image = document.getElementById("product-form").image;
+	var category = document.getElementById("product-form").category;
 	
 	var form_data = new FormData();
 	
@@ -228,7 +231,7 @@ function editProduct(){
 		time.focus();
 		return;
 	} else {
-		var format = /(^([0-9]{1,3})$)|(^([0-9]{1,3}-[0-9]{1,3})$)|(^(...)$)/;
+		var format = /(^([0-9]{1,3})$)|(^([0-9]{1,3} - [0-9]{1,3})$)|(^(...)$)/;
 		if(format.test(time.value)==false){
 			alert("Thời gian chơi không hợp lệ");
 			time.focus();
@@ -296,6 +299,7 @@ function editProduct(){
 	form_data.append('age',age.value);
 	form_data.append('price',price.value);
 	form_data.append('status',status.value);
+	form_data.append('category',category.value);
 	form_data.append('description',description.value);
 	
 	jQuery.ajax({
