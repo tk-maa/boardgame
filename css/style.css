@@ -107,7 +107,7 @@ a {
 	text-decoration: none;
 }
 a:hover {
-	color: #eb3e32;
+	color: red;
 	text-decoration: none;
 }
 ol {
@@ -237,7 +237,7 @@ label {
 .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
 	border-color: transparent;
 	background-color: transparent;
-	border-color: #eb3e32;
+	border-color: red;
 	box-shadow: none;
 }
 .btn-primary {
@@ -253,8 +253,8 @@ label {
 	overflow: hidden;
 }
 .btn-primary:hover {
-	background-color: #e31837;
-	border-color: #e31837;
+	background-color: red;
+	border-color: red;
 	color: #ffff;
 }
 .btn-secondary {
@@ -295,7 +295,7 @@ label {
 .title::before {
     content: "";
     position: absolute;
-    background-color: #eb3e32;
+    background-color: red;
     width: 80px;
     height: 2px;
     bottom: 0;
@@ -312,7 +312,7 @@ label {
 	left: auto;
 } 
 .text_default {
-	color: #eb3e32 !important;
+	color: red !important;
 }
 .bg_light_yellow {
 	background-color: #FFF0AD;
@@ -333,7 +333,7 @@ label {
     margin-right: 5px;
 }
 .bg_red {
-	background-color: #eb3e32;
+	background-color: red;
 }
 .scrollup {
     background-color: #363f4d;
@@ -350,11 +350,18 @@ label {
     z-index: 99;
 }
 .scrollup:hover {
-    background-color: #eb3e32;
+    background-color: red;
     color: #fff;
 }
 .form-control:focus {
-	box-shadow: none;
+
+	border-radius: 3px;
+	border: 2px solid red;
+	padding: 10px 15px;
+	color: #000;
+	margin-bottom: 20px;
+	height: auto;
+	font-size: 14px;
 }
 iframe {
 	border: 0;
@@ -399,7 +406,7 @@ iframe {
 	font-size: 14px;
 }
 .header_list li a:hover {
-    color: #eb3e32;
+    color: red;
 }
 .header_list li {
     margin-right: 10px;
@@ -490,7 +497,7 @@ iframe {
 	width: 20px;
 	height: 20px;
 	font-size: 10px;
-	background-color: #eb3e32;
+	background-color: red;
 	text-align: center;
 	line-height: 20px;
 	color: #fff;
@@ -547,10 +554,10 @@ iframe {
     font-weight: 500;
 }
 .cart-product a:hover {
-    color: #eb3e32;
+    color: red;
 }
 .cart-product p {
-	color: #eb3e32;
+	color: red;
 	font-weight: 500;
 }
 .cart-product {
@@ -578,7 +585,7 @@ iframe {
 	font-size: 14px;
 }
 .total-price {
-	color: #eb3e32;
+	color: red;
 }
 .cart-box .btn-primary {
 	margin: 0 auto;
@@ -614,7 +621,7 @@ iframe {
 	font-weight: 500;
 }
 .header-btm .navbar .navbar-collapse ul li a:hover, .header-btm .navbar .navbar-collapse ul li.active > a {
-	color: #eb3e32;
+	color: red;
 }
 .header-btm .navbar .navbar-collapse ul li a i {
 	padding-left: 5px;
@@ -701,11 +708,11 @@ header {
 }
 .navbar-toggler {
 	border: none;
-	color: #eb3e32;
+	color: red;
 	padding: 0;
 }
 .navbar-toggler i {
-	border: 1px solid #eb3e32;
+	border: 1px solid red;
 	padding: 5px 8px;
 }
 .submit-btn-2 {
@@ -713,7 +720,7 @@ header {
     width: 36px;
     height: 32px;
     cursor: pointer;
-    background-color: #eb3e32;
+    background-color: red;
     color: #fff;
 	padding: 0;
 }
@@ -737,7 +744,7 @@ header {
 	right: 100%;
 	left: 0;
 	bottom: 20px;
-	border-bottom: 2px solid #eb3e32;
+	border-bottom: 2px solid red;
 	margin: 0 15px;
 	transition: all 0.5s ease-in-out;
 }
@@ -792,12 +799,12 @@ header {
 	background-color: #fff;
 }
 .main-slider.owl-theme .owl-dots .owl-dot.active span {
-	background-color: #eb3e32;
+	background-color: red;
 	border: none;
 }
 .carousel-indicators .active {
-    background-color: #eb3e32;
-    border-color: #eb3e32;
+    background-color: red;
+    border-color: red;
 }
 .carousel-indicators li {
     width: 14px;
@@ -955,11 +962,11 @@ header {
     transition: all 0.3s ease-in-out;
 }
 .common-cart-box:hover .common-cart-info .cart-name {
-    color: #eb3e32;
+    color: red;
 }
 .cart-price {
 	font-size: 16px;
-	color: #eb3e32;
+	color: red;
 	font-weight: normal;
 }
 .cart-price del {
@@ -989,7 +996,7 @@ header {
     right: 40px;
 }
 .same-nav.owl-theme .owl-nav button:hover i {
-    background-color: #eb3e32;
+    background-color: red;
 }
 .common-cart-img img {
 	width: 100%;
@@ -1051,7 +1058,7 @@ header {
 	visibility: visible;
 }
 .hover-icon li a:hover {
-    background-color: #eb3e32;
+    background-color: red;
 }
 /**************************************/
 /*07. Banner Section Css*/
@@ -1133,7 +1140,7 @@ header {
 	padding: 10px 0 10px 0;
 }
 .comments a {
-	color: #eb3e32;
+	color: red;
 }
 .news-text {
     color: #7a7a7a;
@@ -1143,7 +1150,7 @@ header {
     overflow: hidden;
 }
 .read-more {
-	color: #eb3e32;
+	color: red;
 	text-transform: uppercase;
 }
 .news-box {
@@ -1151,7 +1158,7 @@ header {
 	margin-bottom: 30px;
 }
 .news-box:hover .news-info h5 a {
-    color: #eb3e32;
+    color: red;
 }
 .news-info {
 	padding: 20px 10px;
@@ -1192,11 +1199,11 @@ header {
 	height: 0;
 	border-style: solid;
 	border-width: 0 62px 80px 62px;
-	border-color: transparent transparent #eb3e32 transparent;
+	border-color: transparent transparent red transparent;
 }
 .news-box .owl-theme .owl-nav [class*="owl-"],
 .blog-detail-img .owl-theme .owl-nav [class*="owl-"] {
-	background-color: #eb3e32;
+	background-color: red;
 	color: #fff;
 	font-size: 26px;
 	margin: 0;
@@ -1404,7 +1411,7 @@ header {
 	text-transform: uppercase;
 }
 .footer-links li a:hover, .footer-box.box-4 ul li a:hover {
-    color: #eb3e32;
+    color: red;
 }
 .footer-btm {
 	background-color: #363f4d;
@@ -1431,10 +1438,10 @@ header {
 }
 .footer-social ul li a:hover,
 .footer-social.social_dark ul li a:hover {
-	color: #eb3e32;
+	color: red;
 }
 .footer-box.box-4 ul li i {
-	color: #eb3e32;
+	color: red;
 	font-size: 26px;
 	padding-right: 15px;
 	float: left;
@@ -1463,7 +1470,7 @@ header {
 .white-popup .mfp-close:hover,
 .popup-form .close:not(:disabled):not(.disabled):focus, 
 .popup-form  .close:not(:disabled):not(.disabled):hover{
-    background-color: #eb3e32;
+    background-color: red;
     color: #fff;
     opacity: 1;
 }
@@ -1643,7 +1650,7 @@ header {
 	padding: 15px 0 5px 0;
 }
 .sign-up {
-	color: #eb3e32;
+	color: red;
 	font-weight: bold;
 	font-size: 14px;
 }
@@ -1714,7 +1721,7 @@ header {
 }
 .quickview-product-detail .box-price p {
 	display: inline;
-	color: #eb3e32;
+	color: red;
 }
 .quickview-product-detail .box-text {
 	color: #7a7a7a;
@@ -1740,7 +1747,7 @@ header {
 	padding: 25px 0 20px 0;
 }
 .quickview-product-detail .stock span {
-	color: #eb3e32;
+	color: red;
 }
 .quantity-box {
 	width: 100%;
@@ -1842,7 +1849,7 @@ header {
 	text-transform: capitalize;
 }
 .breadcrumb li a:hover {
-	color: #eb3e32;
+	color: red;
 }
 .breadcrumb li:first-child::before {
     content: normal;
@@ -1877,7 +1884,7 @@ header {
 	border-bottom: 1px dashed #cdcdcd;
 }
 .quantity-box-detail ul li a:hover {
-	color: #eb3e32;
+	color: red;
 }
 .filter-box-detail .ui-slider-range {
     height: 5px;
@@ -1946,7 +1953,7 @@ header {
     line-height: 45px;
 }
 .list_grid-btns a:hover, .list_grid-btns a.on {
-	background-color: #eb3e32;
+	background-color: red;
 }
 .shop-options {
 	padding-bottom: 50px;
@@ -2050,7 +2057,7 @@ header {
     line-height: 40px;
 }
 .pagination li a:hover, .pagination li.active a {
-	background-color: #eb3e32;
+	background-color: red;
 }
 /**************************************/
 
@@ -2089,7 +2096,7 @@ header {
     font-weight: 500;
 }
 .products-tabs .nav .nav-item a.active {
-	background-color: #eb3e32;
+	background-color: red;
 }
 .products-tabs .tab-content {
 	border: 1px solid #cdcdcd;
@@ -2147,8 +2154,13 @@ header {
 	float: left;
 }
 .form-control {
+<<<<<<< HEAD
 	border-radius: 0;
 	border: 1px solid #cdcdcd;
+=======
+	border-radius: 3px;
+	border: 2px solid #cdcdcd;
+>>>>>>> 2bf8d1329e398f8e536e3bf4d1ca84555fdea25d
 	padding: 10px 15px;
 	color: #000;
 	margin-bottom: 20px;
@@ -2188,7 +2200,7 @@ header {
 }
 .form-check  input[type="radio"] + .form-check-label::after {
 	content: "";
-	background-color: #eb3e32;
+	background-color: red;
 	height: 6px;
 	width: 6px;
 	border-radius: 100%;
@@ -2299,7 +2311,7 @@ header {
 	text-transform: uppercase;
 }
 .forgot-password a {
-	color: #eb3e32;
+	color: red;
 }
 .checkout-form button.btn-primary {
 	cursor: pointer;
@@ -2321,7 +2333,7 @@ header {
 	border-radius: 0;
 }
 .checkout-process .card-header .btn.btn-link span {
-    background-color: #eb3e32;
+    background-color: red;
     font-weight: 600;
     color: #fff;
     margin-right: 20px;
@@ -2365,7 +2377,7 @@ header {
 	margin-bottom: 20px;
 }
 .required_sign {
-	color: #eb3e32;
+	color: red;
 }
 .tab-form-2 .checkout-form > div.form-check {
 	width: 100%;
@@ -2441,7 +2453,7 @@ header {
 }
 .checkout-inner-page .ci-btn span {
 	float: right;
-	color: #eb3e32;
+	color: red;
 }
 .order-review-table table {
 	margin: 0;
@@ -2551,7 +2563,7 @@ header {
 	font-size: 18px;
 }
 .social_icon li a:hover {
-    color: #eb3e32;
+    color: red;
 }
 .leave-reply-form {
 	margin: 0 -15px;
@@ -2568,7 +2580,7 @@ header {
 	color: #7a7a7a;
 }
 .cart-product .cp-comments i {
-	color: #eb3e32;
+	color: red;
 }
 .leave-reply {
     padding-top: 30px;
@@ -2597,7 +2609,7 @@ header {
 	bottom: 0;
 	background: none;
 	border: none;
-	color: #eb3e32;
+	color: red;
 	border-left: 1px solid #000;
 	padding: 0px 15px;
 	margin: 7px 0;
@@ -2672,7 +2684,7 @@ header {
 }
 .side-posts ol li::before {
     content: "0" counter(step-counter);
-    background-color: #eb3e32;
+    background-color: red;
     border-radius: 100%;
     font-weight: 400;
     text-align: center;
@@ -2757,7 +2769,7 @@ header {
 	margin: 0 -15px;
 }
 .contact-form label span {
-	color: #eb3e32;
+	color: red;
 	padding-left: 3px;
 }
 .form-with-label label {
@@ -2789,7 +2801,7 @@ header {
 	transition: all 0.3s ease-in-out;
 }
 .contact-locations li a:hover {
-	color: #eb3e32;
+	color: red;
 }
 .contact-locations {
 	padding-top: 12px;
@@ -2810,7 +2822,7 @@ header {
 	width: 35px;
 	height: 35px;
 	text-align: center;
-	background-color: #eb3e32;
+	background-color: red;
 	color: #fff;
 	line-height: 35px;
 	font-size: 20px;
@@ -2950,7 +2962,7 @@ header {
 	line-height: 24px;
 }
 .compare-box .product-rate span {
-	color: #eb3e32;
+	color: red;
 }
 .compare-box .row-text p {
 	color: #7a7a7a;
@@ -2965,7 +2977,7 @@ header {
 	color: #408814;
 }
 .compare-box .row-stock .out-stock {
-	color: #eb3e32;
+	color: red;
 }
 .compare-box .row-options .hover-icon {
 	position: inherit;
@@ -3005,7 +3017,7 @@ header {
 .cart-table .product-total p,
 .order-table .product-price,
 .order-table .product-subtotal {
-	color: #eb3e32;
+	color: red;
 	font-weight: 500;
 }
 .order-table tbody td {
@@ -3019,7 +3031,7 @@ header {
 	font-weight: 500;
 }
 .cart-table .row-close a {
-	color: #eb3e32;
+	color: red;
 	font-size: 24px;
 }
 .cart-table .table-btn li {
@@ -3277,13 +3289,13 @@ body.theme-2 {
 	background-color: #7a7a7a;
 }
 .header_list li a:hover, .footer-links li a:hover, .footer-box.box-4 ul li a:hover {
-	color: #eb3e32;
+	color: red;
 }
 .theme-2 .header-btm .navbar .navbar-collapse > ul > li > a {
 	font-weight: normal;
 }
 .mCS-minimal.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar, .mCS-minimal.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar {
-	background-color: #eb3e32;
+	background-color: red;
 }
 .header_text p {
 	font-size: 14px;
@@ -3405,7 +3417,7 @@ body.theme-2 {
 	height: 35px;
 	line-height: 35px;
 	text-align: center;
-	background: #eb3e32;
+	background: red;
 	position: absolute;
 	top: 10px;
 	right: 10px;
@@ -4114,7 +4126,7 @@ body.theme-2 {
 	color: #fff;
 }
 .testimonial .testimonial-title a:hover {
-	color: #eb3e32;
+	color: red;
 }
 .testimonial .description {
 	position: relative;
@@ -4147,7 +4159,7 @@ body.theme-2 {
 	color: #444;
 }
 .testimonial-slider.owl-carousel .owl-nav button.owl-next:hover, .theme-2 .testimonial-slider.owl-carousel .owl-nav button.owl-prev:hover {
-	background-color: #eb3e32;
+	background-color: red;
 	color: #fff;
 }
 .testimonial .testimonial-title {
@@ -4155,16 +4167,16 @@ body.theme-2 {
 }
 .testimonial .post {
 	display: block;
-	color :#eb3e32;
+	color :red;
 	margin-top: 10px;
 }
 .carousel-indicators .active, .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
-    background-color: #eb3e32;
+    background-color: red;
 }
 
 .testimonial-slider .owl-dots .owl-dot:hover span,
 .testimonial-slider .owl-dots .owl-dot.active span {
-	border-color:#eb3e32;
+	border-color:red;
 }
 /**************************************/
 	
@@ -4189,7 +4201,7 @@ body.theme-2 {
 	padding: 10px 0;
 }
 .tab-section .nav-tabs .nav-item .nav-link.active, .tab-section .nav-tabs .nav-item .nav-link:hover {
-	background-color: #eb3e32;
+	background-color: red;
 	color: #fff;
 	border-color: transparent;
 }
@@ -4200,7 +4212,7 @@ body.theme-2 {
 	height: 0;
 	border-style: solid;
 	border-width: 20px 0 20px 25px;
-	border-color: transparent transparent transparent #eb3e32;
+	border-color: transparent transparent transparent red;
 	left: 100%;
 	opacity: 0;
 	visibility: hidden;
@@ -4238,7 +4250,7 @@ body.theme-2 {
 .accordion-style1 .card-header a {
 	padding: 10px;
 	display: block;
-	background-color: #eb3e32;
+	background-color: red;
 	color: #fff;
 }
 /**************************************/
@@ -4283,11 +4295,11 @@ body.theme-2 {
     margin-top: 10px;
 }
 .comments-time a {
-	color: #eb3e32;
+	color: red;
 	margin-right: 15px;
 }
 .news-box:hover .news-date-box {
-	background-color: #eb3e32;
+	background-color: red;
 	color: #fff;
 }
 .comments-time i {
@@ -4305,9 +4317,9 @@ body.theme-2 {
 	height: 60px;
 	line-height: 60px;
 	font-size: 30px;
-	color: #eb3e32;
+	color: red;
 	text-align: center;
-	border: 2px solid #eb3e32;
+	border: 2px solid red;
 	position: absolute;
 	top: 50%;
 	left: 0px;
@@ -4319,7 +4331,7 @@ body.theme-2 {
 .servicebox .service-icon:before, .servicebox .service-icon:after {
 	content: "";
 	height: 2px;
-	background: #eb3e32;
+	background: red;
 	position: absolute;
 	top: -15px;
 	left: 10px;
@@ -4433,7 +4445,7 @@ body.theme-2 {
     color: #fff;
 }
 .footer_link_white ul li a:hover {
-    color: #eb3e32;
+    color: red;
 }
 
 
@@ -4672,7 +4684,7 @@ body.theme-3 {
 	padding: 20px 15px !important;
 	position: absolute;
 	top: 50%;
-	background-color: #eb3e32;
+	background-color: red;
 	-moz-transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
@@ -4829,10 +4841,10 @@ body.theme-3 {
 	width: 50px;
 	height: 50px;
 	margin: 0 auto;
-	border: 1px solid #eb3e32;
+	border: 1px solid red;
 	line-height: 50px;
 	font-size: 30px;
-	color: #eb3e32;
+	color: red;
 }
 .contact-wrap p, .contact-wrap a {
 	font-size: 14px;
@@ -4917,8 +4929,8 @@ body.theme-3 {
 	border-radius: 100%;
 }
 .carousel-style-2.carousel-indicators li {
-	background-color: #eb3e32;
-	border-color: #eb3e32;
+	background-color: red;
+	border-color: red;
 }
 .carousel-style-2.carousel-indicators li.active {
 	background-color: #fff;
@@ -4927,7 +4939,7 @@ body.theme-3 {
 .carousel-style-2.carousel-indicators li.active::before {
 	opacity: 1;
 	visibility: visible;
-	background-color: #eb3e32;
+	background-color: red;
 }
 /**************************************/
 /* 31.04. Content Sidebar Section Css */
@@ -5256,7 +5268,7 @@ header.header-5 {
 	transition: all 0.3s ease-in-out;
 }
 .search-wrap button:hover {
-	color: #eb3e32;
+	color: red;
 }
 .search-section.open {
 	opacity: 1;
@@ -5347,7 +5359,7 @@ header.header-5 {
 	content: none;
 }
 .header-menu a:hover, .header-option li a:hover {
-    color: #eb3e32;
+    color: red;
 }
 .mouse-down {
 	position: absolute;
@@ -5594,7 +5606,7 @@ header.header-5 {
 	border: 0;
 }
 .nav-tabs.tab-style-1  .nav-link {
-	background-color: #eb3e32;
+	background-color: red;
 	border-radius: 0;
 	color: #fff;
 	margin: 0 14px;
@@ -5602,8 +5614,8 @@ header.header-5 {
 }
 .nav-tabs.tab-style-1 .nav-item.show .nav-link, .nav-tabs.tab-style-1 .nav-link.active, .nav-tabs.tab-style-1 .nav-item .nav-link:hover {
 	background-color: transparent;
-	border-color: #eb3e32;
-	color: #eb3e32;
+	border-color: red;
+	color: red;
 }
 .nav-tabs.tab-style-1 .nav-item {
 	position: relative;
@@ -5616,7 +5628,7 @@ header.header-5 {
 	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
 	right: -4px;
-	color: #eb3e32;
+	color: red;
 }
 .nav-tabs.tab-style-1 .nav-item:last-child:before {
 	content: none;
@@ -5634,7 +5646,7 @@ header.header-5 {
 	border: 0;
 }
 .nav-tabs.tab-style-2 .nav-link.active, .nav-tabs.tab-style-2 .nav-item .nav-link:hover {
-	background-color: #eb3e32;
+	background-color: red;
 	color: #fff;
 }
 /**************************************/
@@ -5668,7 +5680,7 @@ header.header-5 {
 	border-radius: 100%;
 }
 .fancy-box-style-2 .fancy-wrap:after {
-	color: #eb3e32;
+	color: red;
 	opacity: 0.2;
 	left: 30px;
 	right: auto;
@@ -5776,7 +5788,7 @@ header.header-5 {
 	right: 60px;
 }
 .news-section .nav-style-3.owl-theme .owl-nav button:hover {
-	color: #eb3e32;
+	color: red;
 }
 /**************************************/
 
@@ -6124,3 +6136,45 @@ body.switch-open {
 	transform: translateX(-270px);
 }
 }
+.account-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin: 20px 0px 15px 0px;
+}
+.account-list>li>a {
+    font-size: 15px;
+    color: rgba(105, 105, 115, 1);
+	padding: 10px;
+	background-color: rgb(238, 235, 235);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(221, 221, 221, 1);
+    border-radius: 3px;
+    widows: 100%;
+	text-align: center;
+}
+.account-list>li>a:hover {
+    font-size: 15px;
+	color: white;
+	background-color: red;
+    padding: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(221, 221, 221, 1);
+    border-radius: 3px;
+    widows: 100%;
+	text-align: center;
+}
+
+.account-list .edit-info {
+    display: flex;
+}
+.account-list>li {
+    width: calc(100% / 5);
+    padding: 10px;
+    margin: 0;
+}
+

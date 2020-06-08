@@ -10,6 +10,7 @@ require_once './php/DataProvider.php';
 <html lang="en">
 
 <head>
+    <script src="https://kit.fontawesome.com/3d02397db2.js" crossorigin="anonymous"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -58,14 +59,14 @@ require_once './php/DataProvider.php';
     ?>
     <!-- End Header Section -->
     <?php
-    
+
     ?>
     <!-- Start User Section -->
-    <section class="user-section" style="height:570px">
+    <section class="user-section" style="height:450px;">
         <div id="account-account" class="container">
             <div class="row">
                 <div id="content" class="account-page col-sm-12">
-                    <h1 class="title page-title">Tài khoản của tôi</h1>
+                    <h2 class="title page-title" style="font-weight:bold;">Tài khoản của tôi</h2>
                     <div class="my-account">
                         <ul class="list-unstyled account-list">
                             <li class="edit-info"><a href="info.php">Sửa thông tin tài khoản</a></li>
@@ -73,7 +74,7 @@ require_once './php/DataProvider.php';
                         </ul>
                     </div>
                     <div class="my-orders">
-                        <h2 class="title">Đơn hàng của tôi</h2>
+                        <h2 class="title" style="font-weight:bold;">Đơn hàng của tôi</h2>
                         <ul class="list-unstyled account-list">
                             <li class="edit-order"><a href="bill.php">Xem lịch sử đơn hàng</a></li>
                         </ul>
