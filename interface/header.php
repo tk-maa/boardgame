@@ -68,7 +68,7 @@
                             ?>
                                 <a href="user.php">
                                     <div class="cart-icon">
-                                        <i class="ion-ios-cart"></i>
+                                        <i class="fas fa-user" style="font-size: 15px;"></i>
                                     </div>Xin chào,
                                     <?php foreach ($_SESSION["isLoginUser"] as $k => $v) {
                                         echo $_SESSION['isLoginUser'][$k]["Name"];

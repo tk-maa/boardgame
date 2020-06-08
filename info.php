@@ -11,6 +11,7 @@ require_once './php/DataProvider.php';
 
 <head>
     <!-- Required meta tags -->
+    <script src="https://kit.fontawesome.com/3d02397db2.js" crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon Icon Css -->
@@ -58,16 +59,16 @@ require_once './php/DataProvider.php';
     ?>
     <!-- End Header Section -->
     <?php
-        $email="";
-        foreach( $_SESSION['isLoginUser'] as $k => $v){
-            $email = $_SESSION['isLoginUser'][$k]['Email'];
-        }
-        $sql = "SELECT * FROM user where Email ='".$email."'";
-        $result = DataProvider::executeQuery($sql);
-        $row = mysqli_fetch_array($result);
-        $name = $row['Name'];
-        $phone = $row['Phone'];
-        $address = $row['Address'];
+    $email = "";
+    foreach ($_SESSION['isLoginUser'] as $k => $v) {
+        $email = $_SESSION['isLoginUser'][$k]['Email'];
+    }
+    $sql = "SELECT * FROM user where Email ='" . $email . "'";
+    $result = DataProvider::executeQuery($sql);
+    $row = mysqli_fetch_array($result);
+    $name = $row['Name'];
+    $phone = $row['Phone'];
+    $address = $row['Address'];
     ?>
     <!-- Start Info Section -->
     <section class="user-section">
@@ -79,15 +80,15 @@ require_once './php/DataProvider.php';
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                 <label for="name">Họ và tên:</label>
-                                <input type="text" id="name" class="form-control" placeholder="Họ và tên" value="<?php echo $name?>"></input>
+                                <input type="text" id="name" class="form-control" placeholder="Họ và tên" value="<?php echo $name ?>"></input>
                             </div>
                             <div class="form-group col-md-8">
                                 <label for="name">Số điện thoại:</label>
-                                <input type="text" id="phone" class="form-control" placeholder="Số điện thoại" value="<?php echo $phone?>"></input>
+                                <input type="text" id="phone" class="form-control" placeholder="Số điện thoại" value="<?php echo $phone ?>"></input>
                             </div>
                             <div class="form-group col-md-8">
                                 <label for="name">Địa chỉ:</label>
-                                <input type="text" id="address" class="form-control" placeholder="Địa chỉ" value="<?php echo $address?>"></input>
+                                <input type="text" id="address" class="form-control" placeholder="Địa chỉ" value="<?php echo $address ?>"></input>
                             </div>
                             <a href="user.php" class="form-group col-md-5 btn btn-primary rounded" role="button">Quay lại</a>
                             <button onclick="saveInfo()" type="button" class="form-group col-md-5 btn btn-primary rounded">Xác nhận</button>

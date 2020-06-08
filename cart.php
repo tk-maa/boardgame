@@ -9,6 +9,7 @@ session_start();
 
 <head>
     <!-- Required meta tags -->
+    <script src="https://kit.fontawesome.com/3d02397db2.js" crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon Icon Css -->

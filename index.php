@@ -6,6 +6,8 @@ require_once './php/DataProvider.php';
 <html lang="en">
 
 <head>
+    <script src="https://kit.fontawesome.com/3d02397db2.js" crossorigin="anonymous"></script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -488,7 +490,7 @@ require_once './php/DataProvider.php';
 
     <script src="./js/custom/JS-cart.js"></script>
     <script src="./js/custom/JS-user.js"></script>
-    
+
 </body>
 
 </html>
