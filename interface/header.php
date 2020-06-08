@@ -11,49 +11,49 @@
                     <ul class="header-options">
                         <li class="header-account">
                             <?php
-                                if(!isset($_SESSION['isLoginUser'])){
+                            if (!isset($_SESSION['isLoginUser'])) {
                             ?>
-                            <a href="#login-popup1" class="open-popup-link">Đăng nhập</a>
-                            <div id="login-popup1" class="white-popup lr-popup mfp-hide text-center">
-                                <h4>Đăng nhập</h4>
-                                <form class="subscribe-popup-form" id="login-form">
-                                    <input id="email" name="email"  type="email" placeholder="Địa chỉ Email">
-                                    <input id="password" name="password"  type="password" placeholder="Mật khẩu">
-                                    <div class="form-check text-left">
-                                        <label>Ghi nhớ tài khoản
-                                            <input class="defult-check" type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <a href="#" class="forgot-password float-right">Quên mật khẩu? </a>
-                                    </div>
-                                    <button class="btn btn-primary" onclick="login()" type="button" id="btnLogin">Đăng nhập</button>
-                                </form>
-                                <h6>Bạn không có tài khoản?</h6>
-                                <a href="#signup-popup2" class="sign-up open-popup-link">Đăng ký</a>
-                            </div>
-                            <div id="signup-popup2" class="white-popup lr-popup mfp-hide">
-                                <h4>Đăng ký</h4>
-                                <form class="subscribe-popup-form" id="signup-form">
-                                    <input name="input" id="name" placeholder="Họ và tên">
-                                    <input name="email" id="email" type="email" placeholder="Email">
-                                    <input name="password" id="password" type="password" placeholder="Mật khẩu">
-                                    <input name="assertPassword" id="assertPassword" type="password" placeholder="Xác nhận mật khẩu">
-                                    <div class="form-check">
-                                        <label>Tôi chấp nhận điều khoản
-                                            <input class="defult-check" id="rules" type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <button class="btn btn-primary" onclick="signup()" type="button" id="btnSignup">Đăng ký</button>
-                                </form>
-                            </div>
+                                <a href="#login-popup1" class="open-popup-link">Đăng nhập</a>
+                                <div id="login-popup1" class="white-popup lr-popup mfp-hide text-center">
+                                    <h4>Đăng nhập</h4>
+                                    <form class="subscribe-popup-form" id="login-form">
+                                        <input id="email" name="email" type="email" placeholder="Địa chỉ Email">
+                                        <input id="password" name="password" type="password" placeholder="Mật khẩu">
+                                        <div class="form-check text-left">
+                                            <label>Ghi nhớ tài khoản
+                                                <input class="defult-check" type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <a href="#" class="forgot-password float-right">Quên mật khẩu? </a>
+                                        </div>
+                                        <button class="btn btn-primary" onclick="login()" type="button" id="btnLogin">Đăng nhập</button>
+                                    </form>
+                                    <h6>Bạn không có tài khoản?</h6>
+                                    <a href="#signup-popup2" class="sign-up open-popup-link">Đăng ký</a>
+                                </div>
+                                <div id="signup-popup2" class="white-popup lr-popup mfp-hide">
+                                    <h4>Đăng ký</h4>
+                                    <form class="subscribe-popup-form" id="signup-form">
+                                        <input name="input" id="name" placeholder="Họ và tên">
+                                        <input name="email" id="email" type="email" placeholder="Email">
+                                        <input name="password" id="password" type="password" placeholder="Mật khẩu">
+                                        <input name="assertPassword" id="assertPassword" type="password" placeholder="Xác nhận mật khẩu">
+                                        <div class="form-check">
+                                            <label>Tôi chấp nhận điều khoản
+                                                <input class="defult-check" id="rules" type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <button class="btn btn-primary" onclick="signup()" type="button" id="btnSignup">Đăng ký</button>
+                                    </form>
+                                </div>
                             <?php
                             } else {
                             ?>
                                 <a>
                                     <div class="cart-icon">
                                         <i class="ion-ios-cart"></i>
-                                    </div>Xin chào, 
+                                    </div>Xin chào,
                                     <?php foreach ($_SESSION["isLoginUser"] as $k => $v) {
                                         echo $_SESSION['isLoginUser'][$k]["Name"];
                                     }
@@ -71,10 +71,10 @@
                                             <a href="#" onclick="logout()">Đăng xuất</a>
                                         </div>
                                     </div>
-                                </dvi>
-                            <?php
+                                    </dvi>
+                                <?php
                             }
-                            ?>
+                                ?>
                         </li>
                         <li class="header-cart">
                             <?php
@@ -235,7 +235,7 @@
                                     <div class="sub-menu dropdown-menu">
                                         <ul class="all-menu">
                                             <li><a href="error-404.html">BẢO HÀNH</a></li>
-                                            <li><a href="faq.html">VÂN CHUYỂN</a></li>
+                                            <li><a href="faq.html">VẬN CHUYỂN</a></li>
                                         </ul>
                                     </div>
                                 </li>

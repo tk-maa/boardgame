@@ -241,20 +241,20 @@ label {
 	box-shadow: none;
 }
 .btn-primary {
-	background-color: #eb3e32;
+	background-color: silver;
 	border-radius: 50px;
 	padding: 10px 25px;
 	color: #fff;
 	transition: all 0.3s ease-in-out;
-	border: 2px solid #eb3e32;
+	border: 2px solid silver;
 	position: relative;
 	z-index: 99;
 	text-transform: capitalize;
 	overflow: hidden;
 }
 .btn-primary:hover {
-	background-color: #db2e22;;
-	border-color: #db2e22;
+	background-color: #e31837;
+	border-color: #e31837;
 	color: #ffff;
 }
 .btn-secondary {
@@ -390,6 +390,7 @@ iframe {
     background-color: #363f4d;
 }
 .header-logo{
+	margin: 0px 0px 0px 60px;
 	text-align: center;
 }
 .header_list > li a {
@@ -456,6 +457,8 @@ iframe {
 	box-shadow: 2px 0px 4px rgba(0,0,0,0.12);
 	padding: 20px;
 	width: 325px;
+	overflow-y: scroll;
+	max-height: 300px;
 }
 .account-box {
 	position: absolute;
@@ -1488,6 +1491,9 @@ header {
 	color: #7a7a7a;
 	margin: 25px 0 10px 0;
 }
+.subscribe-popup-form input:focus{
+	box-shadow: 0 0 1.5px 1px #010199;
+}
 .subscribe-popup-form button {
 	cursor: pointer;
 	width: 100%;
@@ -1551,6 +1557,14 @@ header {
 /**************************************/
 /*15. Login & Registration Popup Section Css*/
 .white-popup {
+  border-radius: 10px;
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);
   position: relative;
   background: #FFF;
   width: auto;
@@ -1630,7 +1644,7 @@ header {
 }
 .sign-up {
 	color: #eb3e32;
-	font-weight: 400;
+	font-weight: bold;
 	font-size: 14px;
 }
 .login_form {
