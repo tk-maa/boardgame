@@ -4,12 +4,12 @@
     header("Location: login.php");
     exit;
   }
-  foreach($_SESSION["isLogin"] as $k => $v) {
+  /*foreach($_SESSION["isLogin"] as $k => $v) {
     if( $_SESSION['isLogin'][$k]["Role"] != "Admin" || $_SESSION['isLogin'][$k]["Role"] != "Manager"  ){
       header("Location: index.php");
       exit;
     }
-  }
+  }*/
   if (isset($_REQUEST['id']) && $_REQUEST['id'] == "") {
     header("Location: product.php");
     exit;
@@ -65,6 +65,7 @@
             $row = mysqli_fetch_array($result);
             $name = $row['Name'];
             $description = $row['Description'];
+            $category = $row['Category'];
             $type = $row['Type'];
             $numberOfPlayers = $row['NoP'];
             $numberOfPlayersSuggest = $row['NoPsg'];
@@ -91,6 +92,14 @@
               echo "<option value='" . $status . "'>" . (($status == 0) ? "Hoạt động" : "Không hoạt động") . "</option>";
             }
           }
+          function makeCatogoryOptionSelected($category, $categoryOfThisProduct)
+          {
+            if ($category == $categoryOfThisProduct) {
+              echo "<option value='" . $status . "' selected>" . $category . "</option>";
+            } else {
+              echo "<option value='" . $status . "'>" . $category . "</option>";
+            }
+          }
           ?>
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -99,27 +108,11 @@
             <form class="card-body" id="product-form">
               <input type="hidden" id="id" value="<?php echo (isset($_REQUEST['id']) ? $id : "") ?>"></input>
               <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-8">
                   <label for="name">Tên sản phẩm:</label>
                   <input type="text" id="name" class="form-control" placeholder="Tên sản phẩm" value="<?php echo (isset($_REQUEST['id']) ? $name : "") ?>"></input>
                 </div>
-                <div class="form-group col-md-3">
-                  <label for="type">Loại:</label>
-                  <select id="type" class="form-control">
-                    <?php
-                    $sql = "SELECT * FROM type";
-                    $result = DataProvider::executeQuery($sql);
-                    while($row = mysqli_fetch_array($result)){
-                      if(isset($_REQUEST['id'])) {
-                        makeTypeOptionSelected($row, $type);
-                      } else {
-                        makeTypeOptionSelected($row,"");
-                      }
-                    };
-                    ?>
-                  </select>
-                </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                   <label for="quantity">Số lượng:</label>
                   <input type="text" id="quantity" class="form-control" placeholder="Số lượng" value="<?php echo (isset($_REQUEST['id']) ? $quantity : "") ?>"></input>
                 </div>
@@ -139,15 +132,55 @@
                   <label for="age">Độ tuổi:</label>
                   <input type="text" id="age" class="form-control" placeholder="Độ tuổi" value="<?php echo (isset($_REQUEST['id']) ? $age : "") ?>"></input>
                 </div>
-                <div class="form-group col-md-12">
-                  <label for="description">Mô tả:</label>
-                  <textarea rows="3" id="description" class="form-control" placeholder="Mô tả sản phẩm"><?php echo (isset($_REQUEST['id']) ? $description : "") ?></textarea>
+                <div class="form-group col-md-4">
+                  <label for="type">Loại sản phẩm:</label>
+                  <select id="type" class="form-control">
+                    <?php
+                    $sql = "SELECT * FROM type";
+                    $result = DataProvider::executeQuery($sql);
+                    while($row = mysqli_fetch_array($result)){
+                      if(isset($_REQUEST['id'])) {
+                        makeTypeOptionSelected($row, $type);
+                      } else {
+                        makeTypeOptionSelected($row,"");
+                      }
+                    };
+                    ?>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="type">Thể loại:</label>
+                  <select id="type" class="form-control">
+                    <?php
+                      if(isset($_REQUEST['id'])) {
+                        makeCatogoryOptionSelected("Cardgame", $category);
+                        makeCatogoryOptionSelected("Deduction", $category);
+                        makeCatogoryOptionSelected("Horror", $category);
+                        makeCatogoryOptionSelected("Puzzle", $category);
+                        makeCatogoryOptionSelected("Roleplaying", $category);
+                        makeCatogoryOptionSelected("Stragery", $category);
+                        makeCatogoryOptionSelected("Wargame", $category);
+                      } else {
+                        makeCatogoryOptionSelected("Cardgame", "");
+                        makeCatogoryOptionSelected("Deduction", "");
+                        makeCatogoryOptionSelected("Horror", "");
+                        makeCatogoryOptionSelected("Puzzle", "");
+                        makeCatogoryOptionSelected("Roleplaying", "");
+                        makeCatogoryOptionSelected("Stragery", "");
+                        makeCatogoryOptionSelected("Wargame", "");
+                      }
+                    ?>
+                  </select>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="price">Giá tiền:</label>
                   <input type="text" id="price" class="form-control" placeholder="Giá sản phẩm" value="<?php echo (isset($_REQUEST['id']) ? $price : "") ?>"></input>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-12">
+                  <label for="description">Mô tả:</label>
+                  <textarea rows="3" id="description" class="form-control" placeholder="Mô tả sản phẩm"><?php echo (isset($_REQUEST['id']) ? $description : "") ?></textarea>
+                </div>
+                <div class="form-group col-md-6">
                   <label for="status">Trạng thái:</label>
                   <select id="status" class="form-control">
                   <?php
@@ -163,7 +196,7 @@
                   ?>
                   </select>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                   <label for="image">Ảnh đại diện:</label>
                   <input type="file" id="image" class="form-control"></input>
                 </div>

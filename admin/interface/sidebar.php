@@ -13,24 +13,24 @@
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="index.php">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Bảng Điều Khiển</span></a>
   </li>
 
   <!-- Divider -->
   <hr class="sidebar-divider">
-
+  <?php
+  foreach ($_SESSION["isLogin"] as $k => $v) {
+    if ($_SESSION['isLogin'][$k]["Role"] == "Admin") {
+  ?>
   <!-- Heading -->
   <div class="sidebar-heading">
     Giao Diện
   </div>
 
   <!-- Nav Item - Pages Collapse Menu -->
-  <?php
-  foreach ($_SESSION["isLogin"] as $k => $v) {
-    if ($_SESSION['isLogin'][$k]["Role"] == "Admin") {
-  ?>
+  
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
@@ -42,13 +42,12 @@
           </div>
         </div>
       </li>
+  <!-- Divider -->
+  <hr class="sidebar-divider">
   <?php
     }
   }
   ?>
-  <!-- Divider -->
-  <hr class="sidebar-divider">
-
   <!-- Heading -->
   <div class="sidebar-heading">
     Hệ Thống
@@ -67,18 +66,18 @@
       </div>
     </div>
   </li>
+  <!-- Nav Item - Charts -->
+  <li class="nav-item">
+    <a class="nav-link" href="charts.html">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Đơn hàng</span>
+    </a>
+  </li>
+
   <?php
   foreach ($_SESSION["isLogin"] as $k => $v) {
     if ($_SESSION['isLogin'][$k]["Role"] == "Admin") {
   ?>
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Đơn hàng</span>
-        </a>
-      </li>
-
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccount" aria-expanded="true" aria-controls="collapseAccount">

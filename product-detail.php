@@ -283,7 +283,7 @@ if(isset($_REQUEST['id'])){
                                 </div>
                             </div>
                             <div class="product-info common-cart-info text-center">
-                                <a href="product-detail.html" class="cart-name"><?php echo $row['Name']?></a>
+                                <a href="product-detail.php?id=<?php echo $row['ID']?>" class="cart-name"><?php echo $row['Name']?></a>
                                 <p class="cart-price"><?php echo number_format($row['Price'],0,".",".")?>₫</p>
                             </div>
                         </div>
