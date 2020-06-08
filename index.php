@@ -487,6 +487,8 @@ require_once './php/DataProvider.php';
     <script src="./js/custom/JS-index.js"></script>
 
     <script src="./js/custom/JS-cart.js"></script>
+
+    
 </body>
 
 </html>

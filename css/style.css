@@ -457,6 +457,21 @@ iframe {
 	padding: 20px;
 	width: 325px;
 }
+.account-box {
+	position: absolute;
+	background-color: #fff;
+	border: 1px solid #f2f2f2;
+	transition: all 0.3s ease-in-out;
+	z-index: 9;
+	opacity: 0;
+	visibility: hidden;
+	box-shadow: 2px 0px 4px rgba(0,0,0,0.12);
+	width: 200px;
+}
+.account-box div {
+	padding: 5px 0px 5px 10px;
+	text-align: left!important;
+}
 .header-cart{
 	position: relative;
 	display: inline-block;
@@ -574,6 +589,10 @@ iframe {
     color: #000;
 }
 .header-cart:hover .cart-box {
+    opacity: 1;
+    visibility: visible;
+}
+.header-account:hover .account-box {
     opacity: 1;
     visibility: visible;
 }
