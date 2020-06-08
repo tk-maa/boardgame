@@ -58,7 +58,7 @@ session_start();
 
     <!-- Start Cart Detail Section -->
     <section class="cart-detail-section">
-        <div class="container" style="min-height: 300px;">
+        <div class="container" style="min-height: 580px;">
             <div class="row" id="cartDetailContainer">
                 <?php if (isset($_SESSION["cart_item"])) {
                     $total_quantity = 0;
@@ -82,7 +82,7 @@ session_start();
                                     $total_price += ($item_price);
                                 ?>
                                     <tr>
-                                        <td class="text-center td-image "> <img src="./img/sanpham/<?php echo $item['Pic'] ?>" style="width:60px;height:60px" alt="<?php echo $item['TenSP'] ?>"> </td>
+                                        <td class="text-center td-image "> <img src="./img/sanpham/<?php echo $item['Pic'] ?>" style="width:60px;height:60px"> </td>
                                         <td class="text-left td-name "><a href='product-detail.php?id=<?php echo $item['ID'] ?>'><?php echo $item['Name'] ?></a></td>
                                         <td class="text-center td-qty ">
                                             <div class="input-group btn-block ">
@@ -121,7 +121,7 @@ session_start();
                         </div>
                     </div>
                 <?php } else
-                    echo "<h3> Bạn chưa có sản phẩm nào!!! </h3>";
+                    echo "<h3> Giỏ hàng chưa có sản phẩm nào! </h3>";
 
                 ?>
             </div>

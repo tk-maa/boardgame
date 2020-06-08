@@ -2149,7 +2149,6 @@ header {
 .form-control {
 	border-radius: 0;
 	border: 1px solid #cdcdcd;
-	text-transform: capitalize;
 	padding: 10px 15px;
 	color: #000;
 	margin-bottom: 20px;

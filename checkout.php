@@ -136,16 +136,20 @@
                 <form id="customerInfo">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-							<label for="hoVaTen">Họ và tên:</label>
-							<input type="text" id="hoVaTen" class="form-control" placeholder="Họ và tên"></input>
+							<label for="name">Họ và tên:</label>
+							<input type="text" id="name" class="form-control" placeholder="Họ và tên"></input>
 						</div>
                         <div class="form-group col-md-6">
-							<label for="sdt">Số điện thoại:</label>
-							<input type="text" id="sdt" class="form-control" placeholder="Số điện thoại"></input>
+							<label for="phone">Số điện thoại:</label>
+							<input type="text" id="phone" class="form-control" placeholder="Số điện thoại"></input>
 						</div>
                         <div class="form-group col-md-12">
-							<label for="diaChi">Địa chỉ:</label>
-							<input type="text" id="diaChi" class="form-control" placeholder="Địa chỉ"></input>
+							<label for="address">Địa chỉ:</label>
+							<input type="text" id="address" class="form-control" placeholder="Địa chỉ"></input>
+                        </div>
+                        <div class="form-group col-md-12">
+							<label for="note">Ghi chú:</label>
+							<textarea id="note" class="form-control"></textarea >
 						</div>
                         <div class="col-md-12 btn btn-primary mb-5" onclick="checkOut()">
 							<h4> XÁC NHẬN MUA HÀNG </h4>

@@ -176,10 +176,10 @@
                                 class firstMenu
                                 {
 
-                                    function __construct($menuID, $ten, $link)
+                                    function __construct($menuID, $name, $link)
                                     {
                                         $this->menuID = $menuID;
-                                        $this->ten = $ten;
+                                        $this->name = $name;
                                         $this->link = $link;
                                     }
                                 }
@@ -187,9 +187,9 @@
                                 {
                                     var $menuIDFirst;
 
-                                    function __construct($menuID, $menuIDFirst, $ten, $link)
+                                    function __construct($menuID, $menuIDFirst, $name, $link)
                                     {
-                                        parent::__construct($menuID, $ten, $link);
+                                        parent::__construct($menuID, $name, $link);
                                         $this->menuIDFirst = $menuIDFirst;
                                     }
                                 }
@@ -197,19 +197,19 @@
                                 $sql = "SELECT * FROM menu_first";
                                 $result = DataProvider::executeQuery($sql);
                                 while ($row = mysqli_fetch_array($result)) {
-                                    $FirstMenuArray[] = new firstMenu($row['ID'], $row['Ten'], $row['Link']);
+                                    $FirstMenuArray[] = new firstMenu($row['ID'], $row['Name'], $row['Link']);
                                 }
                                 $sql = "SELECT * FROM menu_second";
                                 $result = DataProvider::executeQuery($sql);
                                 while ($row = mysqli_fetch_array($result)) {
-                                    $SecondMenuArray[] = new secondMenu($row['ID'], $row['MenuIDFirst'], $row['Ten'], $row['Link']);
+                                    $SecondMenuArray[] = new secondMenu($row['ID'], $row['MenuIDFirst'], $row['Name'], $row['Link']);
                                 }
 
                                 $haveSecond = false;
 
                                 foreach ($FirstMenuArray as $currentFirst) {
                                     echo "<li>" .
-                                        "<a class='dropdown-toggler' href='" . $currentFirst->link . "' data-toggle='dropdown' aria-expanded='false'>" . $currentFirst->ten;
+                                        "<a class='dropdown-toggler' href='" . $currentFirst->link . "' data-toggle='dropdown' aria-expanded='false'>" . $currentFirst->name;
                                     foreach ($SecondMenuArray as $currentSecond) {
                                         if ($currentSecond->menuIDFirst == $currentFirst->menuID) {
                                             if ($haveSecond == false) {
@@ -217,7 +217,7 @@
                                                     "<ul class='dropdown-menu list-unstyled'>";
                                                 $haveSecond = true;
                                             }
-                                            echo "<li class='second-menu'><a href='" . $currentSecond->link . "'>" . $currentSecond->ten . "</a></li>";
+                                            echo "<li class='second-menu'><a href='" . $currentSecond->link . "'>" . $currentSecond->name . "</a></li>";
                                         }
                                     }
                                     if ($haveSecond == true) {

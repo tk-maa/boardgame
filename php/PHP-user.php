@@ -8,6 +8,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 		case 'logout': logout();break;
 		case 'signup': signup();break;
 		case 'saveInfo': saveInfo();break;
+		case 'changePassword': changePassword();break;
     }
 }
 function login(){
@@ -75,6 +76,32 @@ function saveInfo(){
 		" Name='". $name . "',".
 		" Phone='". $phone . "',".
 		" Address='". $address . "'".
+		" WHERE	Email='" . $email . "';";
+	DataProvider::executeQuery($sql);
+	die("0");
+}
+
+function changePassword(){
+	if(!isset($_SESSION['isLoginUser'])){
+		die("1");
+	} 
+
+	$email = "";
+	foreach($_SESSION['isLoginUser'] as $k => $v){
+		$email =  $_SESSION['isLoginUser'][$k]['Email'];
+	}
+
+	$oldPassword = addslashes($_POST['oldPassword']);
+	$newPassword = addslashes($_POST['newPassword']);
+	
+	$sql = "SELECT * FROM user WHERE Email='". $email ."' AND Password = '". $oldPassword ."'";
+	$result = DataProvider::executeQuery($sql);
+	if( mysqli_num_rows($result) == 0 ) {
+		die("2");
+	} 
+	
+	$sql = "UPDATE user SET" .
+		" Password='". $newPassword . "'".
 		" WHERE	Email='" . $email . "';";
 	DataProvider::executeQuery($sql);
 	die("0");

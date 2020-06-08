@@ -9,7 +9,7 @@ function login() {
 	}
 
 	if (password.value==""){
-		alert("Mật khẩu không thể để trống");
+		alert("Mật khẫu không thể để trống");
 		password.focus();
 		return;
 	}
@@ -33,7 +33,7 @@ function login() {
 					window.location.href = "index.php";
 				}break;
 				case "1":{
-					alert("Email hoặc mật khẩu không chính xác");
+					alert("Email hoặc mật khẫu không chính xác");
 				}break;
 			}
 		}
@@ -72,17 +72,17 @@ function signup() {
 	}
 
 	if (password.value == ""){
-		alert("Mật khẩu không thể để trống");
+		alert("Mật khẫu không thể để trống");
 		password.focus();
 		return;
 	} else {
 		if( assertPassword.value == "" ){
-			alert("Xác nhận mật khẩu không thể để trống");
+			alert("Xác nhận mật khẫu không thể để trống");
 			assertPassword.focus();
 			return;
 		} else {
 			if( password.value != assertPassword.value ){
-				alert("Mật khẩu và xác nhận không thể khác nhau");
+				alert("Mật khẫu và xác nhận không thể khác nhau");
 				return;
 			}
 		}
@@ -195,6 +195,65 @@ function saveInfo() {
 				case "1":{
 					alert("Phiên đăng nhập đã hết hạn");
 					window.location.href = "index.php";
+				}break;
+			}
+		}
+	});
+}
+
+function changePassword() {
+	var oldPassword = document.getElementById("password-form").oldPassword;
+	var newPassword = document.getElementById("password-form").newPassword;
+	var assertNewPassword = document.getElementById("password-form").assertNewPassword;
+
+	if (oldPassword.value == ""){
+		alert("Mật khẫu cũ không được để trống");
+		oldPassword.focus();
+		return;
+	}
+
+	if (newPassword.value == ""){
+		alert("Mật khẫu mới không được để trống");
+		newPassword.focus();
+		return;
+	} else {
+		if (assertNewPassword.value == ""){
+			alert("Xác nhận mật khẫu mới không được để trống");
+			assertNewPassword.focus();
+			return;
+		} else {
+			if(newPassword.value == assertNewPassword.value){
+				alert("Xác nhận mật khẫu mới không đúng");
+				return;
+			}
+		}
+	}
+
+	var form_data = new FormData();
+	form_data.append('action','changePassword');
+	form_data.append('oldPassword',oldPassword.value);
+	form_data.append('newPassword',newPassword.value);
+
+	jQuery.ajax({
+		type: "POST",
+		url: './php/PHP-user.php',
+		dataType: 'text',
+		cache: false,
+		contentType: false,
+		processData: false,
+		data : form_data,
+		success:function(res){
+			switch(res){
+				case "0":{
+					alert("Đổi mật khẫu thành công");
+					window.location.href = "user.php";
+				}break;
+				case "1":{
+					alert("Phiên đăng nhập đã hết hạn");
+					window.location.href = "index.php";
+				}break;
+				case "2":{
+					alert("Mật khẫu cũ không chính xác");
 				}break;
 			}
 		}

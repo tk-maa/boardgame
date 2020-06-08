@@ -158,8 +158,8 @@ function removeFromCart(ID) {
 								"</span>" +
 								"</div>" +
 								"</td>" +
-								`<td class='text-center td-price '>${formatPricetoPrint(parseInt(getData[i].Price))}₫</td>'` +
-								`<td class='text-center td-total '>${formatPricetoPrint(totalMoney)}₫</td>'` +
+								`<td class='text-center td-price '>${formatPricetoPrint(parseInt(getData[i].Price))}₫</td>` +
+								`<td class='text-center td-total '>${formatPricetoPrint(totalMoney)}₫</td>` +
 								"</tr>";
 						}
 						string += "</tbody>" +
@@ -340,7 +340,7 @@ function updateQuantity(thisElement, ID) {
 				for (var i = 0; i < getData.length; i++) {
 					var totalPrice = getData[i].Quantity * getData[i].Price;
 					string += "<tr>" +
-						`<td class='text-center td-image '> <img src='./img/sanpham/${getData[i].Pic}' style='width:60px;height:60px' alt='${getData[i].TenSP}'> </td>` +
+						`<td class='text-center td-image '> <img src='./img/sanpham/${getData[i].Pic}' style='width:60px;height:60px'> </td>` +
 						`<td class='text-left td-name ><a href='product-detail.php?id=${getData[i].ID}'>${getData[i].Name}</a></td>` +
 						"<td class='text-center td-qty '>" +
 						"<div class='input-group btn-block '>" +
