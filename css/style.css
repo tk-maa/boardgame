@@ -354,7 +354,14 @@ label {
     color: #fff;
 }
 .form-control:focus {
-	box-shadow: none;
+
+	border-radius: 3px;
+	border: 2px solid red;
+	padding: 10px 15px;
+	color: #000;
+	margin-bottom: 20px;
+	height: auto;
+	font-size: 14px;
 }
 iframe {
 	border: 0;
@@ -2147,9 +2154,8 @@ header {
 	float: left;
 }
 .form-control {
-	border-radius: 0;
-	border: 1px solid #cdcdcd;
-	text-transform: capitalize;
+	border-radius: 3px;
+	border: 2px solid #cdcdcd;
 	padding: 10px 15px;
 	color: #000;
 	margin-bottom: 20px;

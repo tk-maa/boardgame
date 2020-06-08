@@ -75,7 +75,7 @@ require_once './php/DataProvider.php';
         <div class="container">
             <div class="row">
                 <div class="account-page col-sm-9">
-                    <h1 class="title page-title mb-5">Thông tin của tôi</h1>
+                    <h1 class="title page-title mb-5" style="font-weight: bold;">Thông tin của tôi</h1>
                     <form id="information-form">
                         <div class="form-row">
                             <div class="form-group col-md-8">
