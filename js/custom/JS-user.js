@@ -222,7 +222,7 @@ function changePassword() {
 			assertNewPassword.focus();
 			return;
 		} else {
-			if(newPassword.value == assertNewPassword.value){
+			if(newPassword.value != assertNewPassword.value){
 				alert("Xác nhận mật khẫu mới không đúng");
 				return;
 			}

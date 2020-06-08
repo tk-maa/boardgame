@@ -131,6 +131,8 @@ require_once './php/DataProvider.php';
     <script src="js/mCustomScrollbar.concat.min.js" type="text/javascript"></script>
     <!-- Custom css -->
     <script src="js/custom.js" type="text/javascript"></script>
+    
+    <script src="https://kit.fontawesome.com/3d02397db2.js" crossorigin="anonymous"></script>
 
     <script src="js/custom/JS-cart.js" type="text/javascript"></script>
 

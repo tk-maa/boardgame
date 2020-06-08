@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2020 at 01:32 PM
+-- Generation Time: Jun 08, 2020 at 03:30 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -59,7 +59,7 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`ID`, `Image`, `Link`, `Position`) VALUES
-(1, 'offer-banner-7.jpg', '#1', 'Slider-Section'),
+(1, 'offer-banner-7.jpg', '#', 'Offer-Section'),
 (2, 'offer-banner-8.jpg', '#', 'Offer-Section'),
 (3, 'offer-banner-9.jpg', '#', 'Offer-Section'),
 (4, 'slider1.jpg', '#', 'Slider-Section'),
@@ -105,7 +105,7 @@ INSERT INTO `images` (`ID`, `ProductID`, `Image`) VALUES
 
 CREATE TABLE `menu_first` (
   `ID` int(11) NOT NULL,
-  `Ten` text NOT NULL,
+  `Name` text NOT NULL,
   `Link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -113,7 +113,7 @@ CREATE TABLE `menu_first` (
 -- Dumping data for table `menu_first`
 --
 
-INSERT INTO `menu_first` (`ID`, `Ten`, `Link`) VALUES
+INSERT INTO `menu_first` (`ID`, `Name`, `Link`) VALUES
 (1, 'Board Game', 'product.php?code=BG'),
 (2, 'Rubik', 'product.php?code=RB'),
 (3, 'Các loại cờ', 'product.php?code=CO');
@@ -127,7 +127,7 @@ INSERT INTO `menu_first` (`ID`, `Ten`, `Link`) VALUES
 CREATE TABLE `menu_second` (
   `ID` int(11) NOT NULL,
   `MenuIDFirst` int(11) NOT NULL,
-  `Ten` text NOT NULL,
+  `Name` text NOT NULL,
   `Link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -135,7 +135,7 @@ CREATE TABLE `menu_second` (
 -- Dumping data for table `menu_second`
 --
 
-INSERT INTO `menu_second` (`ID`, `MenuIDFirst`, `Ten`, `Link`) VALUES
+INSERT INTO `menu_second` (`ID`, `MenuIDFirst`, `Name`, `Link`) VALUES
 (1, 1, 'Stragery', 'product.php?code=BG'),
 (2, 1, 'Horror', 'product.php?code=BG'),
 (3, 1, 'Deduction', 'product.php?code=BG'),
@@ -244,6 +244,20 @@ INSERT INTO `type` (`TypeID`, `TypeName`) VALUES
 ('CO', 'Các loại cờ'),
 ('RB', 'Rubik');
 
+--
+-- Triggers `type`
+--
+DELIMITER $$
+CREATE TRIGGER `update_type` AFTER UPDATE ON `type` FOR EACH ROW BEGIN
+   IF !(NEW.TypeID <=> OLD.TypeID) THEN
+      UPDATE product
+      SET product.Type = NEW.TypeID 
+      WHERE product.Type= OLD.TypeID;
+   END IF;
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -263,7 +277,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Email`, `Password`, `Name`, `Phone`, `Address`) VALUES
-('test123@gmail.com', '123123', 'test123', '0911111111', 'test địa chỉ'),
+('test123@gmail.com', '789789', 'test123', '0911111111', 'test địa chỉ'),
 ('testUser@gmail.com', 'DayLaPassword123.', 'Test Name', NULL, NULL);
 
 --
