@@ -945,7 +945,7 @@ header {
     border-radius: 10px;
     box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
 	margin: 7px;
-	min-height: 350px;
+	min-height: 375px;
 }
 .common-cart-info .cart-name {
 	min-height: 60px;
