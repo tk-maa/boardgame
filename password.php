@@ -10,6 +10,7 @@ require_once './php/DataProvider.php';
 <html lang="en">
 
 <head>
+    <script src="https://kit.fontawesome.com/3d02397db2.js" crossorigin="anonymous"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -71,7 +72,7 @@ require_once './php/DataProvider.php';
                             </div>
                             <div class="form-group col-md-8">
                                 <label for="newPassword">Mật khẫu mới:</label>
-                                <input type="text" id="newPassword" class="form-control" placeholder="Mật khẫu mới" ></input>
+                                <input type="text" id="newPassword" class="form-control" placeholder="Mật khẫu mới"></input>
                             </div>
                             <div class="form-group col-md-8">
                                 <label for="assertNewPassword">Xác nhận mật khẫu mới:</label>
