@@ -30,7 +30,7 @@ function login() {
 		success:function(res){
 			switch(res){
 				case "0":{
-					window.location.href = "index.php";
+					location.reload();
 				}break;
 				case "1":{
 					alert("Email hoặc mật khẫu không chính xác");
@@ -143,7 +143,7 @@ function logout() {
 		success:function(res){
 			switch(res){
 				case "0":{
-					window.location.href = "index.php";
+					location.reload();
 				}break;
 			}
 		}

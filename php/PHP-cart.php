@@ -34,6 +34,14 @@ function addToCart(){
     $quantity = addslashes($_POST['quantity']);
 
     $sql = "SELECT * FROM product WHERE ID = '".$ID."'";
+    $result = DataProvider::executeQuery($sql);
+
+    $row = mysqli_fetch_array($result);
+    if($row['Quantity'] <= 0){
+        die("1");
+    }
+
+
     if(!empty($_SESSION["cart_item"])) {
         $item_array_id = custom_array_column($_SESSION['cart_item'], "ID");
         if (in_array($ID, $item_array_id)) {
@@ -46,19 +54,11 @@ function addToCart(){
                 }
             }
         } else {
-            $result = DataProvider::executeQuery($sql);
-            while ($row = mysqli_fetch_array($result))
-            {
-                $itemArray = array('Name'=>$row['Name'], 'ID'=>$row['ID'], 'Quantity'=>$quantity, 'Price'=>$row['Price'], 'Pic'=>$row['Pic']);
-            }
+            $itemArray = array('Name'=>$row['Name'], 'ID'=>$row['ID'], 'Quantity'=>$quantity, 'Price'=>$row['Price'], 'Pic'=>$row['Pic']);
             $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],array($itemArray));
         }
     }  else {
-        $result = DataProvider::executeQuery($sql);
-        while ($row = mysqli_fetch_array($result))
-        {
-            $itemArray = array('Name'=>$row['Name'], 'ID'=>$row['ID'], 'Quantity'=>$quantity, 'Price'=>$row['Price'], 'Pic'=>$row['Pic']);
-        }
+        $itemArray = array('Name'=>$row['Name'], 'ID'=>$row['ID'], 'Quantity'=>$quantity, 'Price'=>$row['Price'], 'Pic'=>$row['Pic']);
         $_SESSION["cart_item"] = array($itemArray);
     }
     echo json_encode($_SESSION["cart_item"]);
@@ -103,45 +103,58 @@ function updateQuantity(){
 }
 
 function checkOut(){
-	$hoVaTen = addslashes($_POST['hoVaTen']);
-	$sdt = addslashes($_POST['sdt']);
-    $diaChi = addslashes($_POST['diaChi']);
-    $tongTien = 0;
-    $tongSoLuong = 0;
 
+	$name = addslashes($_POST['name']);
+	$phone = addslashes($_POST['phone']);
+    $address = addslashes($_POST['address']);
+    $note = addslashes($_POST['note']);
+    $time = date("d")."/".date("m")."/".date("Y");
+    $user = NULL;
+
+    $totalPrice = 0;
+    $totalQuantity = 0;
+    
     if(!empty($_SESSION["cart_item"])) {
         foreach($_SESSION["cart_item"] as $k => $v) {
-            $tongSoLuong += $_SESSION["cart_item"][$k]["SoLuong"];
-            $tongTien += $_SESSION["cart_item"][$k]["GiaTien"] * $_SESSION["cart_item"][$k]["SoLuong"];
+            $totalQuantity += $_SESSION["cart_item"][$k]["Quantity"];
+            $totalPrice += $_SESSION["cart_item"][$k]["Price"] * $_SESSION["cart_item"][$k]["Quantity"];
         }
     } else {
-        die;
+        die("1");
     }
-	
-	$sql = "INSERT INTO hoadon(HoTen, DiaChi, SDT, SoLuongTong, TongTien, ThanhTien) VALUES(". 
-			"'" .$hoVaTen. "'," . 
-			"'" .$diaChi. "'," . 
-			"'" .$sdt. "'," . 
-			"'" .$tongSoLuong. "'," . 
-			"'" .$tongTien. "'," .			
-			"'" .$tongTien. "')";
+    
+    if(isset($_SESSION['isLoginUser'])){
+        foreach($_SESSION['isLoginUser'] as $k => $v){
+            $user = $_SESSION['isLoginUser'][$k]['Email'];
+        }
+    }
+
+	$sql = "INSERT INTO bill(User, Quantity, Total, Name, Phone, Address, Time, Note, Status) VALUES(". 
+			"'" .$user. "'," . 
+			"'" .$totalQuantity. "'," . 
+			"'" .$totalPrice. "'," . 
+			"'" .$name. "'," . 
+            "'" .$phone. "'," .
+            "'" .$address. "'," .
+            "'" .$time. "'," .
+            "'" .$note. "'," .				
+			"'1')";
 	DataProvider::executeQuery($sql);
 	
-	$sql = "SELECT MaHD FROM hoadon ORDER BY MaHD DESC LIMIT 1";
+	$sql = "SELECT ID FROM bill ORDER BY ID DESC LIMIT 1";
 	$result = DataProvider::executeQuery($sql);
 	$row = mysqli_fetch_array($result);
-	$maHD = $row['MaHD']; 
+	$billID = $row['ID']; 
 	foreach($_SESSION["cart_item"] as $k => $v) {
-		$sql = "INSERT INTO cthoadon(MaHD, MaSP, SoLuong, DonGia) VALUES(".
-			"'" .$maHD. "'," . 
-			"'" .$_SESSION["cart_item"][$k]["MaSP"]. "'," . 
-			"'" .$_SESSION["cart_item"][$k]["SoLuong"]."'," . 
-			"'" .$_SESSION["cart_item"][$k]["GiaTien"]."')";
+		$sql = "INSERT INTO billdetail(BillID, ProductID, Quantity, Price) VALUES(".
+			"'" .$billID. "'," . 
+			"'" .$_SESSION["cart_item"][$k]["ID"]. "'," . 
+			"'" .$_SESSION["cart_item"][$k]["Quantity"]."'," . 
+			"'" .$_SESSION["cart_item"][$k]["Price"]."')";
 		DataProvider::executeQuery($sql);
     }
     unset($_SESSION["cart_item"]);
-    echo ("Đặt hàng thành công!");
-    die;
+    die("0");
 }
 
 function quickView(){

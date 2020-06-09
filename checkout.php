@@ -130,6 +130,21 @@ if (!isset($_SESSION["cart_item"]) || empty($_SESSION["cart_item"])) {
 </section>
 <!-- End Cart Detail Section -->
 
+<?php 
+    if (isset($_SESSION['isLoginUser'])){
+        $email = "";
+        foreach($_SESSION['isLoginUser'] as $k => $v){
+            $email =  $_SESSION['isLoginUser'][$k]['Email'];
+        }
+        $sql = "SELECT * FROM user WHERE Email ='".$email."'";
+        $result = DataProvider::executeQuery($sql);
+        $row = mysqli_fetch_array($result);
+        $name = $row['Name'];
+        $address = $row['Address'];
+        $phone = $row['Phone'];
+    }
+?>
+
 <!-- Start Checkout Section -->
 <section class="checkout-section">
     <div class="container" style="min-height: 300px;" >
@@ -138,19 +153,19 @@ if (!isset($_SESSION["cart_item"]) || empty($_SESSION["cart_item"])) {
                 <div class="mb-2 mt-2">
                     <h3>Thông tin khách hàng</h3>
                 </div>
-                <form id="customerInfo">
+                <form id="customer-info-form">
                     <div class="form-row">
                         <div class="form-group col-md-6">
 							<label for="name">Họ và tên:</label>
-							<input type="text" id="name" class="form-control" placeholder="Họ và tên"></input>
+							<input type="text" id="name" class="form-control" placeholder="Họ và tên" value="<?php echo (isset($_SESSION['isLoginUser']) ? $name : "")?>"></input>
 						</div>
                         <div class="form-group col-md-6">
 							<label for="phone">Số điện thoại:</label>
-							<input type="text" id="phone" class="form-control" placeholder="Số điện thoại"></input>
+							<input type="text" id="phone" class="form-control" placeholder="Số điện thoại" value="<?php echo (isset($_SESSION['isLoginUser']) ? $phone : "")?>"></input>
 						</div>
                         <div class="form-group col-md-12">
 							<label for="address">Địa chỉ:</label>
-							<input type="text" id="address" class="form-control" placeholder="Địa chỉ"></input>
+							<input type="text" id="address" class="form-control" placeholder="Địa chỉ" value="<?php echo (isset($_SESSION['isLoginUser']) ? $address : "")?>"></input>
                         </div>
                         <div class="form-group col-md-12">
 							<label for="note">Ghi chú:</label>
@@ -160,25 +175,6 @@ if (!isset($_SESSION["cart_item"]) || empty($_SESSION["cart_item"])) {
 							<h4> XÁC NHẬN MUA HÀNG </h4>
 						</div>
                     </div>
-                    <form id="customerInfo">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="hoVaTen">Họ và tên:</label>
-                                <input type="text" id="hoVaTen" class="form-control" placeholder="Họ và tên"></input>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="sdt">Số điện thoại:</label>
-                                <input type="text" id="sdt" class="form-control" placeholder="Số điện thoại"></input>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label for="diaChi">Địa chỉ:</label>
-                                <input type="text" id="diaChi" class="form-control" placeholder="Địa chỉ"></input>
-                            </div>
-                            <div class="col-md-12 btn btn-primary mb-5" onclick="checkOut()">
-                                <h4> XÁC NHẬN MUA HÀNG </h4>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

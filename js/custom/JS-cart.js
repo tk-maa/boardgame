@@ -31,6 +31,10 @@ function addToCart(ID) {
 		contentType: false,
 		processData: false,
 		success: function (response) {
+			if (response == 1) {
+				alert("Đã xảy ra lỗi");
+				return;
+			}
 			var getData = JSON.parse(response);
 			var string = "<div class='cart-info'>";
 			var totalCartQuantity = 0;
@@ -442,39 +446,50 @@ function updateQuantity(thisElement, ID) {
 }
 
 function checkOut() {
-	var hoVaTen = document.getElementById("customerInfo").hoVaTen;
-	if (hoVaTen.value == "") {
-		alert("Họ và tên không được để trống");
-		hoVaTen.focus();
-		return;
-	}
+	var name = document.getElementById("customer-info-form").name;
+	var phone = document.getElementById("customer-info-form").phone;
+	var address = document.getElementById("customer-info-form").address;
+	var note = document.getElementById("customer-info-form").note;
 
-	var sdt = document.getElementById("customerInfo").sdt;
-	if (sdt.value == "") {
-		alert("Số điện thoại không được để trống!");
-		sdt.focus();
+	if (name.value == "") {
+		alert("Họ và tên không được để trống");
+		name.focus();
 		return;
 	} else {
-		var pattern = /0[1-9]\d{8}$/;
-		if (pattern.test(sdt.value) == false) {
-			alert("Số điện thoại không hợp lệ - Số điện thoại 10 số và phải bắt đầu bằng 0");
-			sdt.focus();
+		var format = /[0-9]/igm;
+		if (format.test(name.value) == true) {
+			alert("Họ và tên không thể chứa số");
+			name.focus();
 			return;
 		}
 	}
 
-	var diaChi = document.getElementById("customerInfo").diaChi;
-	if (diaChi.value == "") {
+	if (phone.value == "") {
+		alert("Số địa thoại không được để trống");
+		phone.focus();
+		return;
+	} else {
+		var pattern = /0[1-9]\d{8}$/;
+		if (pattern.test(phone.value) == false) {
+			alert("Số điện thoại không hợp lệ  VD: 09xxxxxxxx");
+			phone.focus();
+			return;
+		}
+	}
+
+	if (address.value == "") {
 		alert("Địa chỉ không được để trống");
-		diaChi.focus();
+		address.focus();
 		return;
 	}
 
+
 	let form_data = new FormData();
 	form_data.append('action', 'checkOut');
-	form_data.append('hoVaTen', hoVaTen.value);
-	form_data.append('sdt', sdt.value);
-	form_data.append('diaChi', diaChi.value);
+	form_data.append('name', name.value);
+	form_data.append('phone', phone.value);
+	form_data.append('address', address.value);
+	form_data.append('note', note.value);
 
 	$.ajax({
 		url: './php/PHP-cart.php',
@@ -485,7 +500,16 @@ function checkOut() {
 		processData: false,
 		success: function (response) {
 			alert(response);
-			window.location.href = "index.php";
+			switch (response) {
+				case "0": {
+					alert("Đặt hàng thành công");
+					window.location.href = "index.php";
+				} break;
+				case "1": {
+					alert("Đã xảy ra lỗi");
+					window.location.href = "index.php";
+				} break;
+			}
 		}
 	});
 }
