@@ -2161,13 +2161,8 @@ header {
 	float: left;
 }
 .form-control {
-<<<<<<< HEAD
-	border-radius: 0;
-	border: 1px solid #cdcdcd;
-=======
 	border-radius: 3px;
 	border: 2px solid #cdcdcd;
->>>>>>> 2bf8d1329e398f8e536e3bf4d1ca84555fdea25d
 	padding: 10px 15px;
 	color: #000;
 	margin-bottom: 20px;
