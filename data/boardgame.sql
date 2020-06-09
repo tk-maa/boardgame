@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2020 at 05:18 PM
+-- Generation Time: Jun 09, 2020 at 05:20 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -461,6 +461,18 @@ INSERT INTO `type` (`TypeID`, `TypeName`) VALUES
 ('BG', 'Board Game'),
 ('CO', 'Các loại cờ'),
 ('RB', 'Rubik');
+
+--
+-- Triggers `type`
+--
+DELIMITER $$
+CREATE TRIGGER `update_type` AFTER UPDATE ON `type` FOR EACH ROW IF !(NEW.TypeID <=> OLD.TypeID) THEN
+      UPDATE product
+      SET product.Type = NEW.TypeID 
+      WHERE product.Type= OLD.TypeID;
+END IF
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
