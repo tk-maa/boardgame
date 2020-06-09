@@ -84,6 +84,12 @@ function signup() {
 		password.focus();
 		return;
 	} else {
+		var format = /^\w{8,16}$/igm;
+		if(format.test(password.value)==false){
+			alert("Mật khẩu phải từ 8-16 ký tự");
+			password.focus();
+			return;	
+		}
 		if( assertPassword.value == "" ){
 			alert("Xác nhận mật khẫu không thể để trống");
 			assertPassword.focus();
@@ -225,6 +231,8 @@ function changePassword() {
 		alert("Mật khẫu cũ không được để trống");
 		oldPassword.focus();
 		return;
+	} else {
+		
 	}
 
 	if (newPassword.value == ""){
@@ -232,6 +240,12 @@ function changePassword() {
 		newPassword.focus();
 		return;
 	} else {
+		var format = /^\w{8,16}$/igm;
+		if(format.test(newPassword.value)==false){
+			alert("Mật khẩu mới phải từ 8-16 ký tự");
+			newPassword.focus();
+			return;	
+		}
 		if (assertNewPassword.value == ""){
 			alert("Xác nhận mật khẫu mới không được để trống");
 			assertNewPassword.focus();

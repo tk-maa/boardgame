@@ -506,6 +506,43 @@ $(window).on('load', function() {
 		}
 	});
 	
+
+	/*QUICKVIEW BILL POPUP JS*/
+	$('.quickviewBill-popup-link').magnificPopup({
+		type:'inline',
+		alignTop: false,
+		overflowY: 'scroll',
+		midClick: true,
+		callbacks: {
+			open: function() {
+				$('body').addClass('zoom_image');
+				// Will fire when this exact popup is opened
+				if ($(window).width() >= 768) {
+					var divHeight = $(".quickviewBill-popup").height();
+					var divWidth = $(".quickview-bill-detail").width();
+					$(".quickviewBill-popup").elevateZoom({ 
+						 zoomWindowOffetx: 30, 
+						 zoomWindowWidth:divWidth,
+						 zoomWindowHeight:divHeight,
+						 borderSize: 0
+					});
+				}
+				else {
+					$(".quickviewBill-popup").elevateZoom({
+					cursor: "crosshair",
+					zoomType: "inner"
+				 }); 
+				}
+			},
+			close: function() {
+				// Wait until overflow:hidden has been removed from the html tag
+				setTimeout(function() {
+					$('body').removeClass('zoom_image');
+					$('.zoomContainer:nth-child(2)').remove();
+				}, 100)
+			}
+		}
+	});
 /*===================================*
 10. PRICE FILTER JS
 *===================================*/
