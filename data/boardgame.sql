@@ -59,7 +59,7 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`ID`, `Image`, `Link`, `Position`) VALUES
-(1, 'offer-banner-7.jpg', '#1', 'Slider-Section'),
+(1, 'offer-banner-7.jpg', '#', 'Offer-Section'),
 (2, 'offer-banner-8.jpg', '#', 'Offer-Section'),
 (3, 'offer-banner-9.jpg', '#', 'Offer-Section'),
 (4, 'slider1.jpg', '#', 'Slider-Section'),
