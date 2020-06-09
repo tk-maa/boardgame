@@ -46,11 +46,19 @@ function signup() {
 	var assertPassword = document.getElementById("signup-form").assertPassword;
 	var rules = document.getElementById("signup-form").rules;
 
-	if (name.value==""){
+	if (name.value == ""){
 		alert("Họ và tên không được để trống");
 		name.focus();
 		return;
+	} else {
+		var format = /[0-9]/igm;
+		if(format.test(name.value)==true){
+			alert("Họ và tên không thể chứa số");
+			name.focus();
+			return;	
+		}
 	}
+
 
 	if (email.value==""){
 		alert("Email không được để trống");
@@ -146,10 +154,17 @@ function saveInfo() {
 	var phone = document.getElementById("information-form").phone;
 	var address = document.getElementById("information-form").address;
 
-	if (name.value==""){
+	if (name.value == ""){
 		alert("Họ và tên không được để trống");
 		name.focus();
 		return;
+	} else {
+		var format = /[0-9]/igm;
+		if(format.test(name.value) == true){
+			alert("Họ và tên không thể chứa số");
+			name.focus();
+			return;	
+		}
 	}
 
 	if (phone.value==""){
