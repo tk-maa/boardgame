@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2020 at 03:14 PM
+-- Generation Time: Jun 09, 2020 at 05:18 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- PHP Version: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -70,6 +70,57 @@ INSERT INTO `banner` (`ID`, `Image`, `Link`, `Position`) VALUES
 (9, 'offer-banner-5.jpg', '#', 'Slider-Deals-Section'),
 (10, 'offer-banner-6.jpg', '#', 'Slider-Deals-Section'),
 (11, 'offer-banner-10.jpg', '#', 'Slider-Deals-Section');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bill`
+--
+
+CREATE TABLE `bill` (
+  `ID` int(11) NOT NULL,
+  `User` varchar(100) DEFAULT NULL,
+  `Quantity` int(11) NOT NULL,
+  `Total` float NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Phone` varchar(10) NOT NULL,
+  `Address` text NOT NULL,
+  `Time` varchar(10) NOT NULL,
+  `Note` text NOT NULL,
+  `Status` int(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`ID`, `User`, `Quantity`, `Total`, `Name`, `Phone`, `Address`, `Time`, `Note`, `Status`) VALUES
+(1, 'test123@gmail.com', 5, 6800000, 'Test Name', '0911111111', 'test địa chỉ', '09/06/2020', '', 1),
+(2, '', 1, 1700000, 'test', '0911111111', 'test', '09/06/2020', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `billdetail`
+--
+
+CREATE TABLE `billdetail` (
+  `BillID` int(11) NOT NULL,
+  `ProductID` int(11) NOT NULL,
+  `Quantity` int(11) NOT NULL,
+  `Price` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `billdetail`
+--
+
+INSERT INTO `billdetail` (`BillID`, `ProductID`, `Quantity`, `Price`) VALUES
+(1, 39, 1, 2500000),
+(1, 40, 2, 1700000),
+(1, 42, 1, 750000),
+(1, 43, 1, 150000),
+(2, 40, 1, 1700000);
 
 -- --------------------------------------------------------
 
@@ -411,6 +462,28 @@ INSERT INTO `type` (`TypeID`, `TypeName`) VALUES
 ('CO', 'Các loại cờ'),
 ('RB', 'Rubik');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `Email` varchar(100) NOT NULL,
+  `Password` varchar(100) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Phone` varchar(20) DEFAULT NULL,
+  `Address` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`Email`, `Password`, `Name`, `Phone`, `Address`) VALUES
+('test123@gmail.com', '123123', 'test123', '0911111111', 'test địa chỉ'),
+('testUser@gmail.com', 'DayLaPassword123.', 'Test Name', NULL, NULL);
+
 --
 -- Indexes for dumped tables
 --
@@ -426,6 +499,18 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `banner`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `bill`
+--
+ALTER TABLE `bill`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `billdetail`
+--
+ALTER TABLE `billdetail`
+  ADD PRIMARY KEY (`BillID`,`ProductID`);
 
 --
 -- Indexes for table `category`
@@ -467,6 +552,12 @@ ALTER TABLE `type`
   ADD PRIMARY KEY (`TypeID`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`Email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -475,6 +566,12 @@ ALTER TABLE `type`
 --
 ALTER TABLE `banner`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `bill`
+--
+ALTER TABLE `bill`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `images`
