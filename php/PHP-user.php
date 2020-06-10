@@ -9,6 +9,8 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 		case 'signup': signup();break;
 		case 'saveInfo': saveInfo();break;
 		case 'changePassword': changePassword();break;
+		case 'showDetailBill': showDetailBill();break;
+		
     }
 }
 function login(){
@@ -105,5 +107,40 @@ function changePassword(){
 		" WHERE	Email='" . $email . "';";
 	DataProvider::executeQuery($sql);
 	die("0");
+}
+function showDetailBill(){
+	if(isset($_SESSION['isLoginUser'])){
+		$email = "";
+		foreach($_SESSION['isLoginUser'] as $k => $v){
+			$email =  $_SESSION['isLoginUser'][$k]['Email'];
+		}
+	} else {
+		die("1");
+	}
+
+	$id = addslashes($_POST['id']);
+	
+	$sql = "SELECT * FROM bill WHERE user='". $email ."' AND ID = '". $id  ."'";
+	$result = DataProvider::executeQuery($sql);
+	if( mysqli_num_rows($result) == 0 ) {
+		die("2");
+	} else {
+		while ($row = mysqli_fetch_array($result))
+		{
+			$infoBill = array(
+				"Quantity" => $row['Quantity'],
+				"Total" => $row['Total'],
+				"Name" => $row['Name'], 
+				"Phone" => $row['Phone'],
+				"Address" => $row['Address'],
+				"Time" => $row['Time'],
+				"Note" => $row['Note'],
+				"Status" => $row['Status']
+			);
+		}
+		echo json_encode($infoBill);
+    	die;
+	}
+	
 }
 ?>

@@ -499,7 +499,6 @@ function checkOut() {
 		contentType: false,
 		processData: false,
 		success: function (response) {
-			alert(response);
 			switch (response) {
 				case "0": {
 					alert("Đặt hàng thành công");

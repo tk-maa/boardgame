@@ -1,30 +1,32 @@
 <div id="quickviewBill-popup" class="white-popup quickview-popup mfp-hide">
     <div class="row">
-        <div class="col-md-4" id="divBilInfo">
+        <div class="col-md-4">
             <h3 style="text-align:center;font-weight:bold;margin-bottom:10px;">Thông tin đơn hàng</h3>
-            <div class="billInfo">
-                <span style="font-weight:bold;">Họ và tên: &nbsp; </span><span>Test Name</span>
-            </div>
-            <div class="billInfo">
-                <span style="font-weight:bold;">Số điện thoại: &nbsp;</span><span>Test Name</span>
-            </div>
-            <div class=" billInfo">
-                <span style="font-weight:bold;">Địa chỉ: &nbsp;</span><span>Test Name</span>
-            </div>
-            <div class="billInfo">
-                <span style="font-weight:bold;">Số lượng: &nbsp;</span><span>15</span>
-            </div>
-            <div class="billInfo">
-                <span style="font-weight:bold;">Tổng tiền:&nbsp;</span><span>15.000đ</span>
-            </div>
-            <div class="billInfo">
-                <span style="font-weight:bold;">Thời gian: &nbsp;</span><span>01/01/2000</span>
-            </div>
-            <div class="billInfo">
-                <span style="font-weight:bold;">Trạng thái: &nbsp;</span><span>Chờ xử lý</span>
-            </div>
-            <div class="billInfo">
-                <span style="font-weight:bold;">Ghi chú: &nbsp;</span><span>Test Name</span>
+            <div id="bill-info">
+                <div>
+                    <span>Họ và tên: &nbsp; </span><span>Test Name</span>
+                </div>
+                <div>
+                    <span>Số điện thoại: &nbsp;</span><span>Test Name</span>
+                </div>
+                <div>
+                    <span>Địa chỉ: &nbsp;</span><span>Test Name</span>
+                </div>
+                <div>
+                    <span>Số lượng: &nbsp;</span><span>15</span>
+                </div>
+                <div>
+                    <span>Tổng tiền:&nbsp;</span><span>15.000đ</span>
+                </div>
+                <div>
+                    <span>Thời gian: &nbsp;</span><span>01/01/2000</span>
+                </div>
+                <div>
+                    <span>Trạng thái: &nbsp;</span><span>Chờ xử lý</span>
+                </div>
+                <div>
+                    <span>Ghi chú: &nbsp;</span><span>Test Name</span>
+                </div>
             </div>
         </div>
         <div class=" col-md-8 quickview-bill-detail">
@@ -39,7 +41,7 @@
                         <th>Tổng tiền</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     <tr>
                         <td><img src="img/sanpham/0ac7e809f29586fc48834c9c6eec8892.jpg" style="width:60px; height:60px"></td>
                         <td>Test Product Name</td>

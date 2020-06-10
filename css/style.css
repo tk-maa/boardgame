@@ -6180,11 +6180,14 @@ body.switch-open {
     padding: 10px;
     margin: 0;
 }
-.white-popup .row .col-md-4 .billInfo{
+#bill-info div{
 	margin: 20px 0px 0px 0px;
 	padding: 5px;
 	color: black;	
 	font-weight: 300;
+}
+#bill-info div:first-child {
+	font-weight:bold;
 }
 .white-popup .row .col-md-4{
 	 border-right: 3px solid rgb(207, 199, 199);

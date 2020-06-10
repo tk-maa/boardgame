@@ -221,7 +221,6 @@ function saveInfo() {
 		}
 	});
 }
-
 function changePassword() {
 	var oldPassword = document.getElementById("password-form").oldPassword;
 	var newPassword = document.getElementById("password-form").newPassword;
@@ -285,6 +284,57 @@ function changePassword() {
 					alert("Mật khẫu cũ không chính xác");
 				}break;
 			}
+		}
+	});
+}
+function showDetailBill(id){
+	var form_data = new FormData();
+	form_data.append('action','showDetailBill');
+	form_data.append('id',id);
+
+	jQuery.ajax({
+		type: "POST",
+		url: './php/PHP-user.php',
+		dataType: 'text',
+		cache: false,
+		contentType: false,
+		processData: false,
+		data : form_data,
+		success:function(res){
+			if(res == 1){
+				alert("Phiên đăng nhập của bạn đã hết hạn");
+				window.location.href = "index.php";
+			}
+			if(res == 2){
+				alert("Đã xảy ra lỗi");
+				location.reload();
+			}
+			var data = JSON.parse(res);
+			string = `<div>
+				<span>Họ và tên: &nbsp; </span><span>${data.Name}</span>
+			</div>
+			<div>
+				<span>Số điện thoại: &nbsp;</span><span>${data.Phone}</span>
+			</div>
+			<div>
+				<span>Địa chỉ: &nbsp;</span><span>${data.Address}</span>
+			</div>
+			<div>
+				<span>Số lượng: &nbsp;</span><span>${data.Quantity}</span>
+			</div>
+			<div>
+				<span>Tổng tiền:&nbsp;</span><span>${data.Total}đ</span>
+			</div>
+			<div>
+				<span>Thời gian: &nbsp;</span><span>${data.Time}</span>
+			</div>
+			<div>
+				<span>Trạng thái: &nbsp;</span><span>${data.Status== 1 ? "Chờ xử lý" : "Đã xử lý"}</span>
+			</div>
+			<div>
+				<span>Ghi chú: &nbsp;</span><span>${data.Note}</span>
+			</div>`;
+			document.getElementById("bill-info").innerHTML = string;
 		}
 	});
 }

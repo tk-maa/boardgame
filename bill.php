@@ -97,7 +97,7 @@ require_once './php/DataProvider.php';
                                     <td><?php echo number_format($row['Total'],0,".",".")?>₫</td>
                                     <td><?php echo ($row['Status'] == 1 ? "Chờ xử lý": "Đã xử lý")?></td>
                                     <td>
-                                        <a href="#quickviewBill-popup" class="quickviewBill-popup-link" onclick="" >Xem chi tiết</a>
+                                        <a href="#quickviewBill-popup" class="quickviewBill-popup-link" onclick="showDetailBill(<?php echo $row['ID']?>)" >Xem chi tiết</a>
                                     </td>
                                 </tr>
                                 <?php   
