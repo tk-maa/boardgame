@@ -1,3 +1,9 @@
+function formatPricetoPrint(a) {
+	a = a.toLocaleString();
+	a = a.split(',').join('.');
+	return a;
+}
+
 function login() {
 	var email = document.getElementById("login-form").email;
 	var password = document.getElementById("login-form").password;
@@ -323,7 +329,7 @@ function showDetailBill(id){
 				<span>Số lượng: &nbsp;</span><span>${data.Quantity}</span>
 			</div>
 			<div>
-				<span>Tổng tiền:&nbsp;</span><span>${data.Total}đ</span>
+				<span>Tổng tiền:&nbsp;</span><span>${formatPricetoPrint(Number(data.Total))}₫</span>
 			</div>
 			<div>
 				<span>Thời gian: &nbsp;</span><span>${data.Time}</span>
@@ -335,6 +341,38 @@ function showDetailBill(id){
 				<span>Ghi chú: &nbsp;</span><span>${data.Note}</span>
 			</div>`;
 			document.getElementById("bill-info").innerHTML = string;
+			showProductsBill(id);
+		}
+	});
+}
+
+function showProductsBill(id){
+	var form_data = new FormData();
+	form_data.append('action','showProductsBill');
+	form_data.append('id',id);
+
+	jQuery.ajax({
+		type: "POST",
+		url: './php/PHP-user.php',
+		dataType: 'text',
+		cache: false,
+		contentType: false,
+		processData: false,
+		data : form_data,
+		success:function(res){
+			var data = JSON.parse(res);
+			string = "";
+			for(var i = 0; i < data.length; i++){
+				string += `<tr>
+					<td><img src="img/sanpham/${data[i].Pic}" style="width:60px; height:60px"></td>
+					<td><a href="product-detail.php?id=${data[i].ID}">${data[i].Name}</a></td>
+					<td>${data[i].Quantity}</td>
+					<td>${formatPricetoPrint(Number(data[i].Price))}₫</td>
+					<td>${formatPricetoPrint(data[i].Price*data[i].Quantity)}₫</td>
+                </tr>`
+			}
+			document.getElementById("bill-product").innerHTML = string;
+
 		}
 	});
 }

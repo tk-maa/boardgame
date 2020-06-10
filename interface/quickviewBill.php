@@ -3,7 +3,7 @@
         <div class="col-md-4">
             <h3 style="text-align:center;font-weight:bold;margin-bottom:10px;">Thông tin đơn hàng</h3>
             <div id="bill-info">
-                <div>
+                <!--<div>
                     <span>Họ và tên: &nbsp; </span><span>Test Name</span>
                 </div>
                 <div>
@@ -26,7 +26,7 @@
                 </div>
                 <div>
                     <span>Ghi chú: &nbsp;</span><span>Test Name</span>
-                </div>
+                </div>-->
             </div>
         </div>
         <div class=" col-md-8 quickview-bill-detail">
@@ -41,56 +41,14 @@
                         <th>Tổng tiền</th>
                     </tr>
                 </thead>
-                <tbody >
-                    <tr>
+                <tbody id="bill-product">
+                    <!--<tr>
                         <td><img src="img/sanpham/0ac7e809f29586fc48834c9c6eec8892.jpg" style="width:60px; height:60px"></td>
                         <td>Test Product Name</td>
                         <td>1</td>
                         <td>100.000₫</td>
                         <td>100.000₫</td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/sanpham/0ac7e809f29586fc48834c9c6eec8892.jpg" style="width:60px; height:60px"></td>
-                        <td>Test Product Name</td>
-                        <td>1</td>
-                        <td>100.000₫</td>
-                        <td>100.000₫</td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/sanpham/0ac7e809f29586fc48834c9c6eec8892.jpg" style="width:60px; height:60px"></td>
-                        <td>Test Product Name</td>
-                        <td>1</td>
-                        <td>100.000₫</td>
-                        <td>100.000₫</td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/sanpham/0ac7e809f29586fc48834c9c6eec8892.jpg" style="width:60px; height:60px"></td>
-                        <td>Test Product Name</td>
-                        <td>1</td>
-                        <td>100.000₫</td>
-                        <td>100.000₫</td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/sanpham/0ac7e809f29586fc48834c9c6eec8892.jpg" style="width:60px; height:60px"></td>
-                        <td>Test Product Name</td>
-                        <td>1</td>
-                        <td>100.000₫</td>
-                        <td>100.000₫</td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/sanpham/0ac7e809f29586fc48834c9c6eec8892.jpg" style="width:60px; height:60px"></td>
-                        <td>Test Product Name</td>
-                        <td>1</td>
-                        <td>100.000₫</td>
-                        <td>100.000₫</td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/sanpham/0ac7e809f29586fc48834c9c6eec8892.jpg" style="width:60px; height:60px"></td>
-                        <td>Test Product Name</td>
-                        <td>1</td>
-                        <td>100.000₫</td>
-                        <td>100.000₫</td>
-                    </tr>
+                    </tr>-->
                 </tbody>
             </table>
         </div>

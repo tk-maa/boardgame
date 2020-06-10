@@ -162,7 +162,6 @@ require_once './php/DataProvider.php';
 
     <script src="js/custom/JS-cart.js" type="text/javascript"></script>
 
-    <script src="./js/custom/JS-product.js"></script>
     <script src="./js/custom/JS-user.js"></script>
 
 </body>

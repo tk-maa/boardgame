@@ -6186,7 +6186,7 @@ body.switch-open {
 	color: black;	
 	font-weight: 300;
 }
-#bill-info div:first-child {
+#bill-info div span:first-child {
 	font-weight:bold;
 }
 .white-popup .row .col-md-4{

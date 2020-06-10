@@ -539,6 +539,8 @@ $(window).on('load', function() {
 				setTimeout(function() {
 					$('body').removeClass('zoom_image');
 					$('.zoomContainer:nth-child(2)').remove();
+					document.getElementById('bill-info').innerHTML ="";
+					document.getElementById('bill-product').innerHTML ="";
 				}, 100)
 			}
 		}

@@ -10,6 +10,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 		case 'saveInfo': saveInfo();break;
 		case 'changePassword': changePassword();break;
 		case 'showDetailBill': showDetailBill();break;
+		case 'showProductsBill': showProductsBill();break;
 		
     }
 }
@@ -108,6 +109,7 @@ function changePassword(){
 	DataProvider::executeQuery($sql);
 	die("0");
 }
+
 function showDetailBill(){
 	if(isset($_SESSION['isLoginUser'])){
 		$email = "";
@@ -141,6 +143,27 @@ function showDetailBill(){
 		echo json_encode($infoBill);
     	die;
 	}
+	
+}
+
+function showProductsBill(){
+	$id = addslashes($_POST['id']);
+	
+	$sql = "SELECT DISTINCT p.*, bd.Quantity as 'bdQuantity' FROM product as p JOIN billdetail as bd on p.ID = bd.ProductID WHERE p.ID IN (SELECT ProductID FROM billdetail WHERE BillID = '".$id."') AND bd.BillID = '".$id."'";
+	$result = DataProvider::executeQuery($sql);
+	$productsBill= array();
+	while ($row = mysqli_fetch_array($result))
+	{
+		$productsBill[] = array(
+			"ID" => $row['ID'],
+			"Name" => $row['Name'],
+			"Pic" => $row['Pic'], 
+			"Price" => $row['Price'],
+			"Quantity" => $row['bdQuantity']
+		);
+	}
+	echo json_encode($productsBill);
+	die;
 	
 }
 ?>

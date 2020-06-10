@@ -1,7 +1,7 @@
 <div id="quickview-popup" class="white-popup quickview-popup mfp-hide">
     <div class="row">
         <div class="col-md-5">
-             <div class="product-image">
+             <div class="product-image" id="product-image">
                 
              </div>
              <div id="product_gallery" class="product_gallery_item owl-thumbs-slider owl-carousel owl-theme">
@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="col-md-7">
-            <div class="quickview-product-detail">
+            <div class="quickview-product-detail" id="product-info">
                 <h2 class="box-title"></h2>
                 <h3 class="box-price"><del></del></h3>
                 <p class="box-text"></p>
