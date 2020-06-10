@@ -1619,6 +1619,7 @@ header {
 }
 .mfp-close-btn-in .mfp-close {
 	font-size: 28px;
+	margin-right: 17px;
 }
 .white-popup .mfp-close i {
 	font-size: 16px;
@@ -6179,4 +6180,25 @@ body.switch-open {
     padding: 10px;
     margin: 0;
 }
+.white-popup .row .col-md-4 .billInfo{
+	margin: 20px 0px 0px 0px;
+	padding: 5px;
+	color: black;	
+	font-weight: 300;
+}
+.white-popup .row .col-md-4{
+	 border-right: 3px solid rgb(207, 199, 199);
+}
+.col-md-8.quickview-bill-detail{
+	overflow-y: scroll;
+	max-height: 528px;
+}
 
+.table.table-bordered thead tr{
+	background-color: rgb(52, 90, 214);
+	 color:white;
+
+}
+.table.table-bordered tbody tr:hover{
+	background-color: #ffff99;
+}

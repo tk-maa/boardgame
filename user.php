@@ -85,7 +85,6 @@ require_once './php/DataProvider.php';
     </section>
     <!-- End User Section -->
 
-
     <!-- Start Footer Section -->
     <?php include './interface/footer.php' ?>
     <!-- End Footer Section -->
