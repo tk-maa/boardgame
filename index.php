@@ -147,7 +147,7 @@ require_once './php/DataProvider.php';
             <div class="row">
                 <div class="col-12">
                     <div class="title">
-                        <h4>Sản phẩm 1</h4>
+                        <h4>Sản phẩm mới</h4>
                     </div>
                 </div>
             </div>

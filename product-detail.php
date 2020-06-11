@@ -151,7 +151,7 @@ require_once './php/DataProvider.php';
                             </div>
                         </div>
                         <hr>
-                        <p class="stock">Trạng thái: <span><?php echo ($quantity != 0 ? "Còn hàng" : "Hết hàng") ?></span></p>
+                        <p class="stock">Trạng thái: <span>Còn <?php echo $quantity ?> sản phẩm</span></p>
                         <div class="quantity-box">
                             <p>Số lượng:</p>
                             <div class="input-group">

@@ -32,7 +32,7 @@ function addToCart(ID) {
 		processData: false,
 		success: function (response) {
 			if (response == 1) {
-				alert("Đã xảy ra lỗi");
+				alert("Số lượng sản phẩm cần đặt lớn hơn số lượng sản phẩm có sẵn");
 				return;
 			}
 			var getData = JSON.parse(response);
@@ -532,25 +532,25 @@ function quickView(ID) {
 
 			var string = "<div class='row'>" +
 				"<div class='col-md-5'>" +
-				"<div class='product-image'>" +
-				`<img class='product_img quickview-img' src='img/sanpham/${data.Pic}' data-zoom-image='img/sanpham/${data.Pic}'/>` +
-				"</div>" +
-				"<div id='pr_item_gallery' class='product_gallery_item owl-thumbs-slider owl-carousel owl-theme'>";
+					"<div class='product-image'>" +
+						`<img class='product_img quickview-img' src='img/sanpham/${data.Pic}' data-zoom-image='img/sanpham/${data.Pic}'/>` +
+					"</div>" +
+					"<div id='pr_item_gallery' class='product_gallery_item owl-thumbs-slider owl-carousel owl-theme'>";
 			for (var i = 0; i < data.allPic.length; i++) {
-				string += "<div class='item'>" +
-					`<a href='#' data-image='img/sanpham/${data.allPic[i]}' data-zoom-image='img/sanpham/${data.allPic[i]}'>` +
-					`<img src='img/sanpham/${data.allPic[i]}' />` +
-					"</a>" +
-					"</div>";
+				string += `<div class='item'>
+							<a href='#' data-image='img/sanpham/${data.allPic[i]}' data-zoom-image='img/sanpham/${data.allPic[i]}'>
+								<img src='img/sanpham/${data.allPic[i]}'/>
+							</a>
+						</div>`;
 			}
-			string += "</div>" +
-				"</div>" +
-				"<div class='col-md-7'>" +
-				"<div class='quickview-product-detail'>" +
-				`<div class='box-title'>${data.Name}</div>` +
-				"<hr>" +
-				`<div class='box-price'>Giá: <p>${formatPricetoPrint(parseInt(data.Price))}₫</p></div>` +
-				`<div class="box-attribute">
+			string +=`</div>
+				</div>
+				<div class='col-md-7'>
+					<div class='quickview-product-detail'>
+						<div class='box-title'>${data.Name}</div>
+						<hr>
+						<div class='box-price'>Giá: <p>${formatPricetoPrint(parseInt(data.Price))}₫</p></div>
+						<div class="box-attribute">
 							<div class="attribute-item">
 								<p class="attribute-title">Số người chơi:</p>
 								<p class="attribute-content">${data.NoP} người</p>
@@ -567,21 +567,21 @@ function quickView(ID) {
 								<p class="attribute-title">Độ tuổi:</p>
 								<p class="attribute-content">${data.Age}</p>
 							</div>  
-						</div>`+
-				"<hr>" +
-				`<p class="stock">Trạng thái: <span>${(data.Quantity != 0 ? 'Còn hàng' : 'Hết hàng')}</span></p>` +
-				`<div class="quantity-box">` +
-				"<p>Số lượng:</p>" +
-				"<div class='input-group'>" +
-				"<input id='quantity' class='quantity-number qty' type='text' value='1' min='1'>" +
-				"</div>" +
-				"<div class='quickview-cart-btn'>" +
-				`<button class='btn btn-primary text-white' onclick='addToCart(${data.ID})' ${data.Quantity != 0 ? '' : 'disabled'}><img src="img/cart-icon-1.png" alt="cart-icon-1"> Thêm vào giỏ hàng</button>` +
-				"</div>" +
-				"</div>" +
-				"</div>" +
-				"</div>" +
-				"</div>";
+						</div>
+						<hr>
+						<p class="stock">Trạng thái: <span>Còn ${(data.Quantity)} sản phẩm</span></p>
+						<div class="quantity-box">
+							<p>Số lượng:</p>
+							<div class='input-group'>
+							<input id='quantity' class='quantity-number qty' type='text' value='1' min='1'>
+						</div>
+						<div class='quickview-cart-btn'>
+							<button class='btn btn-primary text-white' onclick='addToCart(${data.ID})' ${data.Quantity != 0 ? '' : 'disabled'}><img src="img/cart-icon-1.png" alt="cart-icon-1"> Thêm vào giỏ hàng</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>`;
 			document.getElementById("quickview-popup").innerHTML = string;
 		}
 	});

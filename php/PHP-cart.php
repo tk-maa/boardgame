@@ -37,10 +37,9 @@ function addToCart(){
     $result = DataProvider::executeQuery($sql);
 
     $row = mysqli_fetch_array($result);
-    if($row['Quantity'] <= 0){
+    if($row['Quantity'] <= 0 || $row['Quantity'] < $quantity){
         die("1");
     }
-
 
     if(!empty($_SESSION["cart_item"])) {
         $item_array_id = custom_array_column($_SESSION['cart_item'], "ID");
