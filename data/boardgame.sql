@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2020 at 05:20 PM
+-- Generation Time: Jun 11, 2020 at 01:09 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -121,6 +121,18 @@ INSERT INTO `billdetail` (`BillID`, `ProductID`, `Quantity`, `Price`) VALUES
 (1, 42, 1, 750000),
 (1, 43, 1, 150000),
 (2, 40, 1, 1700000);
+
+--
+-- Triggers `billdetail`
+--
+DELIMITER $$
+CREATE TRIGGER `update_quantity_product` AFTER INSERT ON `billdetail` FOR EACH ROW BEGIN
+   UPDATE product SET 
+   Quantity = Quantity - NEW.Quantity
+   WHERE ID = NEW.ProductID;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -493,7 +505,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Email`, `Password`, `Name`, `Phone`, `Address`) VALUES
-('test123@gmail.com', '123123', 'test123', '0911111111', 'test địa chỉ'),
+('test123@gmail.com', '123123123', 'test', '0911111111', 'test địa chỉ'),
 ('testUser@gmail.com', 'DayLaPassword123.', 'Test Name', NULL, NULL);
 
 --
