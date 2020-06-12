@@ -1,19 +1,15 @@
 <?php
-  session_start();
-  if(!isset($_SESSION['isLogin'])){
-    header("Location: login.php");
-    exit;
-  } else {
-    $role ="";
-    foreach ($_SESSION["isLogin"] as $k => $v) {
-      $role = $_SESSION['isLogin'][$k]["Role"];
+    session_start();
+    if(!isset($_SESSION['isLogin'])){
+      header("Location: login.php");
+		  exit;
+    } else {
+      $role ="";
+      foreach ($_SESSION["isLogin"] as $k => $v) {
+        $role = $_SESSION['isLogin'][$k]["Role"];
+      }
     }
-  }
-	if ( !isset($_REQUEST['id']) || $_REQUEST['id']==""){
-		header("Location: product.php");
-		exit;
-  }
-  require_once '../php/DataProvider.php';
+    require_once '../php/DataProvider.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,8 +32,6 @@
   <!-- Custom styles for this page -->
   <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-  <link href="../css/custom/CSS-admin-sanpham-picture.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -45,7 +39,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-  <?php include './interface/sidebar.php' ?>
+  <?php include './interface/sidebar.php'?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -53,7 +47,7 @@
       <!-- Main Content -->
       <div id="content">
 
-        <?php include './interface/topbar.php' ?>
+      <?php include './interface/topbar.php'?>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -63,46 +57,60 @@
           <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>-->
 
           <!-- DataTales Example -->
-			<?php	
-				$id = $_REQUEST['id'];
-			?>
-			<div class="card shadow mb-4">
-				<div class="card-header py-3">
-				  <h4 class="m-0 font-weight-bold text-primary d-inline"><?php echo "Quản lý hình ảnh sản phẩm ".$id ?></h4>
-				</div>
-				<form class="card-body" id="product-form">
-					<input type="hidden" id="productID" value="<?php echo$_REQUEST['id']?>" ></input>
-					<div class="form-row">
-						<div class="form-group col-md-4">
-							<label for="hinh">Thêm hình ảnh mô tả:</label>
-							<div class="custom-file">	
-								<input type="file" id="images" name="files[]" class="form-control" multiple></input>
-								<input type="button" value ="Tải lên" class="btn bg-success text-white mt-2" onclick="uploadImage()"></input>
-							</div>
-						</div>
-						<div class="form-group col-md-12 d-flex align-content-center flex-wrap" id="allPictures">
-            <?php
-              $sql = "SELECT * FROM images WHERE ProductID='" . $id."'";
-              $result = DataProvider::executeQuery($sql);
-              while ($row = mysqli_fetch_array($result))
-              {
-            ?>
-              <div class='picture-container'>
-                <img src='../img/sanpham/<?php echo $row['Image'] ?>' />
-                <div class='bg-opacity'>
-                  <input type='button' value='Xóa ảnh' class='btn bg-danger text-white' onclick='deleteImage("<?php echo $row['ID'] ?>")'></input>
-                </div>
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h4 class="m-0 font-weight-bold text-primary d-inline">Đơn hàng</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align:center">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Ngày</th>
+                      <th>Khách hàng</th>
+                      <th>Số lượng</th>
+                      <th>Tổng tiền</th>
+                      <th>Trạng thái</th>
+                      <th style="width:150px">Thao Tác</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody-sanpham">
+                    <?php
+                      $sql = "SELECT * FROM bill ORDER BY ID ASC";
+                      $result = DataProvider::executeQuery($sql);
+                      while ($row = mysqli_fetch_array($result)) 
+                      {
+                    ?>
+                    <tr>
+                      <td><?php echo $row['ID'] ?></td>
+                      <td><?php echo $row['Time'] ?></td>
+                      <td><?php echo $row['Name'] ?></td>
+                      <td><?php echo $row['Quantity'] ?></td>
+                      <td><?php echo number_format($row['Total'],0,".",".")?>₫</td>
+                      <td>
+                        <?php 
+                          switch($row['Status']){
+                            case 1: echo "Chờ xử lý";break;
+                            case 2: echo "Đã xử lý";break;
+                            case 3: echo "Đã hủy";break;
+                          }
+                        ?>
+                      </td>
+                      <td>
+                        <div>
+                          <a href="billform.php?id=<?php echo $row['ID']?>">Xem chi tiết</a>
+                        </div>
+                      </td>
+                    </tr>
+                    <?php
+                      }
+                    ?>
+                  </tbody>
+                </table>
               </div>
-            <?php  
-              }
-						?>
-						</div>
-						<div class="form-group col-md-12">
-							<a type="button" href="product.php" style="float:right" role="button" class="btn bg-primary text-white">Quay lại</a>
-						</div>
-					</div>
-				</form>
-			</div>
+            </div>
+          </div>
 
         </div>
         <!-- /.container-fluid -->
@@ -161,10 +169,8 @@
   <!-- Page level custom scripts -->
   <script src="../js/demo/datatables-demo.js"></script>
   
-  <script src="../js/custom/JS-admin-product-picture.js"></script>
-  
+  <script src="../js/custom/JS-admin-product-form.js"></script>
   <script src="../js/custom/JS-admin-login.js"></script>
-
 </body>
 
 </html>

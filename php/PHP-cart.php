@@ -89,6 +89,14 @@ function updateQuantity(){
     $ID = addslashes($_POST['ID']);
     $quantity = addslashes($_POST['quantity']);
 
+    $sql = "SELECT * FROM product WHERE ID = '".$ID."'";
+    $result = DataProvider::executeQuery($sql);
+
+    $row = mysqli_fetch_array($result);
+    if($row['Quantity'] <= 0 || $row['Quantity'] < $quantity){
+        die("1");
+    }
+
     if(!empty($_SESSION["cart_item"])) {
         foreach($_SESSION["cart_item"] as $k => $v) {
             if($_SESSION["cart_item"][$k]["ID"] == $ID ) {

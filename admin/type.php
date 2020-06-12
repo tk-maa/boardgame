@@ -3,17 +3,17 @@
     if(!isset($_SESSION['isLogin'])){
       header("Location: login.php");
 		  exit;
-    }
-    foreach($_SESSION["isLogin"] as $k => $v) {
-      if( $_SESSION['isLogin'][$k]["Role"] != "Admin" || $_SESSION['isLogin'][$k]["Role"] != "Manager"  ){
-        header("Location: index.php");
-        exit;
+    } else {
+      $role ="";
+      foreach ($_SESSION["isLogin"] as $k => $v) {
+        $role = $_SESSION['isLogin'][$k]["Role"];
       }
     }
-    if($_SESSION['isLogin']['Role'] != "Admin"){
-        header("Location: index.php");
-		  exit;
+    if($role != "Admin"){
+      header("Location: index.php");
+      exit;
     }
+    require_once '../php/DataProvider.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

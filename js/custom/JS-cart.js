@@ -5,10 +5,10 @@ function formatPricetoPrint(a) {
 }
 
 function addToCart(ID) {
-	let quantity = 1
+	let quantity = 1;
 	if (document.getElementById("quantity") != null) {
 		var format = /^([0-9]{1,})$/;
-		if (format.test(document.getElementById("quantity").value) == false) {
+		if (format.test(document.getElementById("quantity").value) == false || document.getElementById("quantity").value <= 0 ) {
 			alert("Số lượng sản phẩm không hợp lệ");
 			document.getElementById("quantity").focus();
 			return;
@@ -216,7 +216,7 @@ function removeFromCart(ID) {
 								`<td class='text-left td-name bg-white' ><a href='product-detail.php?id=${getData[i].ID}'>${getData[i].Name}</a></td>` +
 								"<td class='text-center td-qty bg-white'>" +
 								"<div class='input-group btn-block '>" +
-								`<input type='text' value='${getData[i].Quantity}'  size='1' class='quantity custom-form-control'>` +
+								`<input type='text' value='${getData[i].Quantity}'   size='1' class='quantity custom-form-control'>` +
 								"<span class='input-group-btn'>" +
 								`<button type='submit' data-toggle='tooltip' class='btn btn-update' onclick='updateQuantity(this,${getData[i].ID})' data-original-title='Update'><i class='fa fa-refresh'></i></button>` +
 								`<button type='button' data-toggle='tooltip' class='btn btn-remove' onclick='removeFromCart(${getData[i].ID})' data-original-title='Remove'><i class='fa fa-times-circle'></i></button>` +
@@ -265,22 +265,15 @@ function updateQuantity(thisElement, ID) {
 	var el = $(thisElement).closest("tr");
 	var quantity = el.find(".quantity");
 
-	if (quantity.val() != "") {
+	if (quantity.val() != "" && quantity.val() != 0) {
 		var format = /^([0-9]{1,})$/;
 		if (format.test(quantity.val()) == false) {
 			alert("Số lượng sản phẩm không hợp lệ");
 			quantity.focus();
 			return;
-		} else {
-			if (quantity.val() == 0) {
-				if (removeFromCart(ID))
-					return;
-				else
-					return;
-			}
-		}
+		} 
 	} else {
-		if (removeFromCart(masp))
+		if (removeFromCart(ID))
 			return;
 		else
 			return;
@@ -297,6 +290,10 @@ function updateQuantity(thisElement, ID) {
 		contentType: false,
 		processData: false,
 		success: function (response) {
+			if (response == 1) {
+				alert("Số lượng sản phẩm cần đặt lớn hơn số lượng sản phẩm có sẵn");
+				return;
+			}
 			var getData = JSON.parse(response);
 			var string = "<div class='cart-info'>";
 			var totalCartQuantity = 0;
@@ -348,10 +345,10 @@ function updateQuantity(thisElement, ID) {
 						`<td class='text-left td-name ><a href='product-detail.php?id=${getData[i].ID}'>${getData[i].Name}</a></td>` +
 						"<td class='text-center td-qty '>" +
 						"<div class='input-group btn-block '>" +
-						`<input type='text' value='${getData[i].Quantity}'  size='1' class='quantity custom-form-control'>` +
+						`<input type='text' value='${getData[i].Quantity}'   size='1' class='quantity custom-form-control'>` +
 						"<span class='input-group-btn'>" +
-						`<button type='submit' data-toggle='tooltip' class='btn btn-update' onclick='updateQuantity(this,${getData[i].MaSP})' data-original-title='Update'><i class='fa fa-refresh'></i></button>` +
-						`<button type='button' data-toggle='tooltip' class='btn btn-remove' onclick='removeFromCart(${getData[i].MaSP})' data-original-title='Remove'><i class='fa fa-times-circle'></i></button>` +
+						`<button type='submit' data-toggle='tooltip' class='btn btn-update' onclick='updateQuantity(this,${getData[i].ID})' data-original-title='Update'><i class='fa fa-refresh'></i></button>` +
+						`<button type='button' data-toggle='tooltip' class='btn btn-remove' onclick='removeFromCart(${getData[i].ID})' data-original-title='Remove'><i class='fa fa-times-circle'></i></button>` +
 						"</span>" +
 						"</div>" +
 						"</td>" +
@@ -409,7 +406,7 @@ function updateQuantity(thisElement, ID) {
 						`<td class='text-left td-name bg-white '><a href='product-detail.php?id=${getData[i].ID}'>${getData[i].Name}</a></td>` +
 						"<td class='text-center td-qty bg-white '>" +
 						"<div class='input-group btn-block '>" +
-						`<input type='text' value='${getData[i].Quantity}'  size='1' class='quantity custom-form-control'>` +
+						`<input type='text' value='${getData[i].Quantity}'   size='1' class='quantity custom-form-control'>` +
 						"<span class='input-group-btn'>" +
 						`<button type='submit' data-toggle='tooltip' class='btn btn-update' onclick='updateQuantity(this,${getData[i].ID})' data-original-title='Update'><i class='fa fa-refresh'></i></button>` +
 						`<button type='button' data-toggle='tooltip' class='btn btn-remove' onclick='removeFromCart(${getData[i].ID})' data-original-title='Remove'><i class='fa fa-times-circle'></i></button>` +

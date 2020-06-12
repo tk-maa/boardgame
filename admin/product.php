@@ -3,13 +3,13 @@
     if(!isset($_SESSION['isLogin'])){
       header("Location: login.php");
 		  exit;
-    }
-    /*foreach($_SESSION["isLogin"] as $k => $v) {
-      if( $_SESSION['isLogin'][$k]["Role"] != "Admin" || $_SESSION['isLogin'][$k]["Role"] != "Manager"  ){
-        header("Location: index.php");
-        exit;
+    } else {
+      $role ="";
+      foreach ($_SESSION["isLogin"] as $k => $v) {
+        $role = $_SESSION['isLogin'][$k]["Role"];
       }
-    }*/
+    }
+    require_once '../php/DataProvider.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,19 +100,7 @@
                             "<div>" .
                               "<a href=\"productpicture.php?id=" . $row['ID'] . "\">Quản lý ảnh</a>" .
                             "</div>" .
-                            "<div>" .
-                              "<a href='#' onclick='deleteProduct(".$row['ID'].")'>Xóa sản phẩm</a>" .
-                            "</div>";
-                            if($row['Status'] == 1){
-                            echo "<div>" .
-                              "<a href='#' onclick='toggleActive(1,".$row['ID'].")'>Bất hoạt sản phẩm</a>" .
-                            "</div>";
-                            } else {
-                            echo "<div>" .
-                              "<a href='#' onclick='toggleActive(0,".$row['ID'].")'>Kích hoạt sản phẩm</a>" .
-                            "</div>";
-                            }
-                          echo "</td>" .
+                          "</td>" .
                       "</tr>";
                     }
                     ?>

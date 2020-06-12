@@ -21,8 +21,7 @@
   <!-- Divider -->
   <hr class="sidebar-divider">
   <?php
-  foreach ($_SESSION["isLogin"] as $k => $v) {
-    if ($_SESSION['isLogin'][$k]["Role"] == "Admin") {
+  if($role == "Admin") { 
   ?>
   <!-- Heading -->
   <div class="sidebar-heading">
@@ -46,7 +45,6 @@
   <hr class="sidebar-divider">
   <?php
     }
-  }
   ?>
   <!-- Heading -->
   <div class="sidebar-heading">
@@ -61,22 +59,41 @@
     </a>
     <div id="collapseProduct" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="type.php">Loại sản phẩm</a>
         <a class="collapse-item" href="product.php">Sản phẩm</a>
+        <?php
+          if($role == "Admin"){
+        ?>
+        <a class="collapse-item" href="type.php">Loại sản phẩm</a>
+        <a class="collapse-item" href="category.php">Thể loại</a>
+        <?php
+        }
+        ?>
+        
       </div>
     </div>
   </li>
-  <!-- Nav Item - Charts -->
+  <!-- Nav Item - Bills -->
   <li class="nav-item">
-    <a class="nav-link" href="charts.html">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBill" aria-expanded="true" aria-controls="collapseBill">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Đơn hàng</span>
     </a>
+    <div id="collapseBill" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="bill.php">Đơn hàng</a>
+      <?php
+        if($role == "Admin"){
+      ?>
+        <a class="collapse-item" href="chart.php">Thống kê</a>
+      <?php
+      }
+      ?>
+      </div>
+    </div>
   </li>
 
   <?php
-  foreach ($_SESSION["isLogin"] as $k => $v) {
-    if ($_SESSION['isLogin'][$k]["Role"] == "Admin") {
+    if($role == "Admin") {
   ?>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
@@ -92,7 +109,6 @@
         </div>
       </li>
   <?php
-    }
   }
   ?>
   <!-- Divider -->

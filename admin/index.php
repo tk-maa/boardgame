@@ -3,6 +3,11 @@
     if(!isset($_SESSION['isLogin'])){
       header("Location: login.php");
 		  exit;
+    } else {
+      $role ="";
+      foreach ($_SESSION["isLogin"] as $k => $v) {
+        $role = $_SESSION['isLogin'][$k]["Role"];
+      }
     }
 ?>
 <!DOCTYPE html>

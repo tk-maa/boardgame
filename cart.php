@@ -71,7 +71,7 @@ session_start();
                                 <tr>
                                     <td class="text-center td-image">Hình ảnh</td>
                                     <td class="text-center td-name">Tên sản phẩm</td>
-                                    <td class="text-center td-qty" style="width: 28%">Số lượng</td>
+                                    <td class="text-center td-qty">Số lượng</td>
                                     <td class="text-center td-price">Đơn giá</td>
                                     <td class="text-center td-total">Tổng cộng</td>
                                 </tr>
@@ -87,7 +87,7 @@ session_start();
                                         <td class="text-left td-name "><a href='product-detail.php?id=<?php echo $item['ID'] ?>'><?php echo $item['Name'] ?></a></td>
                                         <td class="text-center td-qty ">
                                             <div class="input-group btn-block ">
-                                                <input type="text" value="<?php echo $item['Quantity'] ?>" onkeypress='isInputNumber(event)' size="1" class="quantity custom-form-control">
+                                                <input type="text" value="<?php echo $item['Quantity'] ?>" size="1" class="quantity custom-form-control">
                                                 <span class="input-group-btn">
                                                     <button type="submit" data-toggle="tooltip" class="btn btn-update" onclick="updateQuantity(this,<?php echo $item['ID'] ?>)" data-original-title="Update"><i class="fa fa-refresh"></i></button>
                                                     <button type="button" data-toggle="tooltip" class="btn btn-remove" onclick="removeFromCart(<?php echo $item['ID'] ?>)" data-original-title="Remove"><i class="fa fa-times-circle"></i></button>

@@ -3,12 +3,15 @@
   if(!isset($_SESSION['isLogin'])){
     header("Location: login.php");
     exit;
-  }
-  foreach($_SESSION["isLogin"] as $k => $v) {
-    if( $_SESSION['isLogin'][$k]["Role"] != "Admin" || $_SESSION['isLogin'][$k]["Role"] != "Manager"  ){
-      header("Location: index.php");
-      exit;
+  } else {
+    $role ="";
+    foreach ($_SESSION["isLogin"] as $k => $v) {
+      $role = $_SESSION['isLogin'][$k]["Role"];
     }
+  }
+  if($role != "Admin"){
+    header("Location: index.php");
+    exit;
   }
   if (isset($_REQUEST['code']) && $_REQUEST['code'] == "") {
     header("Location: type.php");

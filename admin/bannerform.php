@@ -1,14 +1,17 @@
 <?php
-session_start();
+  session_start();
   if(!isset($_SESSION['isLogin'])){
     header("Location: login.php");
     exit;
-  }
-  foreach($_SESSION["isLogin"] as $k => $v) {
-    if($_SESSION['isLogin'][$k]["Role"] != "Admin"){
-      header("Location: index.php");
-      exit;
+  } else {
+    $role ="";
+    foreach ($_SESSION["isLogin"] as $k => $v) {
+      $role = $_SESSION['isLogin'][$k]["Role"];
     }
+  }
+  if($role != "Admin"){
+    header("Location: index.php");
+    exit;
   }
   if (isset($_REQUEST['id']) && $_REQUEST['id'] == "") {
     header("Location: banner.php");
