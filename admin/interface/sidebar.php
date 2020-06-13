@@ -103,8 +103,8 @@
         </a>
         <div id="collapseAccount" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="type.php">Ban quản trị</a>
-            <a class="collapse-item" href="product.php">Người dùng</a>
+            <a class="collapse-item" href="manager.php">Ban quản trị</a>
+            <a class="collapse-item" href="user.php">Người dùng</a>
           </div>
         </div>
       </li>

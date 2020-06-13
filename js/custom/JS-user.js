@@ -41,6 +41,9 @@ function login() {
 				case "1":{
 					alert("Email hoặc mật khẫu không chính xác");
 				}break;
+				case "2":{
+					alert("Tài khoản của bạn đã bị khóa");
+				}break;
 			}
 		}
 	});

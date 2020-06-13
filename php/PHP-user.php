@@ -26,6 +26,9 @@ function login(){
 	} else {
 		while ($row = mysqli_fetch_array($result))
 		{
+			if($row['Status'] == 1){
+				die("2");
+			}
 			$loginInformation = array('Email'=>$row['Email'], 'Name'=>$row['Name']);
 		}
 		$_SESSION["isLoginUser"] = array($loginInformation);
