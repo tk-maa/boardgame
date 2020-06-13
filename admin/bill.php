@@ -75,7 +75,7 @@
                       <th style="width:150px">Thao Tác</th>
                     </tr>
                   </thead>
-                  <tbody id="tbody-sanpham">
+                  <tbody>
                     <?php
                       $sql = "SELECT * FROM bill ORDER BY ID ASC";
                       $result = DataProvider::executeQuery($sql);
