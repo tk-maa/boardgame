@@ -14,7 +14,7 @@
     exit;
   }
   if (isset($_REQUEST['code']) && $_REQUEST['code'] == "") {
-    header("Location: type.php");
+    header("Location: category.php");
     exit;
   }
   require_once '../php/DataProvider.php';
@@ -87,7 +87,7 @@
                 </div>
                 <div class="form-group col-md-12">
                   <input type="button" value="Xác nhận" style="float:right" class="btn bg-success text-white" onclick="<?php echo (isset($_REQUEST['code']) ? "editCategory()" : "addCategory()") ?>"></input>
-                  <a type="button" href="type.php" style="float:right" role="button" class="btn bg-danger text-white mr-sm-2">Hủy</a>
+                  <a type="button" href="category.php" style="float:right" role="button" class="btn bg-danger text-white mr-sm-2">Hủy</a>
                   <?php
                   if (isset($_REQUEST['code'])) {
                     echo "<input type=\"button\" value=\"Xóa thể loại\" class=\"btn bg-danger text-white\" onclick=\"deleteCategory('".$code."')\"></input>";

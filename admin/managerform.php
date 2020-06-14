@@ -1,19 +1,23 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['isLogin'])){
-      header("Location: login.php");
-		  exit;
-    } else {
-      $role ="";
-      foreach ($_SESSION["isLogin"] as $k => $v) {
-        $role = $_SESSION['isLogin'][$k]["Role"];
-      }
+  session_start();
+  if(!isset($_SESSION['isLogin'])){
+    header("Location: login.php");
+    exit;
+  } else {
+    $role ="";
+    foreach ($_SESSION["isLogin"] as $k => $v) {
+      $role = $_SESSION['isLogin'][$k]["Role"];
     }
-    if($role != "Admin"){
-      header("Location: index.php");
-      exit;
-    }
-    require_once '../php/DataProvider.php';
+  }
+  if($role != "Admin"){
+    header("Location: index.php");
+    exit;
+  }
+  if (isset($_REQUEST['id']) && $_REQUEST['id'] == "") {
+    header("Location: manager.php");
+    exit;
+  }
+  require_once '../php/DataProvider.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +47,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-  <?php include './interface/sidebar.php'?>
+  <?php include './interface/sidebar.php' ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -51,55 +55,63 @@
       <!-- Main Content -->
       <div id="content">
 
-      <?php include './interface/topbar.php'?>
+        <?php include './interface/topbar.php' ?>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading 
-          <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>-->
-
           <!-- DataTales Example -->
+          <?php 
+          if (isset($_REQUEST['id'])) {
+            $id = $_REQUEST['id'];
+            $sql = "SELECT * FROM admin WHERE ID='" . $id . "'";
+            $result = DataProvider::executeQuery($sql);
+            $row = mysqli_fetch_array($result);
+            $password = $row['Password'];
+            $role = $row['Role'];
+          }
+          ?>
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h4 class="m-0 font-weight-bold text-primary d-inline">Loại sản phẩm</h4>
-              <a href="categoryform.php" class="btn btn-success float-right">Thêm</a>
+              <h4 class="m-0 font-weight-bold text-primary d-inline"><?php echo (isset($_REQUEST['id']) ? "Sửa tài khoản ban quản trị " . $id : "Thêm tài khoản ban quản trị") ?></h4>
             </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align:center">
-                  <thead>
-                    <tr>
-                      <th>Mã Thể Loại</th>
-                      <th>Tên Thể Loại</th>
-                      <th style="width:150px">Thao Tác</th>
-                    </tr>
-                  </thead>
-                  <tbody id="tbody-sanpham">
-                    <?php
-                    require_once '../php/DataProvider.php';
-                    $sql = "SELECT * FROM category";
-                    $result = DataProvider::executeQuery($sql);
-                    while ($row = mysqli_fetch_array($result)) {
-                      echo "<tr>" .
-                          "<td>" . $row['Category'] . "</td>" .
-                          "<td>" . $row['Category_name'] . "</td>" .
-                          "<td>" .
-                            "<div>" .
-                              "<a href=\"categoryform.php?code=" . $row['Category'] . "\">Sửa thông tin</a>" .
-                            "</div>" .
-                            "<div>" .
-                              "<a href='#' onclick=\"deleteCategory('".$row['Category']."')\">Xóa thể loại</a>" .
-                            "</div>" .
-                          "</td>" .
-                      "</tr>";
+            <form class="card-body" id="manager-form">
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label id="ID" >Tài khoản:</label>
+                  <?php
+                    if(isset($_REQUEST['id'])) {
+                  ?>
+                    <input type="text" id="ID" class="form-control-plaintext" readonly value="<?php echo $id?>"></input>
+                  <?php
+                    } else {
+                  ?>
+                    <input type="text" id="ID" class="form-control" placeholder="Tài khoản" ></input>
+                  <?php
                     }
-                    ?>
-                  </tbody>
-                </table>
+                  ?>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="password">Mật khẩu:</label>
+                  <input type="text" id="password" class="form-control" placeholder="Mật khẩu" value="<?php echo (isset($_REQUEST['id']) ? $password : "") ?>"></input>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="role">Quyền:</label>
+                  <select type="text" id="role" class="form-control">
+                    <option value="Manager">Manager</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-12">
+                  <input type="button" value="Xác nhận" style="float:right" class="btn bg-success text-white" onclick="<?php echo (isset($_REQUEST['id']) ? "editManager()" : "addManager()") ?>"></input>
+                  <a type="button" href="manager.php" style="float:right" role="button" class="btn bg-danger text-white mr-sm-2">Hủy</a>
+                  <?php
+                  if (isset($_REQUEST['id'])) {
+                    echo "<input type=\"button\" value=\"Xóa tài khoản\" class=\"btn bg-danger text-white\" onclick=\"deleteManager('".$id."')\"></input>";
+                  }
+                  ?>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
 
         </div>
@@ -158,9 +170,11 @@
 
   <!-- Page level custom scripts -->
   <script src="../js/demo/datatables-demo.js"></script>
+
+  <script src="../js/custom/JS-admin-manager-form.js"></script>
   
-  <script src="../js/custom/JS-admin-category-form.js"></script>
   <script src="../js/custom/JS-admin-login.js"></script>
+  
 
 </body>
 

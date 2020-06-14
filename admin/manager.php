@@ -63,34 +63,34 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h4 class="m-0 font-weight-bold text-primary d-inline">Loại sản phẩm</h4>
-              <a href="categoryform.php" class="btn btn-success float-right">Thêm</a>
+              <h4 class="m-0 font-weight-bold text-primary d-inline">Ban quản trị</h4>
+              <a href="managerform.php" class="btn btn-success float-right">Thêm</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align:center">
                   <thead>
                     <tr>
-                      <th>Mã Thể Loại</th>
-                      <th>Tên Thể Loại</th>
+                      <th>Tài khoản</th>
+                      <th>Mật khẩu</th>
                       <th style="width:150px">Thao Tác</th>
                     </tr>
                   </thead>
                   <tbody id="tbody-sanpham">
                     <?php
                     require_once '../php/DataProvider.php';
-                    $sql = "SELECT * FROM category";
+                    $sql = "SELECT * FROM admin WHERE Role != 'Admin'";
                     $result = DataProvider::executeQuery($sql);
                     while ($row = mysqli_fetch_array($result)) {
                       echo "<tr>" .
-                          "<td>" . $row['Category'] . "</td>" .
-                          "<td>" . $row['Category_name'] . "</td>" .
+                          "<td>" . $row['ID'] . "</td>" .
+                          "<td>" . $row['Password'] . "</td>" .
                           "<td>" .
                             "<div>" .
-                              "<a href=\"categoryform.php?code=" . $row['Category'] . "\">Sửa thông tin</a>" .
+                              "<a href=\"managerform.php?id=" . $row['ID'] . "\">Sửa thông tin</a>" .
                             "</div>" .
                             "<div>" .
-                              "<a href='#' onclick=\"deleteCategory('".$row['Category']."')\">Xóa thể loại</a>" .
+                              "<a href='#' onclick=\"deleteManager('".$row['ID']."')\">Xóa tài khoản</a>" .
                             "</div>" .
                           "</td>" .
                       "</tr>";
@@ -159,7 +159,7 @@
   <!-- Page level custom scripts -->
   <script src="../js/demo/datatables-demo.js"></script>
   
-  <script src="../js/custom/JS-admin-category-form.js"></script>
+  <script src="../js/custom/JS-admin-manager-form.js"></script>
   <script src="../js/custom/JS-admin-login.js"></script>
 
 </body>
