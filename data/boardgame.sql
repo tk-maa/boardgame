@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2020 at 04:54 PM
+-- Generation Time: Jun 14, 2020 at 04:20 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`ID`, `Password`, `Role`) VALUES
 ('admin', 'admin', 'Admin'),
-('manager', 'manager', 'Manager');
+('manager', 'manager1', 'Manager');
 
 -- --------------------------------------------------------
 
@@ -162,11 +162,27 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`Category`, `Category_name`) VALUES
+('2x2', 'Rubik 2x2'),
+('3x3', 'Rubik 3x3'),
 ('Cardgame', 'Trò chơi thẻ'),
 ('Deduction', 'Suy luận'),
+('Horror', 'Kinh dị'),
+('Other', 'Rubik khác'),
 ('Roleplaying', 'Nhập vai'),
 ('Stragery', 'Chiến thuật'),
 ('Wargame', 'Chiến tranh');
+
+--
+-- Triggers `category`
+--
+DELIMITER $$
+CREATE TRIGGER `update_category` AFTER UPDATE ON `category` FOR EACH ROW IF !(NEW.Category <=> OLD.Category) THEN
+      UPDATE product
+      SET product.Category = NEW.Category 
+      WHERE product.Category = OLD.Category;
+END IF
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -509,16 +525,17 @@ CREATE TABLE `user` (
   `Password` varchar(100) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Phone` varchar(20) DEFAULT NULL,
-  `Address` varchar(100) DEFAULT NULL
+  `Address` varchar(100) DEFAULT NULL,
+  `Status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`Email`, `Password`, `Name`, `Phone`, `Address`) VALUES
-('test123@gmail.com', '123123123', 'test', '0911111111', 'test địa chỉ'),
-('testUser@gmail.com', 'DayLaPassword123.', 'Test Name', NULL, NULL);
+INSERT INTO `user` (`Email`, `Password`, `Name`, `Phone`, `Address`, `Status`) VALUES
+('test123@gmail.com', '123123123', 'test', '0911111111', 'test địa chỉ', 0),
+('testUser@gmail.com', 'DayLaPassword123.', 'Test Name', NULL, NULL, 0);
 
 --
 -- Indexes for dumped tables

@@ -149,8 +149,8 @@
                     </ul>
                 </div>
                 <div class="col-lg-5 col-sm-12">
-                    <form class="header-form form-sm search_wrap pull-right">
-                        <input class="search-box" placeholder="Tìm kiếm..." type="search">
+                    <form class="header-form form-sm search_wrap pull-right" action="search.php" method="get" >
+                        <input class="search-box" name="string" placeholder="Tìm kiếm..." type="search">
                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>

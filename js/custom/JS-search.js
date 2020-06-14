@@ -6,19 +6,19 @@ function formatPricetoPrint(a) {
 
 function paginationGetData(numOfItems,currentPage){
 	var sortBasic = document.getElementById('sortBasic').value;
-	var sortType = document.getElementById('sortType').value;
+	var searchString = document.getElementById('searchString').value;
 
 	let form_data = new FormData();
 	form_data.append('action','paginationGetData');
 	form_data.append('sortBasic',sortBasic);
-	form_data.append('sortType',sortType);
+	form_data.append('searchString',searchString);
 	form_data.append('numOfItems',parseInt(numOfItems));
 	form_data.append('currentPage',parseInt(currentPage));
 
 	paginationGetPages(numOfItems,currentPage);
 
 	$.ajax({
-		url: './php/PHP-product.php', 
+		url: './php/PHP-search.php', 
 		type: 'post',
 		data: form_data,
 		dataType: 'text',
@@ -97,12 +97,12 @@ function paginationGetData(numOfItems,currentPage){
 
 function paginationGetPages(numOfItems,currentPage){
 	var sortBasic = document.getElementById('sortBasic').value;
-	var sortType = document.getElementById('sortType').value;
+	var searchString = document.getElementById('searchString').value;
 
 	let form_data = new FormData();
 	form_data.append('action','paginationGetPages');
 	form_data.append('sortBasic',sortBasic);
-	form_data.append('sortType',sortType);
+	form_data.append('searchString',searchString);
 
 	$.ajax({
 		url: './php/PHP-product.php', 

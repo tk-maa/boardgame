@@ -6,7 +6,7 @@ require_once './php/DataProvider.php';
 <html lang="en">
 
 <head>
-    <script src="https://kit.fontawesome.com/3d02397db2.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/3d02397db2.js" crossorigin="anonymous"></script>-->
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -459,7 +459,7 @@ require_once './php/DataProvider.php';
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <!-- Magnific Popup js -->
     <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
-    <!-- Map js -->
+    <!-- Map js --> 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7TypZFTl4Z3gVtikNOdGSfNTpnmq-ahQ" type="text/javascript"></script>
     <!-- Owl js -->
     <script src="js/owl.carousel.min.js" type="text/javascript"></script>
