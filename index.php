@@ -6,7 +6,7 @@ require_once './php/DataProvider.php';
 <html lang="en">
 
 <head>
-    <!-- <script src="https://kit.fontawesome.com/3d02397db2.js" crossorigin="anonymous"></script>-->
+    <script src="https://kit.fontawesome.com/3d02397db2.js" crossorigin="anonymous"></script>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
