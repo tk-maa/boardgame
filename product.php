@@ -59,18 +59,7 @@ $numberOfItemsInOnePage = 20;
     ?>
     <!-- End Header Section -->
     <?php
-    $sql = "SELECT * FROM product where Type='" . $_REQUEST['code'] . "'";
-    $result = DataProvider::executeQuery($sql);
-    $row = mysqli_fetch_array($result);
-    $typeName = $row['Type'];
-    function makeBrandOptionSelected($type, $typeOfProduct)
-    {
-        if ($type["TypeID"] == $typeOfProduct) {
-            echo "<option value='" . $type["TypeID"] . "' selected>" . $type["TypeName"] . "</option>";
-        } else {
-            echo "<option value='" . $type["TypeID"] . "'>" . $type["TypeName"] . "</option>";
-        }
-    }
+    $typeName = $_REQUEST['code'];
     ?>
     <!-- Start Product Section -->
     <section class="products-section">
@@ -89,6 +78,7 @@ $numberOfItemsInOnePage = 20;
                             </select>
                         </div>
                         <input type="hidden" id="sortType" value="<?php echo $_REQUEST['code'] ?>"></input>
+                        <input type="hidden" id="sortCategory" value="<?php echo $_REQUEST['category'] ?>"></input>
                     </div>
                 </div>
                 <div class="col-sm-10">
@@ -110,7 +100,11 @@ $numberOfItemsInOnePage = 20;
                     </div>
                     <div class="row" id="product-container">
                         <?php
-                        $sql = "SELECT * FROM product WHERE Status = 0 AND Type ='" . $_REQUEST['code'] . "' LIMIT 0," . $numberOfItemsInOnePage;
+                        $sql = "SELECT * FROM product WHERE Status = 0 AND Type='".$_REQUEST['code']."' ";
+                        if(isset($_REQUEST['category'])){
+                            $sql .= "AND Category ='".$_REQUEST['category']."'";
+                        }
+                        $sql .= " LIMIT 0," . $numberOfItemsInOnePage;
                         $result = DataProvider::executeQuery($sql);
                         while ($row = mysqli_fetch_assoc($result)) {
                         ?>
@@ -140,9 +134,11 @@ $numberOfItemsInOnePage = 20;
                     <div id="pagination-section">
                         <?php
                         $sql = "SELECT count(*) FROM product WHERE Status = 0 AND Type ='" . $_REQUEST['code'] . "'";
+                        if(isset($_REQUEST['category'])){
+                            $sql .= " AND Category ='".$_REQUEST['category']."'";
+                        }
                         $result = DataProvider::executeQuery($sql);
-                        $r_count = mysqli_fetch_row($result); //number of items
-                        $numberOfItems = $r_count[0];
+                        $numberOfItems = mysqli_num_rows($result); //number of items
                         $numberOfPages = ceil($numberOfItems / $numberOfItemsInOnePage); //Number of pages = lam tron len
                         if ($numberOfPages > 1) {
                         ?>

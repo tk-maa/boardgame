@@ -7,11 +7,13 @@ function formatPricetoPrint(a) {
 function paginationGetData(numOfItems,currentPage){
 	var sortBasic = document.getElementById('sortBasic').value;
 	var sortType = document.getElementById('sortType').value;
+	var sortCategory = document.getElementById('sortCategory').value;
 
 	let form_data = new FormData();
 	form_data.append('action','paginationGetData');
 	form_data.append('sortBasic',sortBasic);
 	form_data.append('sortType',sortType);
+	form_data.append('sortCategory',sortCategory);
 	form_data.append('numOfItems',parseInt(numOfItems));
 	form_data.append('currentPage',parseInt(currentPage));
 
@@ -98,9 +100,12 @@ function paginationGetData(numOfItems,currentPage){
 function paginationGetPages(numOfItems,currentPage){
 	var sortBasic = document.getElementById('sortBasic').value;
 	var sortType = document.getElementById('sortType').value;
+	var sortCategory = document.getElementById('sortCategory').value;
+	
 
 	let form_data = new FormData();
 	form_data.append('action','paginationGetPages');
+	form_data.append('sortCategory',sortCategory);
 	form_data.append('sortBasic',sortBasic);
 	form_data.append('sortType',sortType);
 

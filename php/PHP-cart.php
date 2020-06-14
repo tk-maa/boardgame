@@ -115,7 +115,7 @@ function checkOut(){
 	$phone = addslashes($_POST['phone']);
     $address = addslashes($_POST['address']);
     $note = addslashes($_POST['note']);
-    $time = date("d")."/".date("m")."/".date("Y");
+    $time = date("Y")."-".date("m")."-".date("d");
     $user = NULL;
 
     $totalPrice = 0;

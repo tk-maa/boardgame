@@ -12,11 +12,16 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 
 function paginationGetData(){
     $sortBasic = addslashes($_POST['sortBasic']);
+    $sortCategory = addslashes($_POST['sortCategory']);
     $sortType = addslashes($_POST['sortType']);
     $numOfItems = addslashes($_POST['numOfItems']);
     $currentPage = addslashes($_POST['currentPage']);
 
     $sql = "SELECT * FROM product WHERE Status = 0 AND Type = '".$sortType."' ";
+
+    if($sortCategory != ""){
+        $sql .= " AND Category ='".$sortCategory."' ";
+    }
 
     switch($sortBasic){
         case "1": $sql.="ORDER BY Name ASC ";break;
@@ -44,8 +49,13 @@ function paginationGetData(){
 }
 function paginationGetPages(){
     $sortType = addslashes($_POST['sortType']);
+    $sortCategory = addslashes($_POST['sortCategory']);
 
-    $sql = "SELECT COUNT(*) FROM product WHERE Status = 0 AND Type ='".$sortType."'";
+    $sql = "SELECT COUNT(*) FROM product WHERE Status = 0 AND Type ='".$sortType."' ";
+
+    if($sortCategory != ""){
+        $sql .= " AND Category ='".$sortCategory."' ";
+    }
 
     $result = DataProvider::executeQuery($sql);
     $r_count = mysqli_fetch_row($result); //number of items
