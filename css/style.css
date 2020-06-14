@@ -6198,10 +6198,10 @@ body.switch-open {
 }
 
 .table.table-bordered thead tr{
-	background-color: rgb(52, 90, 214);
+	background-color: red;
 	 color:white;
 
 }
 .table.table-bordered tbody tr:hover{
-	background-color: #ffff99;
+	background-color: rgb(216, 216, 216);
 }
