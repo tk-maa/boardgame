@@ -3,42 +3,42 @@ require_once 'DataProvider.php';
 if(isset($_POST['action']) && !empty($_POST['action'])) {
     $action = $_POST['action'];
     switch($action) {
-		/*case 'addCategory': addCategory();break;
-		case 'editType': editType();break;
-		case 'deleteType': deleteType();break;
+		case 'addCategory': addCategory();break;
+		case 'editCategory': editCategory();break;
+		case 'deleteCategory': deleteCategory();break;
     }
 }
 function addCategory(){
 	$categoryID = addslashes($_POST['categoryID']);
 	$categoryName = addslashes($_POST['categoryName']);
 	
-	$sql = "INSERT INTO category(CategoryID, categoryName) VALUES(" .
+	$sql = "INSERT INTO category(Category, Category_name) VALUES(" .
 			"'" .$categoryID. "'," . 
 			"'" .$categoryName. "')"; 
 
 	DataProvider::executeQuery($sql);
 	die("0");
 }
-function editType(){
-	$newTypeID = addslashes($_POST['newTypeID']);
-	$typeName = addslashes($_POST['typeName']);
-	$oldTypeID = addslashes($_POST['oldTypeID']);
+function editCategory(){
+	$newCategoryID = addslashes($_POST['newCategoryID']);
+	$categoryName = addslashes($_POST['categoryName']);
+	$oldCategoryID = addslashes($_POST['oldCategoryID']);
 	
-	$sql = "UPDATE type SET" .
-		" TypeName='". $typeName . "'";
+	$sql = "UPDATE category SET" .
+		" Category_name='". $categoryName . "'";
 	
-	if( $newTypeID != $oldTypeID){
-		$sql .=", TypeID='".$newTypeID."'";
+	if( $newCategoryID != $oldCategoryID){
+		$sql .=", Category='".$newCategoryID."'";
 	}
 	
-	$sql .=" WHERE TypeID='" . $oldTypeID . "';";
+	$sql .=" WHERE Category='" . $oldCategoryID . "';";
 	DataProvider::executeQuery($sql);
 	die("0");
 }
-function deleteType(){
-	$typeID = addslashes($_POST['typeID']);
+function deleteCategory(){
+	$categoryID = addslashes($_POST['categoryID']);
 
-	$sql =" DELETE FROM type WHERE TypeID='" . $typeID . "';";
+	$sql =" DELETE FROM category WHERE Category='" . $categoryID . "';";
 	DataProvider::executeQuery($sql);
 	die("0");
 }

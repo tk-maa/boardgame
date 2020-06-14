@@ -64,7 +64,7 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h4 class="m-0 font-weight-bold text-primary d-inline">Loại sản phẩm</h4>
-              <a href="typeform.php" class="btn btn-success float-right">Thêm</a>
+              <a href="categoryform.php" class="btn btn-success float-right">Thêm</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -79,18 +79,18 @@
                   <tbody id="tbody-sanpham">
                     <?php
                     require_once '../php/DataProvider.php';
-                    $sql = "SELECT * FROM type";
+                    $sql = "SELECT * FROM category";
                     $result = DataProvider::executeQuery($sql);
                     while ($row = mysqli_fetch_array($result)) {
                       echo "<tr>" .
-                          "<td>" . $row['CategoryID'] . "</td>" .
-                          "<td>" . $row['CategoryName'] . "</td>" .
+                          "<td>" . $row['Category'] . "</td>" .
+                          "<td>" . $row['Category_name'] . "</td>" .
                           "<td>" .
                             "<div>" .
-                              "<a href=\"categoryform.php?code=" . $row['CategoryID'] . "\">Sửa thông tin</a>" .
+                              "<a href=\"categoryform.php?code=" . $row['Category'] . "\">Sửa thông tin</a>" .
                             "</div>" .
                             "<div>" .
-                              "<a href='#' onclick=\"deleteCategory('".$row['CategoryID']."')\">Xóa loại sản phẩm</a>" .
+                              "<a href='#' onclick=\"deleteCategory('".$row['Category']."')\">Xóa loại sản phẩm</a>" .
                             "</div>" .
                           "</td>" .
                       "</tr>";

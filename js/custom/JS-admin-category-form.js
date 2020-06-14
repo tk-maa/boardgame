@@ -11,12 +11,12 @@ function addCategory(){
 	}
 
 	if (categoryName.value==""){
-		alert("Tên thể loạikhông được để trống!");
+		alert("Tên thể loại không được để trống!");
 		categoryName.focus();
 		return;
 	}
 	
-	form_data.append('action','addType');
+	form_data.append('action','addCategory');
 	form_data.append('categoryID',categoryID.value);
 	form_data.append('categoryName',categoryName.value);
 	
@@ -31,9 +31,9 @@ function addCategory(){
 		success:function(res){
 			switch(res){
 				case "0":{
-					alert("Thêm loại sản phẩm thành công!");
-					document.getElementById("type-form").reset();
-					window.location.href = "type.php";
+					alert("Thêm thể loại thành công!");
+					document.getElementById("category-form").reset();
+					window.location.href = "category.php";
 				}break;
 			}
 		}
@@ -41,33 +41,33 @@ function addCategory(){
 	
 }
 
-function editType(){
-	var typeName = document.getElementById("type-form").typeName;
-	var newTypeID = document.getElementById("type-form").typeID;
-	var oldTypeID = document.getElementById("type-form").code;
+function editCategory(){
+	var categoryName = document.getElementById("category-form").categoryName;
+	var newCategoryID = document.getElementById("category-form").categoryID;
+	var oldCategoryID = document.getElementById("category-form").code;
 	
 	var form_data = new FormData();
 	
-	if (typeID.value==""){
-		alert("Mã loại sản phẩm không được để trống!");
-		typeID.focus();
+	if (newCategoryID.value==""){
+		alert("Mã thể loại không được để trống!");
+		newCategoryID.focus();
 		return;
 	}
 
-	if (typeName.value==""){
-		alert("Tên loại sản phẩm không được để trống!");
-		typeName.focus();
+	if (categoryName.value==""){
+		alert("Tên thể loại không được để trống!");
+		categoryName.focus();
 		return;
 	}
 	
-	form_data.append('action','editType');
-	form_data.append('newTypeID',newTypeID.value);
-	form_data.append('typeName',typeName.value);
-	form_data.append('oldTypeID',oldTypeID.value);
+	form_data.append('action','editCategory');
+	form_data.append('newCategoryID',newCategoryID.value);
+	form_data.append('categoryName',categoryName.value);
+	form_data.append('oldCategoryID',oldCategoryID.value);
 	
 	jQuery.ajax({
 		type: "POST",
-		url: '../php/PHP-admin-type.php',
+		url: '../php/PHP-admin-category.php',
 		dataType: 'text',
 		cache: false,
 		contentType: false,
@@ -76,25 +76,25 @@ function editType(){
 		success:function(res){
 			switch(res){
 				case "0":{
-					alert("Sửa loại sản phẩm thành công!");
-					document.getElementById("type-form").reset();
-					window.location.href = "type.php";
+					alert("Sửa thể loại thành công!");
+					document.getElementById("category-form").reset();
+					window.location.href = "category.php";
 				}break;
 			}
 		}
 	});
 	
 }
-function deleteType(typeID){
-	var r = confirm("Bạn có chắc chắn muốn xóa loại sản phẩm này không?");
+function deleteCategory(categoryID){
+	var r = confirm("Bạn có chắc chắn muốn xóa thể loại này không?");
 	if (r == true) {
 		var form_data = new FormData();
-		form_data.append('typeID',typeID);
-		form_data.append('action','deleteType');
+		form_data.append('categoryID',categoryID);
+		form_data.append('action','deleteCategory');
 		
 		jQuery.ajax({
 			type: "POST",
-			url: '../php/PHP-admin-type.php',
+			url: '../php/PHP-admin-category.php',
 			dataType: 'text',
 			cache: false,
 			contentType: false,
@@ -103,10 +103,10 @@ function deleteType(typeID){
 			success:function(res){
 				switch(res){
 					case "0":{
-						alert("Xóa loại sản phẩm thành công!");
-						if(window.location.href.includes("typeform.php")){
-							document.getElementById("type-form").reset();
-							window.location.href = "type.php";
+						alert("Xóa thể loại thành công!");
+						if(window.location.href.includes("categoryform.php")){
+							document.getElementById("category-form").reset();
+							window.location.href = "category.php";
 						} else {
 							location.reload();
 						}

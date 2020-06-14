@@ -91,12 +91,12 @@
               echo "<option value='" . $status . "'>" . (($status == 0) ? "Hoạt động" : "Không hoạt động") . "</option>";
             }
           }
-          function makeCatogoryOptionSelected($category, $categoryOfThisProduct)
+          function makeCategoryOptionSelected($category, $categoryOfThisProduct)
           {
-            if ($category == $categoryOfThisProduct) {
-              echo "<option value='" . $category . "' selected>" . $category . "</option>";
+            if ($category['Category'] == $categoryOfThisProduct) {
+              echo "<option value='" . $category['Category'] . "' selected>" . $category['Category_name'] . "</option>";
             } else {
-              echo "<option value='" . $category . "'>" . $category . "</option>";
+              echo "<option value='" . $category['Category'] . "'>" . $category['Category_name'] . "</option>";
             }
           }
           ?>
@@ -151,29 +151,15 @@
                   <label for="category">Thể loại:</label>
                   <select id="category" class="form-control">
                     <?php
+                    $sql = "SELECT * FROM category";
+                    $result = DataProvider::executeQuery($sql);
+                    while($row = mysqli_fetch_array($result)){
                       if(isset($_REQUEST['id'])) {
-                        makeCatogoryOptionSelected("Cardgame", $category);
-                        makeCatogoryOptionSelected("Deduction", $category);
-                        makeCatogoryOptionSelected("Horror", $category);
-                        makeCatogoryOptionSelected("Puzzle", $category);
-                        makeCatogoryOptionSelected("Roleplaying", $category);
-                        makeCatogoryOptionSelected("Stragery", $category);
-                        makeCatogoryOptionSelected("Wargame", $category);
-                        makeCatogoryOptionSelected("2x2", $category);
-                        makeCatogoryOptionSelected("3x3", $category);
-                        makeCatogoryOptionSelected("Other", $category);
+                        makeCategoryOptionSelected($row, $category);
                       } else {
-                        makeCatogoryOptionSelected("Cardgame", "");
-                        makeCatogoryOptionSelected("Deduction", "");
-                        makeCatogoryOptionSelected("Horror", "");
-                        makeCatogoryOptionSelected("Puzzle", "");
-                        makeCatogoryOptionSelected("Roleplaying", "");
-                        makeCatogoryOptionSelected("Stragery", "");
-                        makeCatogoryOptionSelected("Wargame", "");
-                        makeCatogoryOptionSelected("2x2", "");
-                        makeCatogoryOptionSelected("3x3", "");
-                        makeCatogoryOptionSelected("Other", "");
+                        makeCategoryOptionSelected($row,"");
                       }
+                    } 
                     ?>
                   </select>
                 </div>

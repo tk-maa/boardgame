@@ -64,10 +64,10 @@
           <?php 
           if (isset($_REQUEST['code'])) {
             $code = $_REQUEST['code'];
-            $sql = "SELECT * FROM category WHERE CategoryID=\"" . $code . "\"";
+            $sql = "SELECT * FROM category WHERE Category=\"" . $code . "\"";
             $result = DataProvider::executeQuery($sql);
             $row = mysqli_fetch_array($result);
-            $categoryName = $row['CategoryName'];
+            $categoryName = $row['Category_name'];
           }
           ?>
           <div class="card shadow mb-4">
@@ -79,18 +79,18 @@
                 <input type="hidden" id="code"  value="<?php echo (isset($_REQUEST['code']) ? $code : "") ?>"></input>
                 <div class="form-group col-md-6">
                   <label for="categoryID">Mã thể loại:</label>
-                  <input type="text" id="categoryID" class="form-control" placeholder="Mã loại sản phẩm" value="<?php echo (isset($_REQUEST['code']) ? $code : "") ?>"></input>
+                  <input type="text" id="categoryID" class="form-control" placeholder="Mã thể loại" value="<?php echo (isset($_REQUEST['code']) ? $code : "") ?>"></input>
                 </div>
                 <div class="form-group col-md-6">
                   <label for="categoryName">Tên thể loại:</label>
-                  <input type="text" id="categoryName" class="form-control" placeholder="Tên loại sản phẩm" value="<?php echo (isset($_REQUEST['code']) ? $categoryName : "") ?>"></input>
+                  <input type="text" id="categoryName" class="form-control" placeholder="Tên thể loại" value="<?php echo (isset($_REQUEST['code']) ? $categoryName : "") ?>"></input>
                 </div>
                 <div class="form-group col-md-12">
                   <input type="button" value="Xác nhận" style="float:right" class="btn bg-success text-white" onclick="<?php echo (isset($_REQUEST['code']) ? "editCategory()" : "addCategory()") ?>"></input>
                   <a type="button" href="type.php" style="float:right" role="button" class="btn bg-danger text-white mr-sm-2">Hủy</a>
                   <?php
                   if (isset($_REQUEST['code'])) {
-                    echo "<input type=\"button\" value=\"Xóa loại sản phẩm\" class=\"btn bg-danger text-white\" onclick=\"deleteCategory('".$code."')\"></input>";
+                    echo "<input type=\"button\" value=\"Xóa thể loại\" class=\"btn bg-danger text-white\" onclick=\"deleteCategory('".$code."')\"></input>";
                   }
                   ?>
                 </div>
