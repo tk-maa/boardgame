@@ -131,7 +131,7 @@
                       } break;
                       case 3: {
                   ?>
-                        <p type="text" id="total" class="d-inline"><?php echo $status ?></p>
+                        <p type="text" id="total" class="d-inline">Đã hủy</p>
                   <?php     
                       } break;
                     }
