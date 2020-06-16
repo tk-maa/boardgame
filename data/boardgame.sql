@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2020 at 08:03 PM
+-- Generation Time: Jun 16, 2020 at 03:26 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -180,8 +180,8 @@ DELIMITER ;
 --
 
 CREATE TABLE `category` (
-  `Category` varchar(20) NOT NULL,
-  `Category_name` varchar(20) NOT NULL
+  `Category` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `Category_name` varchar(20) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
