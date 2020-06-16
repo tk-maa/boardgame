@@ -237,7 +237,12 @@ require_once './php/DataProvider.php';
                 <div class="col-lg-12">
                     <div class="carousel_slide6 products-style-2 nav-style-2 owl-carousel owl-theme" data-margin="30" data-dots="false" data-autoplay="false" data-nav="true" data-loop="false">
                         <?php
-                        $sql = "SELECT * FROM product WHERE Status = 0  AND Type = 'BG' ORDER BY ID DESC  LIMIT 15,25"; //ASC
+                        $sql = "SELECT DISTINCT * FROM product 
+                                WHERE ID IN 
+                                    (SELECT ProductID FROM billdetail GROUP BY ProductID ORDER BY SUM(Quantity) DESC)
+                                AND Status = 0  
+                                AND Type = 'BG' 
+                                LIMIT 0,10"; //ASC
                         $result = DataProvider::executeQuery($sql);
                         while ($row = mysqli_fetch_array($result)) {
                         ?>
