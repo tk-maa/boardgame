@@ -94,7 +94,12 @@
                 </div>
                 <div class="form-group col-md-4">
                   <strong for="time">Thời gian:</strong>
-                  <p type="text" id="time" class="d-inline"><?php echo $time?></p>
+                  <p type="text" id="time" class="d-inline">
+                    <?php 
+                      $date=date_create($row['Time']);
+                      echo date_format($date,"d/m/Y");
+                    ?>
+                  </p>
                 </div>
                 <div class="form-group col-md-4">
                   <strong for="name">Họ và tên:</strong>

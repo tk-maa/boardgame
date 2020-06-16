@@ -84,7 +84,12 @@
                     ?>
                     <tr>
                       <td><?php echo $row['ID'] ?></td>
-                      <td><?php echo $row['Time'] ?></td>
+                      <td>
+                        <?php 
+                          $date=date_create($row['Time']);
+                          echo date_format($date,"d/m/Y");
+                        ?>
+                      </td>
                       <td><?php echo $row['Name'] ?></td>
                       <td><?php echo $row['Quantity'] ?></td>
                       <td><?php echo number_format($row['Total'],0,".",".")?>₫</td>

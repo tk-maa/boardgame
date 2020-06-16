@@ -3,6 +3,20 @@ function formatPricetoPrint(a) {
 	a = a.split(',').join('.');
 	return a;
 }
+function GetFormattedDate(string) {
+    var Time = new Date(string);
+	var month = Time.getMonth() + 1;
+	if(month < 10) {
+		month = "0"+month.toString();
+	}
+	var day = Time.getDate();
+	if(day < 10) {
+		day = "0"+day.toString();
+	}
+    var year = Time.getFullYear();
+    return day + "/" + month + "/" + year;
+}
+
 
 function login() {
 	var email = document.getElementById("login-form").email;
@@ -335,7 +349,7 @@ function showDetailBill(id){
 				<span>Tổng tiền:&nbsp;</span><span>${formatPricetoPrint(Number(data.Total))}₫</span>
 			</div>
 			<div>
-				<span>Thời gian: &nbsp;</span><span>${data.Time}</span>
+				<span>Thời gian: &nbsp;</span><span>${GetFormattedDate(data.Time)}</span>
 			</div>
 			<div>
 				<span>Trạng thái: &nbsp;</span><span>${data.Status== 1 ? "Chờ xử lý" : "Đã xử lý"}</span>

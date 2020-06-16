@@ -274,7 +274,7 @@ require_once './php/DataProvider.php';
             <div class="row">
                 <div class="col-12">
                     <div class="title">
-                        <h4>Sản phẩm 3</h4>
+                        <h4>Board game nhập mỹ</h4>
                     </div>
                 </div>
             </div>
@@ -282,7 +282,7 @@ require_once './php/DataProvider.php';
                 <div class="col-lg-12">
                     <div class="carousel_slide6 products-style-2 nav-style-2 owl-carousel owl-theme" data-margin="30" data-dots="false" data-autoplay="false" data-nav="true" data-loop="false">
                         <?php
-                        $sql = "SELECT * FROM product WHERE Status = 0 ORDER BY ID DESC  LIMIT 21,30"; //ASC
+                        $sql = "SELECT * FROM product WHERE Name LIKE '%(US)%' AND Status = 0 ORDER BY ID DESC  LIMIT 0,10"; //ASC
                         $result = DataProvider::executeQuery($sql);
                         while ($row = mysqli_fetch_array($result)) {
                         ?>

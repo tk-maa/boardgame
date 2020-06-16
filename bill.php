@@ -92,7 +92,12 @@ require_once './php/DataProvider.php';
                                 ?>
                                 <tr>
                                     <td><?php echo $row['ID']?></td>
-                                    <td><?php echo $row['Time']?></td>
+                                    <td>
+                                        <?php 
+                                            $date=date_create($row['Time']);
+                                            echo date_format($date,"d/m/Y");
+                                        ?>
+                                    </td>
                                     <td><?php echo $row['Quantity']?></td>
                                     <td><?php echo number_format($row['Total'],0,".",".")?>₫</td>
                                     <td><?php echo ($row['Status'] == 1 ? "Chờ xử lý": "Đã xử lý")?></td>
