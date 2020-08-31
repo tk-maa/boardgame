@@ -209,11 +209,12 @@
 
                                 foreach ($FirstMenuArray as $currentFirst) {
                                     echo "<li>" .
-                                        "<a class='dropdown-toggler' href='" . $currentFirst->link . "' data-toggle='dropdown' aria-expanded='false'>" . $currentFirst->name;
+                                        "<a class='dropdown-toggler' href='" . $currentFirst->link . "'"; 
                                     foreach ($SecondMenuArray as $currentSecond) {
                                         if ($currentSecond->menuIDFirst == $currentFirst->menuID) {
                                             if ($haveSecond == false) {
-                                                echo "<i class='ion-plus-round plus-icon'></i><i class='ion-minus-round minus-icon'></i></a> " .
+                                                echo " data-toggle='dropdown' aria-expanded='false'>" . $currentFirst->name . 
+                                                    "<i class='ion-plus-round plus-icon'></i><i class='ion-minus-round minus-icon'></i></a> " .
                                                     "<ul class='dropdown-menu list-unstyled'>";
                                                 $haveSecond = true;
                                             }
@@ -224,7 +225,7 @@
                                         echo "</ul>" .
                                             "</li>";
                                     } else {
-                                        echo "</a></li>";
+                                        echo ">".  $currentFirst->name . "</a></li>";
                                     }
                                     $haveSecond = false;
                                 }
